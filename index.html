@@ -153,6 +153,91 @@
             border-color: var(--accent);
         }
 
+        .header-actions {
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .footer-contact-btn {
+            background: transparent;
+            color: var(--accent);
+            border: 0;
+            padding: 0;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .footer-contact-btn:hover {
+            text-decoration: underline;
+        }
+
+        .contact-modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: rgba(15, 23, 42, 0.55);
+            z-index: 100;
+        }
+
+        .contact-modal-card {
+            width: min(100%, 420px);
+            padding: 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-modal-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--fg);
+        }
+
+        .contact-modal-text {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-close {
+            background: transparent;
+            color: var(--muted);
+            border: 0;
+            padding: 0;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .contact-email {
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .contact-email:hover {
+            text-decoration: underline;
+        }
+
         .btn-small {
             padding: 0.55rem 0.9rem;
             font-size: 0.9rem;
@@ -642,8 +727,21 @@
             <span>|</span>
             <a class="credit-link" href="https://alshtait.com" target="_blank" rel="noopener noreferrer">alshtait.com</a>
             <span>|</span>
+            <button id="contactToggle" class="footer-contact-btn" type="button" data-i18n="contact">Contact</button>
+            <span>|</span>
             <span data-i18n="creditLastUpdated">آخر تحديث</span>
             <span>2026</span>
+        </div>
+    </div>
+
+    <div id="contactModal" class="contact-modal" hidden>
+        <div class="contact-modal-card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+            <div class="contact-modal-header">
+                <div id="contactModalTitle" class="contact-modal-title" data-i18n="contact">Contact</div>
+                <button id="contactClose" class="modal-close" type="button" aria-label="Close">&times;</button>
+            </div>
+            <div class="contact-modal-text" data-i18n="contactPrompt">For inquiries, contact us at:</div>
+            <a class="contact-email" href="mailto:contact@alshtait.com">contact@alshtait.com</a>
         </div>
     </div>
 
@@ -664,6 +762,9 @@
                 infant: "رضيع",
                 termNeonate: "حديث ولادة مكتمل",
                 pretermNeonate: "خديج",
+                contact: "تواصل",
+                contactTitle: "البريد",
+                contactPrompt: "للاستفسارات، تواصل عبر:",
                 search: "بحث عن دواء",
                 selectDrug: "اختر الدواء",
                 selectPlaceholder: "اختر...",
@@ -778,6 +879,9 @@
                 infant: "Infant",
                 termNeonate: "Term Neonate",
                 pretermNeonate: "Preterm Neonate",
+                contact: "Contact",
+                contactTitle: "Email",
+                contactPrompt: "For inquiries, contact us at:",
                 search: "Search Drug",
                 selectDrug: "Select Drug",
                 selectPlaceholder: "Select...",
@@ -1825,13 +1929,35 @@
             document.getElementById('clearFavoritesBtn').addEventListener('click', clearFavorites);
             document.getElementById('savePresetBtn').addEventListener('click', savePreset);
             document.getElementById('langToggle').addEventListener('click', toggleLanguage);
+            document.getElementById('contactToggle').addEventListener('click', () => toggleContactModal(true));
+            document.getElementById('contactClose').addEventListener('click', () => toggleContactModal(false));
             document.getElementById('themeToggle').addEventListener('click', toggleTheme);
             document.getElementById('calcBtn').addEventListener('click', calculate);
             document.getElementById('resetBtn').addEventListener('click', resetForm);
+            document.getElementById('contactModal').addEventListener('click', (event) => {
+                if (event.target.id === 'contactModal') {
+                    toggleContactModal(false);
+                }
+            });
+            document.addEventListener('keydown', handleDocumentKeydown);
 
             document.querySelectorAll('.mode-btn').forEach(btn => {
                 btn.addEventListener('click', () => setMode(btn.dataset.mode));
             });
+        }
+
+        function toggleContactModal(forceState) {
+            const modal = document.getElementById('contactModal');
+            if (!modal) return;
+            const shouldShow = typeof forceState === 'boolean' ? forceState : modal.hidden;
+            modal.hidden = !shouldShow;
+            document.body.style.overflow = shouldShow ? 'hidden' : '';
+        }
+
+        function handleDocumentKeydown(event) {
+            if (event.key === 'Escape') {
+                toggleContactModal(false);
+            }
         }
 
         function getStoredFavorites() {
