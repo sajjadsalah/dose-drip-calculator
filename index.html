@@ -1904,6 +1904,7 @@
             presets = getStoredPresets();
             populateDrugList(drugDatabase);
             setLanguage('en');
+            document.getElementById('langToggle').innerText = 'AR';
             renderFavorites();
             renderPresets();
             updateRouteOptions();
@@ -2829,6 +2830,7 @@
         function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             setLanguage(currentLang);
+            document.getElementById('langToggle').innerText = currentLang === 'ar' ? 'EN' : 'AR';
             handleSearch(document.getElementById('searchInput').value);
             if(state.drug) handleDrugChange(state.drug.id);
         }
