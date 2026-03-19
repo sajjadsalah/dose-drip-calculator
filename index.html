@@ -2646,6 +2646,123 @@
             border: 1px solid rgba(124, 154, 146, 0.1);
         }
 
+        .feedback-card {
+            display: grid;
+            gap: 0.95rem;
+            margin-top: 1rem;
+            padding: 1rem 1.05rem;
+            border-radius: 20px;
+            background: linear-gradient(180deg, rgba(124, 154, 146, 0.08), rgba(255, 255, 255, 0.94));
+            border: 1px solid rgba(124, 154, 146, 0.12);
+        }
+
+        .feedback-card[hidden] {
+            display: none !important;
+        }
+
+        .feedback-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .feedback-card-title {
+            color: var(--fg);
+            font-size: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .feedback-card-text,
+        .feedback-note,
+        .feedback-context {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .feedback-context {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .feedback-field {
+            display: grid;
+            gap: 0.55rem;
+        }
+
+        .feedback-label {
+            color: var(--fg);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .feedback-rating-row,
+        .feedback-chip-row,
+        .feedback-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .feedback-rating-btn,
+        .feedback-chip,
+        .feedback-link-btn {
+            appearance: none;
+            border: 1px solid rgba(124, 154, 146, 0.16);
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--fg);
+            border-radius: 999px;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+        }
+
+        .feedback-rating-btn,
+        .feedback-chip {
+            padding: 0.62rem 0.92rem;
+        }
+
+        .feedback-link-btn {
+            padding: 0.4rem 0.72rem;
+            color: var(--accent-strong);
+            background: transparent;
+        }
+
+        .feedback-rating-btn:hover,
+        .feedback-chip:hover,
+        .feedback-link-btn:hover {
+            transform: translateY(-1px);
+            border-color: rgba(124, 154, 146, 0.26);
+        }
+
+        .feedback-rating-btn.is-active,
+        .feedback-chip.is-active {
+            background: rgba(124, 154, 146, 0.14);
+            border-color: rgba(124, 154, 146, 0.22);
+            color: var(--accent-strong);
+        }
+
+        .feedback-textarea {
+            min-height: 108px;
+            resize: vertical;
+        }
+
+        .feedback-actions {
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .feedback-status {
+            display: grid;
+            gap: 0.45rem;
+            padding: 0.95rem 1rem;
+            border-radius: 18px;
+            background: rgba(124, 154, 146, 0.12);
+            border: 1px solid rgba(124, 154, 146, 0.16);
+        }
+
         .alert {
             border-radius: 20px;
             box-shadow: none;
@@ -2976,6 +3093,43 @@
         [data-theme="dark"] .result-details summary,
         body[data-theme="dark"] .result-details summary {
             color: var(--fg);
+        }
+
+        [data-theme="dark"] .feedback-card,
+        body[data-theme="dark"] .feedback-card {
+            background: linear-gradient(180deg, rgba(148, 178, 170, 0.12), rgba(36, 36, 38, 0.96));
+            border-color: rgba(183, 206, 199, 0.16);
+        }
+
+        [data-theme="dark"] .feedback-rating-btn,
+        [data-theme="dark"] .feedback-chip,
+        [data-theme="dark"] .feedback-link-btn,
+        body[data-theme="dark"] .feedback-rating-btn,
+        body[data-theme="dark"] .feedback-chip,
+        body[data-theme="dark"] .feedback-link-btn {
+            background: rgba(44, 44, 46, 0.94);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: var(--fg);
+        }
+
+        [data-theme="dark"] .feedback-link-btn,
+        body[data-theme="dark"] .feedback-link-btn {
+            background: transparent;
+            color: var(--accent-strong);
+        }
+
+        [data-theme="dark"] .feedback-rating-btn.is-active,
+        [data-theme="dark"] .feedback-chip.is-active,
+        body[data-theme="dark"] .feedback-rating-btn.is-active,
+        body[data-theme="dark"] .feedback-chip.is-active {
+            background: rgba(90, 120, 112, 0.34);
+            border-color: rgba(183, 206, 199, 0.16);
+        }
+
+        [data-theme="dark"] .feedback-status,
+        body[data-theme="dark"] .feedback-status {
+            background: rgba(90, 120, 112, 0.28);
+            border-color: rgba(183, 206, 199, 0.16);
         }
 
         [data-theme="dark"] .dilution-box,
@@ -3315,6 +3469,30 @@
                 gap: 0.7rem;
             }
 
+            .feedback-card {
+                padding: 0.9rem;
+                gap: 0.85rem;
+            }
+
+            .feedback-card-header,
+            .feedback-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .feedback-rating-row,
+            .feedback-chip-row {
+                gap: 0.5rem;
+            }
+
+            .feedback-rating-btn,
+            .feedback-chip,
+            .feedback-link-btn,
+            .feedback-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
             .app-credit {
                 margin-top: 0.7rem;
                 padding: 0.82rem 0.9rem;
@@ -3593,6 +3771,7 @@
                     <h2 id="resultTitle"></h2>
                     <div id="resultsContent"></div>
                     <div id="dilutionContent"></div>
+                    <section id="feedbackCard" class="feedback-card" aria-live="polite" hidden></section>
                     <div class="alert alert-warning result-disclaimer">
                         <strong data-i18n="disclaimerTitle">Disclaimer:</strong>
                         <span data-i18n="disclaimer">This is a supportive calculator only.</span>
@@ -3622,7 +3801,7 @@
             <div class="contact-modal-body">
                 <div class="contact-modal-text" data-i18n="contactPrompt">For inquiries, contact us at:</div>
                 <div class="contact-link-stack">
-                    <a class="contact-email" href="mailto:contact@alshtait.com">contact@alshtait.com</a>
+                    <a id="contactEmailLink" class="contact-email" href="mailto:contact@alshtait.com">contact@alshtait.com</a>
                     <a class="contact-email" href="https://www.alshtait.com" target="_blank" rel="noopener noreferrer">www.alshtait.com</a>
                 </div>
             </div>
@@ -3783,7 +3962,33 @@
                 pendingReview: "المراجعة الرسمية غير مكتملة",
                 theme: "السمة",
                 darkMode: "الوضع الداكن",
-                lightMode: "الوضع الفاتح"
+                lightMode: "الوضع الفاتح",
+                feedbackTitle: "قيّم التجربة",
+                feedbackIntro: "بعد ظهور النتيجة، يمكنك مشاركة رأيك سريعًا. لن يظهر هذا الطلب في كل مرة.",
+                feedbackQuestion: "هل كانت النتيجة مفيدة؟",
+                feedbackHelpful: "نعم، مفيدة",
+                feedbackSomewhat: "إلى حد ما",
+                feedbackIssue: "تحتاج مراجعة",
+                feedbackTagsLabel: "نوع الملاحظة",
+                feedbackTagAccuracy: "دقة الحساب",
+                feedbackTagClarity: "وضوح النتيجة",
+                feedbackTagMissingDrug: "دواء أو خيار ناقص",
+                feedbackTagUi: "سهولة الاستخدام",
+                feedbackTagSuggestion: "اقتراح تحسين",
+                feedbackCommentLabel: "تعليق اختياري",
+                feedbackCommentPlaceholder: "اكتب ملاحظتك باختصار دون أي معلومات تخص المريض...",
+                feedbackPrivacyNote: "يرجى عدم كتابة اسم المريض أو أي معلومات تعريفية.",
+                feedbackLater: "ليس الآن",
+                feedbackReset: "تغيير التقييم",
+                feedbackSend: "إرسال الملاحظة",
+                feedbackEmail: "فتح رسالة البريد",
+                feedbackEmailHint: "سيتم فتح البريد برسالة جاهزة بملاحظتك.",
+                feedbackThanksTitle: "شكرًا لك",
+                feedbackThanksTextSend: "تم إرسال ملاحظتك بنجاح. يساعدنا هذا على تحسين الأداة.",
+                feedbackThanksTextEmail: "تم تجهيز رسالة بريد جاهزة بملاحظتك إذا كان تطبيق البريد متاحًا.",
+                feedbackError: "تعذر إرسال الملاحظة الآن. حاول مرة أخرى لاحقًا.",
+                feedbackContactFallback: "تُرسل الملاحظات إلى",
+                feedbackServerRequired: "لإرسال التقييم مباشرة، افتح الصفحة من موقع أو عبر خادم محلي، وليس كملف HTML مباشر."
                 ,
                 favorites: "المفضلة",
                 addToFavorites: "إضافة إلى المفضلة",
@@ -3938,7 +4143,33 @@
                 pendingReview: "Official review still pending",
                 theme: "Theme",
                 darkMode: "Dark Mode",
-                lightMode: "Light Mode"
+                lightMode: "Light Mode",
+                feedbackTitle: "Rate the experience",
+                feedbackIntro: "After viewing the result, you can share quick feedback. This prompt will not appear every time.",
+                feedbackQuestion: "Was this result helpful?",
+                feedbackHelpful: "Yes, helpful",
+                feedbackSomewhat: "Somewhat",
+                feedbackIssue: "Needs review",
+                feedbackTagsLabel: "What kind of feedback is this?",
+                feedbackTagAccuracy: "Calculation accuracy",
+                feedbackTagClarity: "Result clarity",
+                feedbackTagMissingDrug: "Missing drug or option",
+                feedbackTagUi: "Ease of use",
+                feedbackTagSuggestion: "Improvement idea",
+                feedbackCommentLabel: "Optional comment",
+                feedbackCommentPlaceholder: "Write a short note without any patient-identifying information...",
+                feedbackPrivacyNote: "Please do not include patient names or identifying details.",
+                feedbackLater: "Not now",
+                feedbackReset: "Change rating",
+                feedbackSend: "Send feedback",
+                feedbackEmail: "Open email draft",
+                feedbackEmailHint: "This opens your email app with a prepared message.",
+                feedbackThanksTitle: "Thank you",
+                feedbackThanksTextSend: "Your feedback was sent successfully. It helps us improve the tool.",
+                feedbackThanksTextEmail: "An email draft with your feedback is ready if your email app is available.",
+                feedbackError: "Unable to send feedback right now. Please try again later.",
+                feedbackContactFallback: "Feedback is delivered to",
+                feedbackServerRequired: "To send feedback directly, open the page through a website or a local web server, not as a raw HTML file."
                 ,
                 favorites: "Favorites",
                 addToFavorites: "Add to favorites",
@@ -5455,6 +5686,18 @@
         let selectionSafetyNoticeKey = '';
         const infoModalIds = ['contactModal', 'disclaimerModal', 'referencesModal'];
         const modalTransitionMs = 220;
+        const feedbackStorageKey = 'doseDripFeedbackState';
+        const feedbackConfig = {
+            testingMode: true,
+            promptAfterCalculations: 1,
+            dismissForDays: 30,
+            submittedCooldownDays: 90,
+            maxCommentLength: 500,
+            contactEmail: 'contact@alshtait.com',
+            endpoint: ''
+        };
+        let feedbackMeta = getStoredFeedbackState();
+        let feedbackDraft = createEmptyFeedbackDraft();
 
         function isMobileViewport() {
             return window.matchMedia('(max-width: 640px)').matches;
@@ -5528,6 +5771,7 @@
                 favorites = getStoredFavorites();
                 presets = getStoredPresets();
                 setLanguage(getStoredLanguage());
+                syncContactEmailLinks();
                 renderFavorites();
                 renderPresets();
                 updateRouteOptions();
@@ -5580,6 +5824,8 @@
             document.getElementById('themeToggle').addEventListener('click', toggleTheme);
             document.getElementById('calcBtn').addEventListener('click', calculate);
             document.getElementById('resetBtn').addEventListener('click', resetForm);
+            document.getElementById('feedbackCard').addEventListener('click', handleFeedbackCardClick);
+            document.getElementById('feedbackCard').addEventListener('input', handleFeedbackCardInput);
             infoModalIds.forEach(modalId => {
                 const modal = document.getElementById(modalId);
                 if (!modal) return;
@@ -5825,6 +6071,41 @@
             }
         }
 
+        function createEmptyFeedbackDraft(context = null) {
+            return {
+                context,
+                rating: '',
+                comment: '',
+                tags: [],
+                submitted: false,
+                isSubmitting: false
+            };
+        }
+
+        function normalizeFeedbackMeta(value) {
+            return {
+                calculationCount: Number.isFinite(Number(value?.calculationCount)) ? Number(value.calculationCount) : 0,
+                dismissedUntil: Number.isFinite(Number(value?.dismissedUntil)) ? Number(value.dismissedUntil) : 0,
+                submittedAt: Number.isFinite(Number(value?.submittedAt)) ? Number(value.submittedAt) : 0
+            };
+        }
+
+        function getStoredFeedbackState() {
+            try {
+                return normalizeFeedbackMeta(JSON.parse(localStorage.getItem(feedbackStorageKey) || '{}'));
+            } catch (error) {
+                return normalizeFeedbackMeta({});
+            }
+        }
+
+        function persistFeedbackState() {
+            try {
+                localStorage.setItem(feedbackStorageKey, JSON.stringify(feedbackMeta));
+            } catch (error) {
+                // Ignore storage failures and keep the in-memory state.
+            }
+        }
+
         function createPresetId() {
             return `preset-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
         }
@@ -6000,6 +6281,313 @@
                     ${safeUnit ? `<span class="unit-badge">${safeUnit}</span>` : ''}
                 </span>
             `;
+        }
+
+        function daysToMs(days) {
+            return Number(days || 0) * 24 * 60 * 60 * 1000;
+        }
+
+        function getFeedbackEndpoint() {
+            return feedbackConfig.endpoint || `https://formsubmit.co/ajax/${encodeURIComponent(feedbackConfig.contactEmail)}`;
+        }
+
+        function getFeedbackContext(drug = state.drug) {
+            const intervalValue = document.getElementById('intervalSelect')?.value || '';
+            return {
+                drugId: drug?.id || null,
+                drugKey: drug?.generic_name || '',
+                mode: state.mode || '',
+                route: state.route || 'IV',
+                clinicalUse: state.clinicalUse || '',
+                doseIndex: state.doseIndex ?? '',
+                loadDoseIndex: state.loadDoseIndex ?? '',
+                maintDoseIndex: state.maintDoseIndex ?? '',
+                interval: intervalValue
+            };
+        }
+
+        function getFeedbackContextSignature(context) {
+            if (!context) return '';
+            return [
+                context.drugId || '',
+                context.mode || '',
+                context.route || '',
+                context.clinicalUse || '',
+                context.doseIndex ?? '',
+                context.loadDoseIndex ?? '',
+                context.maintDoseIndex ?? '',
+                context.interval || ''
+            ].join('|');
+        }
+
+        function syncFeedbackDraft(context) {
+            const nextSignature = getFeedbackContextSignature(context);
+            const currentSignature = getFeedbackContextSignature(feedbackDraft.context);
+            if (!feedbackDraft.context || currentSignature !== nextSignature) {
+                feedbackDraft = createEmptyFeedbackDraft(context);
+                return;
+            }
+            feedbackDraft.context = { ...context };
+        }
+
+        function getFeedbackRatingOptions() {
+            const t = getLocaleBundle();
+            return [
+                { key: 'helpful', label: t.feedbackHelpful },
+                { key: 'somewhat', label: t.feedbackSomewhat },
+                { key: 'issue', label: t.feedbackIssue }
+            ];
+        }
+
+        function getFeedbackTagOptions() {
+            const t = getLocaleBundle();
+            return [
+                { key: 'accuracy', label: t.feedbackTagAccuracy },
+                { key: 'clarity', label: t.feedbackTagClarity },
+                { key: 'missingDrug', label: t.feedbackTagMissingDrug },
+                { key: 'ui', label: t.feedbackTagUi },
+                { key: 'suggestion', label: t.feedbackTagSuggestion }
+            ];
+        }
+
+        function getFeedbackRatingLabel(ratingKey) {
+            const match = getFeedbackRatingOptions().find(option => option.key === ratingKey);
+            return match?.label || ratingKey || '-';
+        }
+
+        function getFeedbackContextSummary(context = feedbackDraft.context) {
+            if (!context?.drugId) return '';
+            const drug = drugDatabase.find(item => item.id === context.drugId) || state.drug;
+            const parts = [
+                getDrugDisplayName(drug),
+                getModeName(context.mode) || context.mode,
+                context.clinicalUse ? getClinicalUseLabel(context.clinicalUse, drug) : '',
+                context.route || ''
+            ].filter(Boolean);
+            return parts.join(' • ');
+        }
+
+        function shouldShowFeedbackCard() {
+            const now = Date.now();
+            if (feedbackDraft.submitted) return true;
+            if (!feedbackDraft.context?.drugId) return false;
+            if (feedbackConfig.testingMode) return true;
+            if (feedbackMeta.submittedAt && (now - feedbackMeta.submittedAt) < daysToMs(feedbackConfig.submittedCooldownDays)) return false;
+            if (feedbackMeta.dismissedUntil > now) return false;
+            if (feedbackDraft.rating || feedbackDraft.comment.trim() || feedbackDraft.tags.length) return true;
+            return feedbackMeta.calculationCount >= feedbackConfig.promptAfterCalculations;
+        }
+
+        function renderFeedbackCard() {
+            const card = document.getElementById('feedbackCard');
+            if (!card) return;
+
+            if (!shouldShowFeedbackCard()) {
+                card.hidden = true;
+                card.innerHTML = '';
+                return;
+            }
+
+            const t = getLocaleBundle();
+            const contextSummary = getFeedbackContextSummary();
+            const submitLabel = t.feedbackSend;
+
+            if (feedbackDraft.submitted) {
+                const thankYouText = t.feedbackThanksTextSend;
+                card.hidden = false;
+                card.innerHTML = `
+                    <div class="feedback-status">
+                        <div class="feedback-card-title">${escapeHtml(t.feedbackThanksTitle)}</div>
+                        <div class="feedback-card-text">${escapeHtml(thankYouText)}</div>
+                    </div>
+                `;
+                return;
+            }
+
+            const ratingButtonsHtml = getFeedbackRatingOptions().map(option => `
+                <button
+                    type="button"
+                    class="feedback-rating-btn${feedbackDraft.rating === option.key ? ' is-active' : ''}"
+                    data-feedback-rating="${option.key}"
+                >${escapeHtml(option.label)}</button>
+            `).join('');
+
+            const tagsHtml = getFeedbackTagOptions().map(option => `
+                <button
+                    type="button"
+                    class="feedback-chip${feedbackDraft.tags.includes(option.key) ? ' is-active' : ''}"
+                    data-feedback-tag="${option.key}"
+                >${escapeHtml(option.label)}</button>
+            `).join('');
+
+            const detailBlock = feedbackDraft.rating ? `
+                <div class="feedback-field">
+                    <span class="feedback-label">${escapeHtml(t.feedbackTagsLabel)}</span>
+                    <div class="feedback-chip-row">${tagsHtml}</div>
+                </div>
+                <div class="feedback-field">
+                    <label class="feedback-label" for="feedbackComment">${escapeHtml(t.feedbackCommentLabel)}</label>
+                    <textarea
+                        id="feedbackComment"
+                        class="input-field feedback-textarea"
+                        maxlength="${feedbackConfig.maxCommentLength}"
+                        placeholder="${escapeHtml(t.feedbackCommentPlaceholder)}"
+                    >${escapeHtml(feedbackDraft.comment)}</textarea>
+                </div>
+                <div class="feedback-actions">
+                    <button type="button" class="feedback-link-btn" data-feedback-action="reset">${escapeHtml(t.feedbackReset)}</button>
+                    <button type="button" class="btn btn-primary btn-small" data-feedback-action="submit"${feedbackDraft.isSubmitting ? ' disabled' : ''}>${escapeHtml(submitLabel)}</button>
+                </div>
+                <div class="feedback-note">${escapeHtml(t.feedbackPrivacyNote)}</div>
+                <div class="feedback-note">${escapeHtml(t.feedbackContactFallback)} <a href="mailto:${feedbackConfig.contactEmail}">${escapeHtml(feedbackConfig.contactEmail)}</a>.</div>
+            ` : `<div class="feedback-note">${escapeHtml(t.feedbackPrivacyNote)}</div>`;
+
+            card.hidden = false;
+            card.innerHTML = `
+                <div class="feedback-card-header">
+                    <div>
+                        <div class="feedback-card-title">${escapeHtml(t.feedbackTitle)}</div>
+                        <div class="feedback-card-text">${escapeHtml(t.feedbackIntro)}</div>
+                    </div>
+                    <button type="button" class="feedback-link-btn" data-feedback-action="dismiss">${escapeHtml(t.feedbackLater)}</button>
+                </div>
+                ${contextSummary ? `<div class="feedback-context">${escapeHtml(contextSummary)}</div>` : ''}
+                <div class="feedback-field">
+                    <span class="feedback-label">${escapeHtml(t.feedbackQuestion)}</span>
+                    <div class="feedback-rating-row">${ratingButtonsHtml}</div>
+                </div>
+                ${detailBlock}
+            `;
+        }
+
+        function handleFeedbackCardClick(event) {
+            const target = event.target.closest('[data-feedback-rating], [data-feedback-tag], [data-feedback-action]');
+            if (!target) return;
+
+            const rating = target.getAttribute('data-feedback-rating');
+            if (rating) {
+                feedbackDraft.rating = rating;
+                feedbackDraft.submitted = false;
+                renderFeedbackCard();
+                return;
+            }
+
+            const tag = target.getAttribute('data-feedback-tag');
+            if (tag) {
+                const tagSet = new Set(feedbackDraft.tags);
+                if (tagSet.has(tag)) tagSet.delete(tag);
+                else tagSet.add(tag);
+                feedbackDraft.tags = [...tagSet];
+                renderFeedbackCard();
+                return;
+            }
+
+            const action = target.getAttribute('data-feedback-action');
+            if (action === 'dismiss') {
+                feedbackMeta.dismissedUntil = Date.now() + daysToMs(feedbackConfig.dismissForDays);
+                persistFeedbackState();
+                feedbackDraft = createEmptyFeedbackDraft();
+                renderFeedbackCard();
+                return;
+            }
+
+            if (action === 'reset') {
+                feedbackDraft = createEmptyFeedbackDraft(feedbackDraft.context);
+                renderFeedbackCard();
+                return;
+            }
+
+            if (action === 'submit') {
+                submitFeedback();
+            }
+        }
+
+        function handleFeedbackCardInput(event) {
+            if (event.target.id !== 'feedbackComment') return;
+            feedbackDraft.comment = String(event.target.value || '').slice(0, feedbackConfig.maxCommentLength);
+        }
+
+        function buildFeedbackPayload() {
+            const context = feedbackDraft.context || {};
+            const drug = drugDatabase.find(item => item.id === context.drugId) || state.drug;
+            const timestamp = new Date().toISOString();
+            const ratingLabel = getFeedbackRatingLabel(feedbackDraft.rating);
+            const tags = feedbackDraft.tags.map(tag => getFeedbackTagOptions().find(option => option.key === tag)?.label || tag);
+            const clinicalUseLabel = context.clinicalUse ? getClinicalUseLabel(context.clinicalUse, drug) : getLocaleBundle().defaultClinicalUse;
+            const modeLabel = getModeName(context.mode) || context.mode || '-';
+            const drugLabel = getDrugDisplayName(drug);
+            const comment = feedbackDraft.comment.trim();
+
+            return {
+                _subject: `Dose & Drip feedback - ${ratingLabel}`,
+                _template: 'table',
+                feedback_type: 'calculator_feedback',
+                rating: ratingLabel,
+                rating_key: feedbackDraft.rating,
+                tags: tags.join(', ') || '-',
+                comment: comment || '-',
+                drug: drugLabel,
+                drug_key: context.drugKey || drug?.generic_name || '',
+                mode: modeLabel,
+                mode_key: context.mode || '-',
+                clinical_use: clinicalUseLabel,
+                clinical_use_key: context.clinicalUse || '-',
+                route: context.route || 'IV',
+                language: currentLang,
+                submitted_at: timestamp,
+                source_page: window.location.href,
+                _url: window.location.protocol === 'file:' ? '' : window.location.href,
+                privacy_notice: 'No patient-identifying information should be included.'
+            };
+        }
+
+        async function submitFeedback() {
+            if (!feedbackDraft.rating || feedbackDraft.isSubmitting) return;
+            if (window.location.protocol === 'file:') {
+                showUserMessage(getLocaleBundle().feedbackServerRequired);
+                return;
+            }
+
+            feedbackDraft.isSubmitting = true;
+            renderFeedbackCard();
+
+            const payload = buildFeedbackPayload();
+
+            try {
+                const response = await fetch(getFeedbackEndpoint(), {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Feedback request failed: ${response.status}`);
+                }
+
+                const now = Date.now();
+                feedbackMeta.submittedAt = now;
+                feedbackMeta.dismissedUntil = now + daysToMs(feedbackConfig.submittedCooldownDays);
+                persistFeedbackState();
+                feedbackDraft.submitted = true;
+            } catch (error) {
+                showUserMessage(getLocaleBundle().feedbackError);
+            } finally {
+                feedbackDraft.isSubmitting = false;
+                renderFeedbackCard();
+            }
+        }
+
+        function registerFeedbackResult(drug, options = {}) {
+            if (options.trackFeedback !== false) {
+                feedbackMeta.calculationCount += 1;
+                persistFeedbackState();
+            }
+
+            syncFeedbackDraft(getFeedbackContext(drug));
+            renderFeedbackCard();
         }
 
         function getSafetyTextBundle() {
@@ -6863,6 +7451,13 @@
             }
         }
 
+        function syncContactEmailLinks() {
+            const emailLink = document.getElementById('contactEmailLink');
+            if (!emailLink) return;
+            emailLink.href = `mailto:${feedbackConfig.contactEmail}`;
+            emailLink.textContent = feedbackConfig.contactEmail;
+        }
+
         function getDrugSearchMatches(val) {
             const term = String(val || '').toLowerCase().trim();
             if (!term) return [];
@@ -6984,7 +7579,7 @@
             }
 
             if (hadVisibleResults && !document.getElementById('calcBtn').disabled) {
-                calculate({ scrollIntoView: false });
+                calculate({ scrollIntoView: false, trackFeedback: false });
                 window.scrollTo({ top: previousScrollY, behavior: 'auto' });
             }
         }
@@ -7709,6 +8304,7 @@
                 </div>
             `;
             document.getElementById('dilutionContent').innerHTML = dilutionHtml;
+            registerFeedbackResult(drug, { trackFeedback: options.trackFeedback !== false });
             container.style.display = 'block';
             if (shouldScrollIntoView) {
                 container.scrollIntoView({ behavior: 'smooth' });
