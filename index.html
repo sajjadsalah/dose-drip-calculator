@@ -1110,6 +1110,35 @@
             margin-bottom: 1rem;
         }
 
+        .form-section.workflow-collapsible {
+            padding-bottom: 0.9rem;
+        }
+
+        .form-section.workflow-collapsible .form-section-head {
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+
+        .form-section.workflow-collapsible .form-section-head::after {
+            content: '+';
+            margin-inline-start: auto;
+            color: var(--accent-strong);
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .form-section.workflow-collapsible:not(.workflow-collapsed) .form-section-head {
+            margin-bottom: 1rem;
+        }
+
+        .form-section.workflow-collapsible:not(.workflow-collapsed) .form-section-head::after {
+            content: '-';
+        }
+
+        .form-section.workflow-collapsible.workflow-collapsed > :not(.form-section-head) {
+            display: none !important;
+        }
+
         .section-pill {
             width: 2.1rem;
             height: 2.1rem;
@@ -4090,16 +4119,19 @@
                 gap: 0.55rem;
             }
 
-            .form-section.mobile-collapsible {
+            .form-section.mobile-collapsible,
+            .form-section.workflow-collapsible {
                 padding-bottom: 0.78rem;
             }
 
-            .form-section.mobile-collapsible .form-section-head {
+            .form-section.mobile-collapsible .form-section-head,
+            .form-section.workflow-collapsible .form-section-head {
                 cursor: pointer;
                 margin-bottom: 0;
             }
 
-            .form-section.mobile-collapsible .form-section-head::after {
+            .form-section.mobile-collapsible .form-section-head::after,
+            .form-section.workflow-collapsible .form-section-head::after {
                 content: '+';
                 margin-inline-start: auto;
                 color: var(--accent-strong);
@@ -4107,15 +4139,18 @@
                 font-weight: 800;
             }
 
-            .form-section.mobile-collapsible:not(.mobile-collapsed) .form-section-head {
+            .form-section.mobile-collapsible:not(.mobile-collapsed) .form-section-head,
+            .form-section.workflow-collapsible:not(.workflow-collapsed) .form-section-head {
                 margin-bottom: 0.72rem;
             }
 
-            .form-section.mobile-collapsible:not(.mobile-collapsed) .form-section-head::after {
+            .form-section.mobile-collapsible:not(.mobile-collapsed) .form-section-head::after,
+            .form-section.workflow-collapsible:not(.workflow-collapsed) .form-section-head::after {
                 content: '-';
             }
 
-            .form-section.mobile-collapsible.mobile-collapsed > :not(.form-section-head) {
+            .form-section.mobile-collapsible.mobile-collapsed > :not(.form-section-head),
+            .form-section.workflow-collapsible.workflow-collapsed > :not(.form-section-head) {
                 display: none !important;
             }
 
@@ -6651,6 +6686,7 @@
         let feedbackDraft = createEmptyFeedbackDraft();
         let numberPickerState = createEmptyNumberPickerState();
         let drugPickerViewState = createEmptyDrugPickerViewState();
+        let workflowAdvanceTimer = 0;
 
         function isMobileViewport() {
             return window.matchMedia('(max-width: 640px)').matches;
@@ -6660,44 +6696,146 @@
             return Array.from(document.querySelectorAll('.form-card > .form-section'));
         }
 
-        function syncMobileSectionLayout() {
-            const sections = getPrimaryFormSections();
-            const presetsDetails = document.getElementById('presetsDetails');
-
-            sections.forEach((section, index) => {
-                if (index < 3) {
-                    section.classList.add('mobile-collapsible');
-                } else {
-                    section.classList.remove('mobile-collapsible', 'mobile-collapsed');
-                }
-            });
-
-            if (isMobileViewport()) {
-                sections.forEach((section, index) => {
-                    if (section.classList.contains('mobile-collapsible')) {
-                        section.classList.toggle('mobile-collapsed', index !== 0);
-                    }
-                });
-                if (presetsDetails) presetsDetails.open = false;
-                return;
-            }
-
-            sections.forEach(section => section.classList.remove('mobile-collapsed'));
-            if (presetsDetails) presetsDetails.open = true;
+        function getWorkflowSections() {
+            return getPrimaryFormSections().slice(0, 3);
         }
 
-        function toggleMobileSection(section) {
-            if (!section || !isMobileViewport() || !section.classList.contains('mobile-collapsible')) return;
-            const sections = getPrimaryFormSections().filter(item => item.classList.contains('mobile-collapsible'));
-            const isCollapsed = section.classList.contains('mobile-collapsed');
+        function getOpenWorkflowSectionIndex() {
+            const sections = getWorkflowSections();
+            const openIndex = sections.findIndex(section =>
+                !section.classList.contains('workflow-collapsed') &&
+                !section.classList.contains('mobile-collapsed')
+            );
+            return openIndex >= 0 ? openIndex : 0;
+        }
+
+        function setWorkflowSectionCollapsed(section, collapsed) {
+            if (!section) return;
+            section.classList.toggle('workflow-collapsed', collapsed);
+            section.classList.toggle('mobile-collapsed', collapsed);
+        }
+
+        function syncWorkflowSectionLayout(preferredIndex = null) {
+            const sections = getPrimaryFormSections();
+            const presetsDetails = document.getElementById('presetsDetails');
+            const workflowSections = sections.slice(0, 3);
+            const activeIndex = Number.isFinite(Number(preferredIndex))
+                ? Math.max(0, Math.min(workflowSections.length - 1, Number(preferredIndex)))
+                : getOpenWorkflowSectionIndex();
+
+            sections.forEach((section, index) => {
+                const isWorkflowSection = index < 3;
+                section.classList.toggle('workflow-collapsible', isWorkflowSection);
+                section.classList.toggle('mobile-collapsible', isWorkflowSection && isMobileViewport());
+
+                if (!isWorkflowSection) {
+                    section.classList.remove('workflow-collapsed', 'mobile-collapsed');
+                    return;
+                }
+
+                setWorkflowSectionCollapsed(section, index !== activeIndex);
+            });
+
+            if (presetsDetails) {
+                presetsDetails.open = !isMobileViewport();
+            }
+        }
+
+        function toggleWorkflowSection(section) {
+            if (!section || !section.classList.contains('workflow-collapsible')) return;
+            const sections = getWorkflowSections();
+            const isCollapsed = section.classList.contains('workflow-collapsed');
 
             if (!isCollapsed) return;
 
-            sections.forEach(item => item.classList.add('mobile-collapsed'));
-            section.classList.remove('mobile-collapsed');
+            const nextIndex = sections.indexOf(section);
+            if (nextIndex === -1) return;
+
+            openWorkflowSection(nextIndex);
+        }
+
+        function focusElementSafely(element) {
+            if (!element || typeof element.focus !== 'function') return;
+            try {
+                element.focus({ preventScroll: true });
+            } catch (error) {
+                element.focus();
+            }
+        }
+
+        function focusFieldOrTrigger(fieldId) {
+            const field = document.getElementById(fieldId);
+            if (!field) return;
+
+            if (fieldId === 'drugPickerTrigger') {
+                focusElementSafely(field);
+                return;
+            }
+
+            const triggerId = field.dataset?.selectPickerTriggerId;
+            const trigger = triggerId ? document.getElementById(triggerId) : null;
+            focusElementSafely(trigger || field);
+        }
+
+        function focusFirstAvailableModeButton() {
+            const nextButton = Array.from(document.querySelectorAll('.mode-btn')).find(button => !button.classList.contains('disabled'));
+            focusElementSafely(nextButton);
+        }
+
+        function focusDosingStart() {
+            const routeSelect = document.getElementById('routeSelect');
+            if (routeSelect && getSelectPickerOptions(routeSelect).length > 1) {
+                focusFieldOrTrigger('routeSelect');
+                return;
+            }
+
+            focusFirstAvailableModeButton();
+        }
+
+        function openWorkflowSection(indexToOpen, options = {}) {
+            const { focusTarget = null, scrollBehavior = 'smooth' } = options;
+            const sections = getWorkflowSections();
+            if (!sections.length) return;
+
+            const boundedIndex = Math.max(0, Math.min(sections.length - 1, Number(indexToOpen) || 0));
+            sections.forEach((section, index) => setWorkflowSectionCollapsed(section, index !== boundedIndex));
+
+            const target = sections[boundedIndex];
+            if (!target) return;
+
             requestAnimationFrame(() => {
-                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                target.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
+
+                if (!focusTarget) return;
+                window.setTimeout(() => {
+                    if (typeof focusTarget === 'function') {
+                        focusTarget();
+                        return;
+                    }
+                    focusFieldOrTrigger(focusTarget);
+                }, 150);
             });
+        }
+
+        function scheduleWorkflowAdvance(indexToOpen, focusTarget = null) {
+            window.clearTimeout(workflowAdvanceTimer);
+            const blockingModalOpen = ['numberPickerModal', 'drugPickerModal'].some(modalId => {
+                const modal = document.getElementById(modalId);
+                return modal && !modal.hidden;
+            });
+            const delay = blockingModalOpen ? modalTransitionMs + 40 : 0;
+
+            workflowAdvanceTimer = window.setTimeout(() => {
+                openWorkflowSection(indexToOpen, { focusTarget });
+            }, delay);
+        }
+
+        function syncMobileSectionLayout(preferredIndex = null) {
+            syncWorkflowSectionLayout(preferredIndex);
+        }
+
+        function toggleMobileSection(section) {
+            toggleWorkflowSection(section);
         }
 
         function handleMobileSectionTouchStart(event) {
@@ -6733,18 +6871,7 @@
         }
 
         function openMobileSection(indexToOpen) {
-            if (!isMobileViewport()) return;
-            const sections = getPrimaryFormSections();
-            sections.forEach((section, index) => {
-                if (!section.classList.contains('mobile-collapsible')) return;
-                section.classList.toggle('mobile-collapsed', index !== indexToOpen);
-            });
-            const target = sections[indexToOpen];
-            if (target) {
-                requestAnimationFrame(() => {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
-            }
+            openWorkflowSection(indexToOpen);
         }
 
         // ==================== INITIALIZATION ====================
@@ -8593,7 +8720,7 @@
             ].join('');
             select.value = nextClinicalUse;
             state.clinicalUse = nextClinicalUse;
-            section.style.display = 'block';
+            section.style.display = entries.length ? 'block' : 'none';
             syncEnhancedSelectTrigger(select);
         }
 
@@ -8675,7 +8802,12 @@
 
             document.getElementById('resultsContainer').style.display = 'none';
             updateModeButtons();
-            if (state.drug) updateUI();
+            if (state.drug) {
+                updateUI();
+                if (!state.mode) {
+                    window.setTimeout(focusFirstAvailableModeButton, 80);
+                }
+            }
             else validate();
         }
 
@@ -8692,7 +8824,10 @@
             setSelectionSafetyNotice(previousMode ? 'useMismatch' : '');
             document.getElementById('resultsContainer').style.display = 'none';
             updateModeButtons();
-            if (state.drug) updateUI();
+            if (state.drug) {
+                updateUI();
+                scheduleWorkflowAdvance(2, focusDosingStart);
+            }
             else validate();
         }
 
@@ -9934,8 +10069,15 @@
             renderSearchResults([], false);
             document.getElementById('alertBox').innerHTML = '';
             document.getElementById('resultsContainer').style.display = 'none';
-            openMobileSection(2);
             updateUI();
+
+            const clinicalUseSelect = document.getElementById('clinicalUseSelect');
+            const shouldChooseClinicalUseFirst = clinicalUseSelect && !clinicalUseSelect.disabled && getSelectPickerOptions(clinicalUseSelect).length > 1;
+            if (shouldChooseClinicalUseFirst) {
+                scheduleWorkflowAdvance(1, 'clinicalUseSelect');
+            } else {
+                scheduleWorkflowAdvance(2, focusDosingStart);
+            }
         }
 
         function setMode(mode) {
@@ -10093,6 +10235,10 @@
                 weightInput.value = '';
             }
             validate();
+
+            if (getValidatedWeightValue() > 0 && !state.drug) {
+                scheduleWorkflowAdvance(1, 'drugPickerTrigger');
+            }
         }
 
         function validate() {
@@ -10782,6 +10928,7 @@
         function resetForm() {
             setSelectionSafetyNotice('');
             state = { drug: null, clinicalUse: '', mode: null, dose: null, loadDose: null, maintDose: null, doseIndex: null, loadDoseIndex: null, maintDoseIndex: null, interval: null, weight: 70, sex: 'male', ageGroup: 'adult', route: 'IV' };
+            window.clearTimeout(workflowAdvanceTimer);
             document.getElementById('weight').value = '70';
             document.getElementById('sexSelect').value = 'male';
             document.getElementById('ageGroupSelect').value = 'adult';
@@ -10806,6 +10953,7 @@
             updateDrugPickerTrigger();
             syncEnhancedSelectTriggers();
             validate();
+            openWorkflowSection(0, { scrollBehavior: 'auto' });
         }
     </script>
 </body>
