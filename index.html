@@ -1115,24 +1115,47 @@
         }
 
         .form-section.workflow-collapsible .form-section-head {
-            cursor: pointer;
             margin-bottom: 0;
         }
 
-        .form-section.workflow-collapsible .form-section-head::after {
-            content: '+';
+        .section-toggle-btn {
+            width: 2.35rem;
+            height: 2.35rem;
             margin-inline-start: auto;
+            border: 0;
+            border-radius: 999px;
+            background: rgba(124, 154, 146, 0.12);
             color: var(--accent-strong);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .section-toggle-btn:hover {
+            background: rgba(124, 154, 146, 0.18);
+        }
+
+        .section-toggle-btn:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+
+        .section-toggle-btn-icon {
             font-size: 1rem;
             font-weight: 800;
+            line-height: 1;
+            transition: transform 0.2s ease;
+        }
+
+        .form-section.workflow-collapsible:not(.workflow-collapsed) .section-toggle-btn-icon {
+            transform: rotate(180deg);
         }
 
         .form-section.workflow-collapsible:not(.workflow-collapsed) .form-section-head {
             margin-bottom: 1rem;
-        }
-
-        .form-section.workflow-collapsible:not(.workflow-collapsed) .form-section-head::after {
-            content: '-';
         }
 
         .form-section.workflow-collapsible.workflow-collapsed > :not(.form-section-head) {
@@ -4126,27 +4149,17 @@
 
             .form-section.mobile-collapsible .form-section-head,
             .form-section.workflow-collapsible .form-section-head {
-                cursor: pointer;
                 margin-bottom: 0;
             }
 
-            .form-section.mobile-collapsible .form-section-head::after,
-            .form-section.workflow-collapsible .form-section-head::after {
-                content: '+';
-                margin-inline-start: auto;
-                color: var(--accent-strong);
-                font-size: 1rem;
-                font-weight: 800;
+            .section-toggle-btn {
+                width: 2.1rem;
+                height: 2.1rem;
             }
 
             .form-section.mobile-collapsible:not(.mobile-collapsed) .form-section-head,
             .form-section.workflow-collapsible:not(.workflow-collapsed) .form-section-head {
                 margin-bottom: 0.72rem;
-            }
-
-            .form-section.mobile-collapsible:not(.mobile-collapsed) .form-section-head::after,
-            .form-section.workflow-collapsible:not(.workflow-collapsed) .form-section-head::after {
-                content: '-';
             }
 
             .form-section.mobile-collapsible.mobile-collapsed > :not(.form-section-head),
@@ -4494,6 +4507,9 @@
                             <div>
                                 <h2 class="form-section-title" data-i18n="sectionPatient">Patient Profile</h2>
                             </div>
+                            <button type="button" class="section-toggle-btn" data-workflow-toggle aria-expanded="true">
+                                <span class="section-toggle-btn-icon" aria-hidden="true">⌄</span>
+                            </button>
                         </div>
                         <div class="field-grid field-grid-3 patient-grid">
                             <div>
@@ -4527,6 +4543,9 @@
                             <div>
                                 <h2 class="form-section-title" data-i18n="sectionDrug">Drug Selection</h2>
                             </div>
+                            <button type="button" class="section-toggle-btn" data-workflow-toggle aria-expanded="false">
+                                <span class="section-toggle-btn-icon" aria-hidden="true">⌄</span>
+                            </button>
                         </div>
 
                         <div class="tool-block drug-selection-row">
@@ -4572,6 +4591,9 @@
                             <div>
                                 <h2 class="form-section-title" data-i18n="sectionDosing">Dosing & Administration</h2>
                             </div>
+                            <button type="button" class="section-toggle-btn" data-workflow-toggle aria-expanded="false">
+                                <span class="section-toggle-btn-icon" aria-hidden="true">⌄</span>
+                            </button>
                         </div>
 
                         <div class="mode-shell">
@@ -6715,6 +6737,24 @@
             section.classList.toggle('mobile-collapsed', collapsed);
         }
 
+        function updateWorkflowToggleButtons() {
+            const actionLabels = currentLang === 'ar'
+                ? { open: 'فتح القسم', close: 'طي القسم' }
+                : { open: 'Expand section', close: 'Collapse section' };
+
+            getWorkflowSections().forEach(section => {
+                const button = section.querySelector('[data-workflow-toggle]');
+                if (!button) return;
+
+                const isOpen = !section.classList.contains('workflow-collapsed') && !section.classList.contains('mobile-collapsed');
+                const title = section.querySelector('.form-section-title')?.innerText?.trim() || '';
+                const label = `${isOpen ? actionLabels.close : actionLabels.open}${title ? `: ${title}` : ''}`;
+                button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                button.setAttribute('aria-label', label);
+                button.title = label;
+            });
+        }
+
         function syncWorkflowSectionLayout(preferredIndex = null) {
             const sections = getPrimaryFormSections();
             const presetsDetails = document.getElementById('presetsDetails');
@@ -6739,6 +6779,8 @@
             if (presetsDetails) {
                 presetsDetails.open = !isMobileViewport();
             }
+
+            updateWorkflowToggleButtons();
         }
 
         function toggleWorkflowSection(section) {
@@ -6799,6 +6841,7 @@
 
             const boundedIndex = Math.max(0, Math.min(sections.length - 1, Number(indexToOpen) || 0));
             sections.forEach((section, index) => setWorkflowSectionCollapsed(section, index !== boundedIndex));
+            updateWorkflowToggleButtons();
 
             const target = sections[boundedIndex];
             if (!target) return;
@@ -6836,38 +6879,6 @@
 
         function toggleMobileSection(section) {
             toggleWorkflowSection(section);
-        }
-
-        function handleMobileSectionTouchStart(event) {
-            const head = event.currentTarget;
-            const touch = event.touches?.[0];
-            if (!head || !touch) return;
-
-            head.dataset.touchMoved = 'false';
-            head.dataset.touchStartX = String(touch.clientX);
-            head.dataset.touchStartY = String(touch.clientY);
-        }
-
-        function handleMobileSectionTouchMove(event) {
-            const head = event.currentTarget;
-            const touch = event.touches?.[0];
-            if (!head || !touch) return;
-
-            const startX = Number(head.dataset.touchStartX || touch.clientX);
-            const startY = Number(head.dataset.touchStartY || touch.clientY);
-            const movedEnough = Math.abs(touch.clientX - startX) > 8 || Math.abs(touch.clientY - startY) > 8;
-
-            if (movedEnough) {
-                head.dataset.touchMoved = 'true';
-            }
-        }
-
-        function resetMobileSectionTouchState(event) {
-            const head = event.currentTarget;
-            if (!head) return;
-
-            delete head.dataset.touchStartX;
-            delete head.dataset.touchStartY;
         }
 
         function openMobileSection(indexToOpen) {
@@ -6967,17 +6978,11 @@
             });
             getPrimaryFormSections().forEach((section, index) => {
                 if (index > 2) return;
-                const head = section.querySelector('.form-section-head');
-                if (head) {
-                    head.addEventListener('touchstart', handleMobileSectionTouchStart, { passive: true });
-                    head.addEventListener('touchmove', handleMobileSectionTouchMove, { passive: true });
-                    head.addEventListener('touchend', resetMobileSectionTouchState, { passive: true });
-                    head.addEventListener('touchcancel', resetMobileSectionTouchState, { passive: true });
-                    head.addEventListener('click', () => {
-                        if (head.dataset.touchMoved === 'true') {
-                            head.dataset.touchMoved = 'false';
-                            return;
-                        }
+                const toggleButton = section.querySelector('[data-workflow-toggle]');
+                if (toggleButton) {
+                    toggleButton.addEventListener('click', event => {
+                        event.preventDefault();
+                        event.stopPropagation();
                         toggleMobileSection(section);
                     });
                 }
@@ -9999,6 +10004,7 @@
             renderSafetyAlerts();
             syncDrugListWithSearch(true);
             syncEnhancedSelectTriggers();
+            updateWorkflowToggleButtons();
             if (numberPickerState.active) {
                 syncActiveSelectPickerState();
                 renderNumberPicker();
