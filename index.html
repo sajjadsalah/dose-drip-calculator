@@ -3881,6 +3881,78 @@
             color: var(--warning-text);
         }
 
+        .chip-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.18rem;
+            padding: 0.22rem 0.28rem 0.22rem 0.68rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.86);
+        }
+
+        .chip-btn {
+            border: 0;
+            background: transparent;
+            color: var(--fg);
+            border-radius: 999px;
+            padding: 0.24rem 0.08rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .chip-btn:hover {
+            color: var(--accent-strong);
+            background: transparent;
+        }
+
+        .chip-remove {
+            width: 1.45rem;
+            height: 1.45rem;
+            border-radius: 999px;
+            border: 0;
+            background: rgba(124, 154, 146, 0.1);
+            color: var(--muted);
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+
+        .chip-remove:hover {
+            color: var(--warning);
+            background: var(--warning-bg);
+        }
+
+        [data-theme="dark"] .chip-item,
+        body[data-theme="dark"] .chip-item {
+            background: rgba(52, 52, 54, 0.94);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="dark"] .chip-btn,
+        body[data-theme="dark"] .chip-btn {
+            background: transparent;
+            border-color: transparent;
+        }
+
+        [data-theme="dark"] .chip-btn:hover,
+        body[data-theme="dark"] .chip-btn:hover {
+            background: transparent;
+            color: var(--accent-strong);
+        }
+
+        [data-theme="dark"] .chip-remove,
+        body[data-theme="dark"] .chip-remove {
+            background: rgba(183, 206, 199, 0.1);
+            border-color: transparent;
+        }
+
         [data-theme="dark"] .mode-btn,
         body[data-theme="dark"] .mode-btn {
             background: rgba(44, 44, 46, 0.94);
@@ -4688,7 +4760,6 @@
                         <div id="favoritesSection" class="tool-block" hidden>
                             <div class="section-header">
                                 <label class="label" data-i18n="favorites">Favorites</label>
-                                <button id="clearFavoritesBtn" class="btn btn-secondary btn-small" type="button" data-i18n="clearFavorites" style="display: none;">Clear Favorites</button>
                             </div>
                             <div id="favoritesList" class="chip-list"></div>
                         </div>
@@ -6990,7 +7061,6 @@
             document.getElementById('bolusConcSelect').addEventListener('change', validate);
             document.getElementById('pumpSelect').addEventListener('change', checkPumpWarning);
             document.getElementById('favoriteToggle').addEventListener('click', toggleFavorite);
-            document.getElementById('clearFavoritesBtn').addEventListener('click', clearFavorites);
             document.getElementById('savePresetBtn').addEventListener('click', savePreset);
             document.getElementById('langToggle').addEventListener('click', () => toggleLanguageMenu());
             document.querySelectorAll('.language-option').forEach(option => {
@@ -8653,7 +8723,6 @@
 
         function renderFavorites() {
             const container = document.getElementById('favoritesList');
-            const clearButton = document.getElementById('clearFavoritesBtn');
             const favoritesSection = document.getElementById('favoritesSection');
             if (!container) return;
 
@@ -8662,19 +8731,17 @@
                 .filter(Boolean);
 
             if (!favoriteDrugs.length) {
-                if (clearButton) clearButton.style.display = 'none';
                 if (favoritesSection) favoritesSection.hidden = true;
                 container.innerHTML = '';
                 return;
             }
 
             if (favoritesSection) favoritesSection.hidden = false;
-            if (clearButton) clearButton.style.display = 'inline-flex';
             container.innerHTML = favoriteDrugs.map(drug => {
                 const label = getDrugDisplayName(drug);
                 return `
                     <div class="chip-item">
-                        <button type="button" class="chip-btn" onclick="selectFavoriteDrug(${drug.id})">&#9733; ${escapeHtml(label)}</button>
+                        <button type="button" class="chip-btn" onclick="selectFavoriteDrug(${drug.id})">${escapeHtml(label)}</button>
                         <button type="button" class="chip-remove" onclick="removeFavoriteDrug('${drug.generic_name}')" title="${escapeHtml(i18n[currentLang].removeFavorite)}" aria-label="${escapeHtml(i18n[currentLang].removeFavorite)}">&times;</button>
                     </div>
                 `;
@@ -8688,14 +8755,6 @@
 
         function removeFavoriteDrug(genericName) {
             favorites = favorites.filter(name => name !== genericName);
-            persistFavorites();
-            renderFavorites();
-            updateFavoriteButton();
-            handleSearch(document.getElementById('searchInput').value);
-        }
-
-        function clearFavorites() {
-            favorites = [];
             persistFavorites();
             renderFavorites();
             updateFavoriteButton();
