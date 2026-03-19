@@ -1445,12 +1445,12 @@
         }
 
         .app-credit {
-            margin-top: 1rem;
+            width: min(100%, 520px);
+            margin: 1rem auto 0;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 0.75rem 1rem;
+            gap: 0.75rem;
             color: var(--muted);
             font-size: 0.88rem;
             padding: 1rem 1.2rem;
@@ -1459,6 +1459,49 @@
             background: rgba(255, 255, 255, 0.58);
             box-shadow: var(--shadow);
             line-height: 1.6;
+            text-align: center;
+        }
+
+        .app-credit-row {
+            width: auto;
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem 0.95rem;
+            text-align: center;
+        }
+
+        .app-credit-links {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, max-content);
+            justify-content: center;
+            justify-items: center;
+            gap: 0.3rem 0.5rem;
+        }
+
+        .app-credit-meta {
+            width: auto;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-credit-year {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 1.55rem;
+            padding: 0.12rem 0.62rem;
+            border-radius: 999px;
+            background: rgba(124, 154, 146, 0.12);
+            border: 1px solid rgba(124, 154, 146, 0.16);
+            color: var(--accent-strong);
+            font-weight: 800;
+            font-size: 0.72rem;
+            letter-spacing: 0.03em;
         }
 
         .credit-link,
@@ -1469,11 +1512,20 @@
         }
 
         .footer-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+            min-height: 2rem;
             background: transparent;
             border: 0;
-            padding: 0;
+            padding: 0.08rem 0.12rem;
             font: inherit;
+            font-size: clamp(0.66rem, 1.9vw, 0.82rem);
             cursor: pointer;
+            text-align: center;
+            line-height: 1.35;
+            white-space: nowrap;
         }
 
         .credit-link:hover,
@@ -1491,6 +1543,16 @@
             background: rgba(16, 30, 26, 0.45);
             backdrop-filter: blur(6px);
             z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.22s ease, visibility 0.22s ease;
+        }
+
+        .contact-modal.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
         }
 
         .contact-modal-card {
@@ -1500,6 +1562,14 @@
             border: 1px solid var(--border);
             border-radius: 1.4rem;
             box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(18px) scale(0.98);
+            transition: opacity 0.22s ease, transform 0.22s ease;
+        }
+
+        .contact-modal.is-open .contact-modal-card {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
 
         .contact-modal-header {
@@ -1541,6 +1611,43 @@
             font-weight: 800;
             text-decoration: none;
             word-break: break-word;
+        }
+
+        .contact-link-stack {
+            display: grid;
+            gap: 0.55rem;
+        }
+
+        .contact-modal-body {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .contact-modal-body .contact-modal-text {
+            margin-bottom: 0;
+        }
+
+        .contact-modal-list {
+            margin: 0;
+            padding-inline-start: 1.2rem;
+            display: grid;
+            gap: 0.5rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .contact-modal-meta {
+            display: grid;
+            gap: 0.35rem;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .contact-modal-note strong,
+        .contact-modal-meta strong {
+            color: var(--fg);
         }
 
         .contact-email:hover {
@@ -2878,6 +2985,10 @@
                 padding: 0.95rem;
             }
 
+            .app-credit {
+                width: 100%;
+            }
+
             .form-section {
                 scroll-margin-top: 0.5rem;
             }
@@ -3398,10 +3509,14 @@
         </div>
 
         <div class="app-credit">
-            <span><span data-i18n="creditDevelopedBy">Developed by</span> <strong>Sajjad Salah</strong></span>
-            <a class="credit-link" href="https://alshtait.com" target="_blank" rel="noopener noreferrer">alshtait.com</a>
-            <button id="contactToggle" class="footer-contact-btn" type="button" data-i18n="contact">Contact</button>
-            <span><span data-i18n="creditLastUpdated">Last updated</span> 2026</span>
+            <div class="app-credit-row app-credit-links">
+                <button id="disclaimerToggle" class="footer-contact-btn" type="button" data-i18n="footerDisclaimer" data-modal-target="disclaimerModal" aria-haspopup="dialog" aria-controls="disclaimerModal" aria-expanded="false">Disclaimer</button>
+                <button id="referencesToggle" class="footer-contact-btn" type="button" data-i18n="footerReferences" data-modal-target="referencesModal" aria-haspopup="dialog" aria-controls="referencesModal" aria-expanded="false">References</button>
+                <button id="contactToggle" class="footer-contact-btn" type="button" data-i18n="contact" data-modal-target="contactModal" aria-haspopup="dialog" aria-controls="contactModal" aria-expanded="false">Contact</button>
+            </div>
+            <div class="app-credit-meta">
+                <span class="app-credit-year">&#169; 2026</span>
+            </div>
         </div>
     </div>
 
@@ -3409,10 +3524,51 @@
         <div class="contact-modal-card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
             <div class="contact-modal-header">
                 <div id="contactModalTitle" class="contact-modal-title" data-i18n="contact">Contact</div>
-                <button id="contactClose" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <button class="modal-close" type="button" data-modal-close="contactModal" aria-label="Close">&times;</button>
             </div>
-            <div class="contact-modal-text" data-i18n="contactPrompt">For inquiries, contact us at:</div>
-            <a class="contact-email" href="mailto:contact@alshtait.com">contact@alshtait.com</a>
+            <div class="contact-modal-body">
+                <div class="contact-modal-text" data-i18n="contactPrompt">For inquiries, contact us at:</div>
+                <div class="contact-link-stack">
+                    <a class="contact-email" href="mailto:contact@alshtait.com">contact@alshtait.com</a>
+                    <a class="contact-email" href="https://www.alshtait.com" target="_blank" rel="noopener noreferrer">www.alshtait.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="disclaimerModal" class="contact-modal" hidden>
+        <div class="contact-modal-card" role="dialog" aria-modal="true" aria-labelledby="disclaimerModalTitle">
+            <div class="contact-modal-header">
+                <div id="disclaimerModalTitle" class="contact-modal-title" data-i18n="disclaimerModalTitle">Disclaimer</div>
+                <button class="modal-close" type="button" data-modal-close="disclaimerModal" aria-label="Close">&times;</button>
+            </div>
+            <div class="contact-modal-body">
+                <p class="contact-modal-text" data-i18n="disclaimerModalText1">This tool is intended for educational purposes and clinical decision support only.</p>
+                <p class="contact-modal-text" data-i18n="disclaimerModalText2">It should not be used as the sole source for treatment decisions.</p>
+                <p class="contact-modal-text" data-i18n="disclaimerModalText3">Always verify doses, concentrations, infusion rates, drug compatibility, and route of administration against approved protocols and trusted medical references.</p>
+                <p class="contact-modal-text contact-modal-note"><strong data-i18n="disclaimerModalNoteLabel">Note:</strong> <span data-i18n="disclaimerModalText4">This tool does not replace clinical judgment, pharmacy review, or hospital policy.</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="referencesModal" class="contact-modal" hidden>
+        <div class="contact-modal-card" role="dialog" aria-modal="true" aria-labelledby="referencesModalTitle">
+            <div class="contact-modal-header">
+                <div id="referencesModalTitle" class="contact-modal-title" data-i18n="referencesModalTitle">Medical References</div>
+                <button class="modal-close" type="button" data-modal-close="referencesModal" aria-label="Close">&times;</button>
+            </div>
+            <div class="contact-modal-body" lang="en" dir="ltr">
+                <ul class="contact-modal-list">
+                    <li>Lexicomp</li>
+                    <li>British National Formulary (BNF)</li>
+                    <li>Institutional IV infusion protocols</li>
+                    <li>Critical care and anesthesia drug references</li>
+                </ul>
+                <div class="contact-modal-meta">
+                    <div><strong>Last reviewed:</strong> March 2026</div>
+                    <div><strong>Version:</strong> 1.0</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -3436,6 +3592,15 @@
                 contact: "تواصل",
                 contactTitle: "البريد",
                 contactPrompt: "للاستفسارات، تواصل عبر:",
+                footerDisclaimer: "إخلاء المسؤولية",
+                footerReferences: "المصادر",
+                disclaimerModalTitle: "إخلاء المسؤولية",
+                referencesModalTitle: "المراجع الطبية",
+                disclaimerModalText1: "هذه الأداة مخصصة لأغراض تعليمية ودعم القرار السريري فقط.",
+                disclaimerModalText2: "لا يجب استخدامها كمصدر وحيد لاتخاذ قرارات علاجية.",
+                disclaimerModalText3: "يجب دائمًا التحقق من الجرعات والتركيزات وسرعات التسريب والتوافق الدوائي وطريقة الإعطاء بالرجوع إلى البروتوكولات المعتمدة والمصادر الطبية الموثوقة.",
+                disclaimerModalNoteLabel: "ملاحظة:",
+                disclaimerModalText4: "هذه الأداة لا تغني عن الحكم السريري أو مراجعة الصيدلة أو سياسات المستشفى.",
                 selectedDrug: "الدواء المختار",
                 eyebrow: "واجهة دوائية هادئة",
                 heroBadge: "حسابات دوائية سريعة ومريحة",
@@ -3581,6 +3746,15 @@
                 contact: "Contact",
                 contactTitle: "Email",
                 contactPrompt: "For inquiries, contact us at:",
+                footerDisclaimer: "Disclaimer",
+                footerReferences: "References",
+                disclaimerModalTitle: "Disclaimer",
+                referencesModalTitle: "Medical References",
+                disclaimerModalText1: "This tool is intended for educational purposes and clinical decision support only.",
+                disclaimerModalText2: "It should not be used as the sole source for treatment decisions.",
+                disclaimerModalText3: "Always verify doses, concentrations, infusion rates, drug compatibility, and route of administration against approved protocols and trusted medical references.",
+                disclaimerModalNoteLabel: "Note:",
+                disclaimerModalText4: "This tool does not replace clinical judgment, pharmacy review, or hospital policy.",
                 selectedDrug: "Selected Drug",
                 eyebrow: "Clean Medication Workflow",
                 heroBadge: "Fast, calm, medication calculations",
@@ -3740,6 +3914,15 @@
                 contact: "Contacto",
                 contactTitle: "Correo",
                 contactPrompt: "Para consultas, contáctanos en:",
+                footerDisclaimer: "Aviso",
+                footerReferences: "Referencias",
+                disclaimerModalTitle: "Aviso",
+                referencesModalTitle: "Referencias médicas",
+                disclaimerModalText1: "Esta herramienta está destinada únicamente a fines educativos y de apoyo a la decisión clínica.",
+                disclaimerModalText2: "No debe utilizarse como única fuente para tomar decisiones terapéuticas.",
+                disclaimerModalText3: "Verifique siempre las dosis, concentraciones, velocidades de infusión, compatibilidad de medicamentos y vía de administración con protocolos aprobados y fuentes médicas confiables.",
+                disclaimerModalNoteLabel: "Nota:",
+                disclaimerModalText4: "Esta herramienta no sustituye el juicio clínico, la revisión farmacéutica ni las políticas del hospital.",
                 selectedDrug: "Fármaco seleccionado",
                 sectionPatient: "Perfil del paciente",
                 sectionDrug: "Selección del fármaco",
@@ -3858,6 +4041,15 @@
                 contact: "Контакты",
                 contactTitle: "Почта",
                 contactPrompt: "Для связи используйте:",
+                footerDisclaimer: "Предупреждение",
+                footerReferences: "Источники",
+                disclaimerModalTitle: "Предупреждение",
+                referencesModalTitle: "Медицинские источники",
+                disclaimerModalText1: "Этот инструмент предназначен только для образовательных целей и поддержки клинических решений.",
+                disclaimerModalText2: "Его нельзя использовать как единственный источник для принятия решений о лечении.",
+                disclaimerModalText3: "Всегда проверяйте дозы, концентрации, скорости инфузии, совместимость препаратов и путь введения по утвержденным протоколам и надежным медицинским источникам.",
+                disclaimerModalNoteLabel: "Примечание:",
+                disclaimerModalText4: "Этот инструмент не заменяет клиническое суждение, фармацевтическую проверку или политику больницы.",
                 selectedDrug: "Выбранный препарат",
                 sectionPatient: "Профиль пациента",
                 sectionDrug: "Выбор препарата",
@@ -3976,6 +4168,15 @@
                 contact: "تماس",
                 contactTitle: "ایمیل",
                 contactPrompt: "برای ارتباط، از این ایمیل استفاده کنید:",
+                footerDisclaimer: "سلب مسئولیت",
+                footerReferences: "منابع",
+                disclaimerModalTitle: "سلب مسئولیت",
+                referencesModalTitle: "منابع پزشکی",
+                disclaimerModalText1: "این ابزار فقط برای اهداف آموزشی و پشتیبانی از تصمیم‌گیری بالینی طراحی شده است.",
+                disclaimerModalText2: "نباید به عنوان تنها منبع برای تصمیم‌گیری درمانی استفاده شود.",
+                disclaimerModalText3: "همیشه دوزها، غلظت‌ها، سرعت‌های انفوزیون، سازگاری دارویی و روش تجویز را با پروتکل‌های مورد تأیید و منابع پزشکی معتبر بررسی کنید.",
+                disclaimerModalNoteLabel: "نکته:",
+                disclaimerModalText4: "این ابزار جایگزین قضاوت بالینی، بررسی داروسازی یا سیاست‌های بیمارستان نیست.",
                 selectedDrug: "داروی انتخاب‌شده",
                 sectionPatient: "مشخصات بیمار",
                 sectionDrug: "انتخاب دارو",
@@ -4094,6 +4295,15 @@
                 contact: "İletişim",
                 contactTitle: "E-posta",
                 contactPrompt: "İletişim için şu adrese yazın:",
+                footerDisclaimer: "Sorumluluk Reddi",
+                footerReferences: "Kaynaklar",
+                disclaimerModalTitle: "Sorumluluk Reddi",
+                referencesModalTitle: "Tıbbi Kaynaklar",
+                disclaimerModalText1: "Bu araç yalnızca eğitim amaçlı ve klinik karar desteği için tasarlanmıştır.",
+                disclaimerModalText2: "Tedavi kararları için tek başına kaynak olarak kullanılmamalıdır.",
+                disclaimerModalText3: "Dozları, konsantrasyonları, infüzyon hızlarını, ilaç uyumluluğunu ve uygulama yolunu her zaman onaylı protokoller ve güvenilir tıbbi kaynaklarla doğrulayın.",
+                disclaimerModalNoteLabel: "Not:",
+                disclaimerModalText4: "Bu araç klinik yargının, eczacılık incelemesinin veya hastane politikalarının yerini tutmaz.",
                 selectedDrug: "Seçili ilaç",
                 sectionPatient: "Hasta profili",
                 sectionDrug: "İlaç seçimi",
@@ -5144,6 +5354,8 @@
         let state = { drug: null, clinicalUse: '', mode: null, dose: null, loadDose: null, maintDose: null, doseIndex: null, loadDoseIndex: null, maintDoseIndex: null, interval: null, weight: 0, sex: 'male', ageGroup: 'adult', route: 'IV' };
         let selectionSafetyNotice = '';
         let selectionSafetyNoticeKey = '';
+        const infoModalIds = ['contactModal', 'disclaimerModal', 'referencesModal'];
+        const modalTransitionMs = 220;
 
         function isMobileViewport() {
             return window.matchMedia('(max-width: 640px)').matches;
@@ -5259,15 +5471,23 @@
                     toggleLanguageMenu(false);
                 });
             });
-            document.getElementById('contactToggle').addEventListener('click', () => toggleContactModal(true));
-            document.getElementById('contactClose').addEventListener('click', () => toggleContactModal(false));
+            document.querySelectorAll('[data-modal-target]').forEach(button => {
+                button.addEventListener('click', () => toggleInfoModal(button.dataset.modalTarget, true, button));
+            });
+            document.querySelectorAll('[data-modal-close]').forEach(button => {
+                button.addEventListener('click', () => toggleInfoModal(button.dataset.modalClose, false));
+            });
             document.getElementById('themeToggle').addEventListener('click', toggleTheme);
             document.getElementById('calcBtn').addEventListener('click', calculate);
             document.getElementById('resetBtn').addEventListener('click', resetForm);
-            document.getElementById('contactModal').addEventListener('click', (event) => {
-                if (event.target.id === 'contactModal') {
-                    toggleContactModal(false);
-                }
+            infoModalIds.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (!modal) return;
+                modal.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        toggleInfoModal(modalId, false);
+                    }
+                });
             });
             getPrimaryFormSections().forEach((section, index) => {
                 if (index > 2) return;
@@ -5303,12 +5523,106 @@
             input.blur();
         }
 
-        function toggleContactModal(forceState) {
-            const modal = document.getElementById('contactModal');
+        function getInfoModals() {
+            return infoModalIds
+                .map(id => document.getElementById(id))
+                .filter(Boolean);
+        }
+
+        function updateInfoModalState() {
+            const activeModal = getInfoModals().find(modal => !modal.hidden) || null;
+            document.body.style.overflow = activeModal ? 'hidden' : '';
+
+            document.querySelectorAll('[data-modal-target]').forEach(button => {
+                const isExpanded = activeModal ? button.dataset.modalTarget === activeModal.id : false;
+                button.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+            });
+        }
+
+        function openInfoModal(modalId, trigger = null) {
+            const modal = document.getElementById(modalId);
             if (!modal) return;
-            const shouldShow = typeof forceState === 'boolean' ? forceState : modal.hidden;
-            modal.hidden = !shouldShow;
-            document.body.style.overflow = shouldShow ? 'hidden' : '';
+
+            getInfoModals().forEach(otherModal => {
+                if (otherModal.id !== modalId) {
+                    closeInfoModal(otherModal.id, { restoreFocus: false, immediate: true });
+                }
+            });
+
+            window.clearTimeout(Number(modal.dataset.closeTimer || 0));
+            window.cancelAnimationFrame(Number(modal.dataset.openFrame || 0));
+            delete modal.dataset.closeTimer;
+            delete modal.dataset.openFrame;
+
+            if (trigger?.id) {
+                modal.dataset.returnFocusId = trigger.id;
+            }
+
+            modal.hidden = false;
+            updateInfoModalState();
+
+            const openFrame = window.requestAnimationFrame(() => {
+                if (modal.hidden) return;
+                modal.classList.add('is-open');
+                modal.querySelector('.modal-close')?.focus();
+            });
+            modal.dataset.openFrame = String(openFrame);
+        }
+
+        function closeInfoModal(modalId, options = {}) {
+            const { restoreFocus = true, immediate = false } = options;
+            const modal = document.getElementById(modalId);
+            if (!modal || modal.hidden) {
+                updateInfoModalState();
+                return;
+            }
+
+            window.clearTimeout(Number(modal.dataset.closeTimer || 0));
+            window.cancelAnimationFrame(Number(modal.dataset.openFrame || 0));
+            delete modal.dataset.closeTimer;
+            delete modal.dataset.openFrame;
+
+            const finalizeClose = () => {
+                modal.hidden = true;
+                modal.classList.remove('is-open');
+                delete modal.dataset.closeTimer;
+
+                if (restoreFocus) {
+                    const returnFocusId = modal.dataset.returnFocusId;
+                    const returnFocusTarget = returnFocusId ? document.getElementById(returnFocusId) : null;
+                    returnFocusTarget?.focus();
+                }
+
+                updateInfoModalState();
+            };
+
+            modal.classList.remove('is-open');
+
+            if (immediate) {
+                finalizeClose();
+                return;
+            }
+
+            const closeTimer = window.setTimeout(finalizeClose, modalTransitionMs);
+            modal.dataset.closeTimer = String(closeTimer);
+            updateInfoModalState();
+        }
+
+        function toggleInfoModal(modalId, forceState, trigger = null) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            const shouldShow = typeof forceState === 'boolean' ? forceState : modal.hidden || !modal.classList.contains('is-open');
+
+            if (shouldShow) {
+                openInfoModal(modalId, trigger);
+                return;
+            }
+
+            closeInfoModal(modalId);
+        }
+
+        function toggleContactModal(forceState) {
+            toggleInfoModal('contactModal', forceState);
         }
 
         function updateLanguageToggle(lang = currentLang) {
@@ -5370,7 +5684,10 @@
             if (event.key === 'Escape') {
                 toggleSearchPopover(false);
                 toggleLanguageMenu(false);
-                toggleContactModal(false);
+                const openModal = getInfoModals().find(modal => !modal.hidden);
+                if (openModal) {
+                    toggleInfoModal(openModal.id, false);
+                }
             }
         }
 
@@ -7482,4 +7799,3 @@
     </script>
 </body>
 </html>
-
