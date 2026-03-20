@@ -5965,6 +5965,14 @@
             return baseLabel;
         }
 
+        function normalizeDrugSearchText(value) {
+            return String(value || '')
+                .toLowerCase()
+                .replace(/[_-]+/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
         // ==================== DRUG DATABASE (Abbreviated for display, contains full structure in practice) ====================
         // NOTE: I will include the full DB array from previous code here, but for brevity in this response window, 
         // assume the full `drugDatabase` array is present here exactly as it was in the last working version.
@@ -6204,7 +6212,149 @@
             { id: 62, generic_name: "bumetanide", display_name_ar: "بوميتانيد", display_name_en: "Bumetanide", class: "Diuretic", supported_modes: ["bolus", "intermittent"], bolus_dose_range: [{ dose: 0.5, unit: "mg", level: "low" }, { dose: 1, unit: "mg", level: "medium" }, { dose: 2, unit: "mg", level: "high" }], infusion_dose_range: [], loading_dose_range: [], maintenance_dose_range: [], intermittent_dose_range: [{ dose: 0.5, unit: "mg", level: "low" }, { dose: 1, unit: "mg", level: "medium" }, { dose: 2, unit: "mg", level: "high" }], intermittent_intervals_supported: ["q3h", "q6h"], standard_concentrations: [{ conc: 0.25, unit: "mg/mL", desc: "1 mg/4 mL" }], dilution: { diluent_ar: "متوافق مع المحلول الملحي أو الدكستروز أو لاكتات رينغر", diluent: "Compatible with NS, D5W, or Lactated Ringer's", method_ar: "يعطى وريدياً ببطء ويمكن تكراره حسب الاستجابة", method: "Give slowly IV and repeat according to response", limits_ar: "0.25 مجم/مل", limits: "0.25 mg/mL", notes_ar: "يمكن تكرار الجرعة بعد 2-3 ساعات ولا ينبغي تجاوز 10 مجم/اليوم", notes: "May repeat after 2-3 hours; should not exceed 10 mg/day" }, warnings: ["Electrolyte Imbalance", "Ototoxicity"], requires_pump: false },
             { id: 63, generic_name: "phenytoin", display_name_ar: "فينيتوين", display_name_en: "Phenytoin", class: "Anticonvulsant", supported_modes: ["bolus", "intermittent"], bolus_dose_range: [{ dose: 10, unit: "mg/kg", level: "low" }, { dose: 15, unit: "mg/kg", level: "medium" }], infusion_dose_range: [], loading_dose_range: [], maintenance_dose_range: [], intermittent_dose_range: [{ dose: 100, unit: "mg", level: "low" }, { dose: 150, unit: "mg", level: "medium" }, { dose: 200, unit: "mg", level: "high" }], intermittent_intervals_supported: ["q8h"], standard_concentrations: [{ conc: 50, unit: "mg/mL", desc: "50 mg/mL" }], dilution: { diluent_ar: "يخفف فقط في المحلول الملحي", diluent: "Dilute in NS only", method_ar: "يعطى كتسريب وريدي مع فلتر ومراقبة لصيقة", method: "Administer as IV infusion with a filter and close monitoring", limits_ar: "لا يقل التركيز النهائي عن 5 مجم/مل", limits: "Final concentration should be no less than 5 mg/mL", notes_ar: "لا تتجاوز سرعة 50 مجم/دقيقة في البالغين", notes: "Do not exceed 50 mg/min in adults" }, warnings: ["Hypotension", "Arrhythmias"], requires_pump: false },
             { id: 64, generic_name: "procainamide", display_name_ar: "بروكاييناميد", display_name_en: "Procainamide", class: "Antiarrhythmic", supported_modes: ["infusion", "loading"], bolus_dose_range: [], infusion_dose_range: [{ dose: 2, unit: "mg/min", level: "low" }, { dose: 4, unit: "mg/min", level: "medium" }, { dose: 6, unit: "mg/min", level: "high" }], loading_dose_range: [{ dose: 500, unit: "mg", level: "low" }, { dose: 600, unit: "mg", level: "medium" }, { dose: 1000, unit: "mg", level: "high" }], maintenance_dose_range: [{ dose: 2, unit: "mg/min", level: "low" }, { dose: 4, unit: "mg/min", level: "medium" }, { dose: 6, unit: "mg/min", level: "high" }], intermittent_dose_range: [], standard_concentrations: [{ conc: 100, unit: "mg/mL", desc: "1 g/10 mL" }, { conc: 500, unit: "mg/mL", desc: "1 g/2 mL" }], dilution: { diluent_ar: "يخفف في دكستروز 5% للتسريب", diluent: "Dilute in D5W for infusion", method_ar: "تحميل حتى 1 جم ثم تسريب صيانة 2-6 مجم/دقيقة", method: "Load up to 1 g then maintain at 2-6 mg/min infusion", limits_ar: "التحميل 20 مجم/مل؛ الصيانة 2-4 مجم/مل", limits: "Loading 20 mg/mL; maintenance 2-4 mg/mL", notes_ar: "يعطى ببطء مع مراقبة ECG والضغط لاحتمال حدوث هبوط ضغط", notes: "Administer slowly with ECG and BP monitoring because hypotension may occur" }, warnings: ["Hypotension", "QRS Widening"], requires_pump: true },
-            { id: 65, generic_name: "methylene_blue", display_name_ar: "الميثيلين الأزرق", display_name_en: "Methylene Blue", class: "Antidote", supported_modes: ["bolus"], bolus_dose_range: [{ dose: 1, unit: "mg/kg", level: "medium" }], infusion_dose_range: [], loading_dose_range: [], maintenance_dose_range: [], intermittent_dose_range: [], standard_concentrations: [{ conc: 5, unit: "mg/mL", desc: "5 mg/mL" }], dilution: { diluent_ar: "يعطى وريدياً ببطء", diluent: "Administer by slow IV injection", method_ar: "يمكن تكرار حتى 1 مجم/كجم بعد ساعة إذا استمرت الحالة", method: "May repeat up to 1 mg/kg after 1 hour if clinically needed", limits_ar: "5 مجم/مل", limits: "5 mg/mL", notes_ar: "يستخدم غالباً لعلاج الميتهيموغلوبينية المكتسبة", notes: "Commonly used for acquired methemoglobinemia" }, warnings: ["Serotonin Syndrome", "Hemolysis in G6PD Deficiency"], requires_pump: false }
+            { id: 65, generic_name: "methylene_blue", display_name_ar: "الميثيلين الأزرق", display_name_en: "Methylene Blue", class: "Antidote", supported_modes: ["bolus"], bolus_dose_range: [{ dose: 1, unit: "mg/kg", level: "medium" }], infusion_dose_range: [], loading_dose_range: [], maintenance_dose_range: [], intermittent_dose_range: [], standard_concentrations: [{ conc: 5, unit: "mg/mL", desc: "5 mg/mL" }], dilution: { diluent_ar: "يعطى وريدياً ببطء", diluent: "Administer by slow IV injection", method_ar: "يمكن تكرار حتى 1 مجم/كجم بعد ساعة إذا استمرت الحالة", method: "May repeat up to 1 mg/kg after 1 hour if clinically needed", limits_ar: "5 مجم/مل", limits: "5 mg/mL", notes_ar: "يستخدم غالباً لعلاج الميتهيموغلوبينية المكتسبة", notes: "Commonly used for acquired methemoglobinemia" }, warnings: ["Serotonin Syndrome", "Hemolysis in G6PD Deficiency"], requires_pump: false },
+            {
+                id: 66,
+                generic_name: "phenobarbital",
+                display_name_ar: "فينوباربيتال",
+                display_name_en: "Phenobarbital",
+                class: "Barbiturate",
+                supported_modes: ["bolus", "infusion", "loading", "intermittent"],
+                bolus_dose_range: [{ dose: 30, unit: "mg", level: "low" }, { dose: 60, unit: "mg", level: "medium" }, { dose: 120, unit: "mg", level: "high" }],
+                infusion_dose_range: [{ dose: 30, unit: "mg/min", level: "low" }, { dose: 45, unit: "mg/min", level: "medium" }, { dose: 60, unit: "mg/min", level: "high" }],
+                loading_dose_range: [{ dose: 10, unit: "mg/kg", level: "low" }, { dose: 15, unit: "mg/kg", level: "medium" }, { dose: 20, unit: "mg/kg", level: "high" }],
+                maintenance_dose_range: [{ dose: 30, unit: "mg/min", level: "low" }, { dose: 45, unit: "mg/min", level: "medium" }, { dose: 60, unit: "mg/min", level: "high" }],
+                intermittent_dose_range: [{ dose: 30, unit: "mg", level: "low" }, { dose: 60, unit: "mg", level: "medium" }, { dose: 120, unit: "mg", level: "high" }],
+                intermittent_intervals_supported: ["q6h", "q8h", "q12h"],
+                standard_concentrations: [{ conc: 65, unit: "mg/mL", desc: "65 mg/mL" }, { conc: 130, unit: "mg/mL", desc: "130 mg/mL" }],
+                dilution: { diluent_ar: "يمكن إعطاؤه عضلياً أو وريدياً ببطء، ويخفف للتسريب حسب الحاجة", diluent: "May be given IM or by slow IV; dilute for infusion when needed", method_ar: "للإعطاء الوريدي استخدم تسريبًا/حقنًا بطيئًا جدًا مع مراقبة لصيقة، ولا تتجاوز سرعة 60 مجم/دقيقة لدى البالغين", method: "For IV administration, use a very slow infusion/injection with close monitoring and do not exceed 60 mg/min in adults", limits_ar: "التراكيز الشائعة 65 إلى 130 مجم/مل", limits: "Common supplied concentrations are 65 to 130 mg/mL", notes_ar: "خيار infusion هنا يمثل معدل الإعطاء الوريدي البطيء وليس تسريب صيانة طويل الأمد. أما التحميل فيمثل 15-20 مجم/كجم لعلاج الاختلاجات/الحالة الصرعية", notes: "The infusion option here models slow IV administration rate rather than long-term maintenance infusion. Loading reflects 15-20 mg/kg used for seizures/status epilepticus" },
+                warnings: ["Respiratory Depression", "Hypotension", "Sedation"],
+                requires_pump: false,
+                sources: ["https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=62869848-3914-45f0-a191-93cdf403b0ae"],
+                source_note: "DailyMed phenobarbital sodium injection labeling was used for adult sedation ranges, slow IV administration requirements, the adult maximum IV rate of 60 mg/min, and the 15 to 20 mg/kg anticonvulsant loading context.",
+                review_status: "reviewed"
+            },
+            {
+                id: 67,
+                generic_name: "methohexital",
+                display_name_ar: "ميثوهيكسيتال",
+                display_name_en: "Methohexital",
+                class: "Barbiturate",
+                supported_modes: ["bolus", "infusion"],
+                bolus_dose_range: [{ dose: 1, unit: "mg/kg", level: "low" }, { dose: 1.25, unit: "mg/kg", level: "medium" }, { dose: 1.5, unit: "mg/kg", level: "high" }],
+                infusion_dose_range: [{ dose: 4, unit: "mg/min", level: "low" }, { dose: 6, unit: "mg/min", level: "medium" }, { dose: 8, unit: "mg/min", level: "high" }],
+                loading_dose_range: [],
+                maintenance_dose_range: [{ dose: 4, unit: "mg/min", level: "low" }, { dose: 6, unit: "mg/min", level: "medium" }, { dose: 8, unit: "mg/min", level: "high" }],
+                intermittent_dose_range: [],
+                standard_concentrations: [{ conc: 10, unit: "mg/mL", desc: "1% solution" }, { conc: 2, unit: "mg/mL", desc: "0.2% infusion" }],
+                dilution: { diluent_ar: "يُعاد تحضيره بدقة حسب النشرة؛ محلول 1% للتحريض و0.2% للتسريب", diluent: "Reconstitute exactly per label; 1% for induction and 0.2% for continuous infusion", method_ar: "للتحريض يعطى بمعدل يقارب 1 مل من محلول 1% كل 5 ثوان، وللصيانة يمكن استخدام تسريب مستمر", method: "For induction, administer about 1 mL of the 1% solution every 5 seconds; maintenance may use continuous infusion", limits_ar: "يفضل تجنب التراكيز الأعلى من 1% وريدياً ما أمكن", limits: "Higher than 1% IV concentrations should generally be avoided when possible", notes_ar: "جرعات البلعة تعكس 1-1.5 مجم/كجم للبالغين؛ أما التسريب فيمثل المتوسط المذكور بالنشرة قرابة 6 مجم/دقيقة", notes: "Bolus values reflect the usual adult 1-1.5 mg/kg induction range; infusion reflects the label's average maintenance rate of about 6 mg/min" },
+                warnings: ["Respiratory Depression", "Hypotension", "Laryngospasm"],
+                requires_pump: true,
+                sources: ["https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f76d4ab9-2f6c-420b-afec-b9cdfdc083ce"],
+                source_note: "DailyMed methohexital sodium labeling was used for adult IV induction (1 to 1.5 mg/kg) and continuous-drip maintenance using a 0.2% solution at an average of about 6 mg/min.",
+                review_status: "reviewed"
+            },
+            {
+                id: 68,
+                generic_name: "droperidol",
+                display_name_ar: "دروبيريدول",
+                display_name_en: "Droperidol",
+                class: "Antiemetic",
+                supported_modes: ["bolus"],
+                bolus_dose_range: [{ dose: 1.25, unit: "mg", level: "low" }, { dose: 2.5, unit: "mg", level: "medium" }, { dose: 3.75, unit: "mg", level: "high" }],
+                infusion_dose_range: [],
+                loading_dose_range: [],
+                maintenance_dose_range: [],
+                intermittent_dose_range: [],
+                standard_concentrations: [{ conc: 2.5, unit: "mg/mL", desc: "2.5 mg/mL" }],
+                dilution: { diluent_ar: "لا يخفف عادة ويعطى عضلياً أو وريدياً ببطء", diluent: "Usually undiluted; give IM or by slow IV", method_ar: "جرعة البدء القصوى للبالغين 2.5 مجم؛ ويمكن إضافة 1.25 مجم بحذر عند الحاجة", method: "Maximum recommended adult initial dose is 2.5 mg; additional 1.25 mg doses may be used cautiously if needed", limits_ar: "2.5 مجم/مل", limits: "2.5 mg/mL", notes_ar: "يُحجز غالباً للمرضى الذين لم يستجيبوا لبدائل أخرى بسبب خطر إطالة QT", notes: "Generally reserve for patients not adequately managed by alternatives because of QT-prolongation risk" },
+                warnings: ["QT Prolongation", "Hypotension", "Extrapyramidal Symptoms"],
+                requires_pump: false,
+                sources: ["https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=147e033d-d997-4ef6-8bb5-a9ba372590b2"],
+                source_note: "DailyMed droperidol labeling was used for the perioperative antiemetic indication and the adult maximum recommended initial dose of 2.5 mg IM or slow IV, with cautious 1.25 mg repeats.",
+                review_status: "reviewed"
+            },
+            {
+                id: 69,
+                generic_name: "metoclopramide",
+                display_name_ar: "ميتوكلوبراميد",
+                display_name_en: "Metoclopramide",
+                class: "Antiemetic",
+                supported_modes: ["bolus"],
+                bolus_dose_range: [{ dose: 5, unit: "mg", level: "low" }, { dose: 10, unit: "mg", level: "medium" }, { dose: 20, unit: "mg", level: "high" }],
+                infusion_dose_range: [],
+                loading_dose_range: [],
+                maintenance_dose_range: [],
+                intermittent_dose_range: [],
+                standard_concentrations: [{ conc: 5, unit: "mg/mL", desc: "5 mg/mL" }],
+                dilution: { diluent_ar: "يمكن إعطاؤه عضلياً أو وريدياً ببطء خلال 1 إلى 2 دقيقة", diluent: "May be given IM or slowly IV over 1 to 2 minutes", method_ar: "للوقاية من الغثيان والإقياء بعد الجراحة تُستخدم عادة 10 مجم قرب نهاية العملية، وقد تُستخدم 20 مجم في بعض الحالات", method: "For postoperative nausea and vomiting prophylaxis, 10 mg is usual near the end of surgery, though 20 mg may be used in selected cases", limits_ar: "5 مجم/مل", limits: "5 mg/mL", notes_ar: "يراعى خطر النعاس والتفاعلات خارج الهرمية خاصة عند الجرعات الأعلى", notes: "Monitor for sedation and extrapyramidal effects, especially at higher doses" },
+                warnings: ["Sedation", "Extrapyramidal Symptoms", "Methemoglobinemia"],
+                requires_pump: false,
+                sources: ["https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=a1953c11-fb22-44a0-9b1c-da139cd3ca98"],
+                source_note: "DailyMed metoclopramide injection labeling was used for postoperative nausea and vomiting prophylaxis, where the usual adult dose is 10 mg IM near the end of surgery and 20 mg may also be used.",
+                review_status: "reviewed"
+            },
+            {
+                id: 70,
+                generic_name: "dantrolene",
+                display_name_ar: "دانترولين",
+                display_name_en: "Dantrolene",
+                class: "Antidote",
+                supported_modes: ["bolus", "loading"],
+                bolus_dose_range: [{ dose: 1, unit: "mg/kg", level: "low" }, { dose: 2.5, unit: "mg/kg", level: "medium" }, { dose: 5, unit: "mg/kg", level: "high" }],
+                infusion_dose_range: [],
+                loading_dose_range: [{ dose: 2.5, unit: "mg/kg", level: "medium" }],
+                maintenance_dose_range: [],
+                intermittent_dose_range: [],
+                standard_concentrations: [{ conc: 0.333, unit: "mg/mL", desc: "20 mg/60 mL after reconstitution" }],
+                dilution: { diluent_ar: "يعاد تحضيره فقط بـ 60 مل ماء معقم للحقن بدون مواد حافظة", diluent: "Reconstitute only with 60 mL sterile water for injection without bacteriostatic agent", method_ar: "في أزمة فرط الحرارة الخبيث يعطى كدفعات وريدية سريعة متواصلة بدءاً من 1 مجم/كجم حتى تحسن الأعراض", method: "For malignant hyperthermia crisis, give by continuous rapid IV push starting at 1 mg/kg until symptoms improve", limits_ar: "الحد التراكمي المعتاد لا يتجاوز 10 مجم/كجم", limits: "Usual cumulative crisis-treatment maximum should not exceed 10 mg/kg", notes_ar: "جرعة التحميل تمثل الوقاية قبل العملية 2.5 مجم/كجم على مدى نحو ساعة للمرضى المعرّضين لفرط الحرارة الخبيث", notes: "Loading reflects the preoperative prophylactic 2.5 mg/kg dose infused over about 1 hour in malignant-hyperthermia-susceptible patients" },
+                warnings: ["Muscle Weakness", "Tissue Necrosis with Extravasation", "Hyperkalemia with Calcium Channel Blockers"],
+                requires_pump: false,
+                sources: ["https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=4df35098-8702-46be-ac67-30cfdf1aa570"],
+                source_note: "DailyMed Dantrium IV labeling was used for malignant hyperthermia crisis dosing (start 1 mg/kg by rapid IV push, continue until symptoms subside up to 10 mg/kg cumulative) and the preoperative prophylactic 2.5 mg/kg dose.",
+                review_status: "reviewed"
+            },
+            {
+                id: 71,
+                generic_name: "enalaprilat",
+                display_name_ar: "إنالابريلات",
+                display_name_en: "Enalaprilat",
+                class: "Vasodilator",
+                supported_modes: ["bolus", "intermittent"],
+                bolus_dose_range: [{ dose: 0.625, unit: "mg", level: "low" }, { dose: 1.25, unit: "mg", level: "medium" }, { dose: 5, unit: "mg", level: "high" }],
+                infusion_dose_range: [],
+                loading_dose_range: [],
+                maintenance_dose_range: [],
+                intermittent_dose_range: [{ dose: 0.625, unit: "mg", level: "low" }, { dose: 1.25, unit: "mg", level: "medium" }, { dose: 1.25, unit: "mg", level: "high" }],
+                intermittent_intervals_supported: ["q6h"],
+                standard_concentrations: [{ conc: 1.25, unit: "mg/mL", desc: "1.25 mg/mL" }],
+                dilution: { diluent_ar: "يمكن إعطاؤه كما هو أو تخفيفه حتى 50 مل من محلول متوافق", diluent: "May be administered as supplied or diluted with up to 50 mL of a compatible diluent", method_ar: "يعطى وريدياً ببطء خلال 5 دقائق؛ الجرعة المعتادة 1.25 مجم كل 6 ساعات", method: "Administer by slow IV over 5 minutes; the usual dose is 1.25 mg every 6 hours", limits_ar: "البدء بجرعة 0.625 مجم في مرضى المدرات أو القصور الكلوي/خطر الهبوط", limits: "Start at 0.625 mg in patients on diuretics, with renal impairment, or at risk of excessive hypotension", notes_ar: "الجرعة 5 مجم هنا تمثل أعلى جرعة متحملة موثقة ضمن النشرة وليست جرعة بدء اعتيادية", notes: "The 5 mg value reflects the upper tolerated label dose in studies, not a usual starting dose" },
+                warnings: ["Hypotension", "Renal Dysfunction", "Hyperkalemia"],
+                requires_pump: false,
+                sources: ["https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=5d398da1-020c-ccb1-a775-ce8e0b29d621"],
+                source_note: "DailyMed enalaprilat injection labeling was used for IV hypertension treatment: 1.25 mg every 6 hours over 5 minutes, with 0.625 mg starting doses in patients at risk of excessive hypotension and higher studied doses up to 5 mg every 6 hours.",
+                review_status: "reviewed"
+            },
+            {
+                id: 72,
+                generic_name: "angiotensin_ii",
+                display_name_ar: "أنجيوتنسين 2",
+                display_name_en: "Angiotensin II",
+                class: "Vasopressor",
+                supported_modes: ["infusion"],
+                bolus_dose_range: [],
+                infusion_dose_range: [{ dose: 10, unit: "ng/kg/min", level: "low" }, { dose: 20, unit: "ng/kg/min", level: "medium" }, { dose: 40, unit: "ng/kg/min", level: "high" }],
+                loading_dose_range: [],
+                maintenance_dose_range: [{ dose: 5, unit: "ng/kg/min", level: "low" }, { dose: 20, unit: "ng/kg/min", level: "medium" }, { dose: 40, unit: "ng/kg/min", level: "high" }],
+                intermittent_dose_range: [],
+                standard_concentrations: [{ conc: 5000, unit: "ng/mL", desc: "5,000 ng/mL diluted" }, { conc: 10000, unit: "ng/mL", desc: "10,000 ng/mL diluted" }],
+                dilution: { diluent_ar: "يخفف فقط في 0.9% محلول ملحي للوصول إلى 5000 أو 10000 نانوغرام/مل", diluent: "Dilute only in 0.9% sodium chloride to 5,000 or 10,000 ng/mL", method_ar: "ابدأ 20 نانوغرام/كجم/دقيقة وعاير كل 5 دقائق بزيادات حتى 15 نانوغرام/كجم/دقيقة", method: "Start at 20 ng/kg/min and titrate every 5 minutes in increments up to 15 ng/kg/min", limits_ar: "لا تتجاوز 80 نانوغرام/كجم/دقيقة في أول 3 ساعات ولا 40 نانوغرام/كجم/دقيقة كصيانة", limits: "Do not exceed 80 ng/kg/min during the first 3 hours or 40 ng/kg/min for maintenance", notes_ar: "الجرعات هنا تمثل علاج الصدمة التوزيعية المقاومة؛ ويُنصح عادة بخط وريدي مركزي مع وقاية من الخثار الوريدي", notes: "Values model refractory distributive-shock treatment; central venous administration and VTE prophylaxis are generally recommended" },
+                warnings: ["Thromboembolism", "Peripheral Ischemia", "Tachycardia"],
+                requires_pump: true,
+                sources: ["https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=c265d69a-3efe-4107-9a9e-e6fd3d531c48"],
+                source_note: "DailyMed GIAPREZA labeling was used for the 20 ng/kg/min starting infusion, 5-minute titration increments, the 80 ng/kg/min early maximum, and the 40 ng/kg/min maintenance ceiling.",
+                review_status: "reviewed"
+            }
         ];
 
         const routeEnhancements = {
@@ -6749,7 +6899,88 @@
             }
         };
 
+        const hiddenSearchEnhancements = {
+            midazolam: { brand_names: ["Versed", "Dormicum", "Hypnovel"], search_aliases: ["فيرسيد", "دورميكوم"] },
+            propofol: { brand_names: ["Diprivan"], search_aliases: ["ديبريفان"] },
+            fentanyl: { brand_names: ["Sublimaze", "Duragesic"], search_aliases: ["سوبليميز"] },
+            ketamine: { brand_names: ["Ketalar"], search_aliases: ["كيتالار"] },
+            morphine: { brand_names: ["Duramorph", "Astramorph"], search_aliases: ["ديورامورف"] },
+            dexmedetomidine: { brand_names: ["Precedex"], search_aliases: ["بريسيدكس"] },
+            rocuronium: { brand_names: ["Zemuron", "Esmeron"], search_aliases: ["إزميرون"] },
+            cisatracurium: { brand_names: ["Nimbex"], search_aliases: ["نيمبكس"] },
+            succinylcholine: { brand_names: ["Anectine", "Quelicin"], search_aliases: ["سكساميثونيوم"] },
+            neostigmine: { brand_names: ["Bloxiverz", "Prostigmin"], search_aliases: ["بروستيغمين"] },
+            sugammadex: { brand_names: ["Bridion"], search_aliases: ["بريديون"] },
+            naloxone: { brand_names: ["Narcan"], search_aliases: ["ناركان"] },
+            atropine: { brand_names: ["Atropen"] },
+            lignocaine: { brand_names: ["Xylocaine"], search_aliases: ["lidocaine", "ليدوكائين", "زيلوكايين"] },
+            diazepam: { brand_names: ["Valium", "Diazemuls"], search_aliases: ["فاليوم"] },
+            norepinephrine: { brand_names: ["Levophed"], search_aliases: ["noradrenaline", "ليفوفيد", "نورادرينالين"] },
+            epinephrine: { brand_names: ["Adrenalin"], search_aliases: ["adrenaline", "أدرينالين"] },
+            dopamine: { brand_names: ["Intropin"], search_aliases: ["إنتروبين"] },
+            dobutamine: { brand_names: ["Dobutrex"], search_aliases: ["دوبوتركس"] },
+            phenylephrine: { brand_names: ["Neo-Synephrine"], search_aliases: ["نيوسينفرين", "neo synephrine"] },
+            esmolol: { brand_names: ["Brevibloc"], search_aliases: ["بريفيبلوك"] },
+            amiodarone: { brand_names: ["Cordarone", "Nexterone"], search_aliases: ["كوردارون"] },
+            dexamethasone: { brand_names: ["Decadron"], search_aliases: ["ديكادرون"] },
+            ondansetron: { brand_names: ["Zofran"], search_aliases: ["زوفران"] },
+            ketorolac: { brand_names: ["Toradol"], search_aliases: ["تورادول"] },
+            paracetamol: { brand_names: ["Ofirmev", "Perfalgan"], search_aliases: ["acetaminophen", "أسيتامينوفين", "أوفيرميف", "بيرفالغان"] },
+            tranexamic: { brand_names: ["Cyklokapron"], search_aliases: ["tranexamic acid", "سيكلوكابرون"] },
+            remifentanil: { brand_names: ["Ultiva"], search_aliases: ["ألتيفا"] },
+            hydromorphone: { brand_names: ["Dilaudid"], search_aliases: ["ديلاوديد"] },
+            sufentanil: { brand_names: ["Sufenta"], search_aliases: ["سوفينتا"] },
+            alfentanil: { brand_names: ["Alfenta", "Rapifen"], search_aliases: ["ألفينتا", "رابيفين"] },
+            vecuronium: { brand_names: ["Norcuron"], search_aliases: ["نوركيورون"] },
+            atracurium: { brand_names: ["Tracrium"], search_aliases: ["تراكريوم"] },
+            pancuronium: { brand_names: ["Pavulon"], search_aliases: ["بافولون"] },
+            flumazenil: { brand_names: ["Romazicon", "Anexate"], search_aliases: ["رومازيكون", "أنيكسات"] },
+            glycopyrrolate: { brand_names: ["Robinul", "Glyrx-PF"], search_aliases: ["روبينول"] },
+            nitroglycerin: { brand_names: ["Tridil"], search_aliases: ["ترايديل"] },
+            nitroprusside: { brand_names: ["Nitropress", "Nipride"], search_aliases: ["نيتروبريس", "نيبرايد"] },
+            labetalol: { brand_names: ["Trandate", "Normodyne"], search_aliases: ["ترانديت"] },
+            diltiazem: { brand_names: ["Cardizem"], search_aliases: ["كارديزيم"] },
+            vasopressin: { brand_names: ["Vasostrict", "Pitressin"], search_aliases: ["فازوستريكت"] },
+            insulin_regular: { brand_names: ["Humulin R", "Novolin R"], search_aliases: ["هيومولين", "نوفولين", "regular insulin"] },
+            mannitol: { brand_names: ["Osmitrol"], search_aliases: ["أوزميتيرول", "osmitrol"] },
+            furosemide: { brand_names: ["Lasix"], search_aliases: ["لازكس"] },
+            clonidine: { brand_names: ["Catapres"], search_aliases: ["كاتابريس"] },
+            octreotide: { brand_names: ["Sandostatin"], search_aliases: ["ساندوستاتين"] },
+            thiopental: { brand_names: ["Pentothal"], search_aliases: ["بنتوثال"] },
+            lorazepam: { brand_names: ["Ativan"], search_aliases: ["أتيفان"] },
+            etomidate: { brand_names: ["Amidate"], search_aliases: ["أميدات"] },
+            ephedrine: { brand_names: ["Akovaz", "Emerphed"], search_aliases: ["إيميرفيد", "أكوفاز"] },
+            nicardipine: { brand_names: ["Cardene"], search_aliases: ["كاردين"] },
+            clevidipine: { brand_names: ["Cleviprex"], search_aliases: ["كليفيبريكس"] },
+            hydralazine: { brand_names: ["Apresoline"], search_aliases: ["أبريزولين"] },
+            metoprolol: { brand_names: ["Lopressor", "Betaloc"], search_aliases: ["لوبرسور", "بيتالوك"] },
+            adenosine: { brand_names: ["Adenocard"], search_aliases: ["أدينوكارد"] },
+            milrinone: { brand_names: ["Primacor"], search_aliases: ["بريماكور"] },
+            levetiracetam: { brand_names: ["Keppra"], search_aliases: ["كيبرا"] },
+            fosphenytoin: { brand_names: ["Cerebyx"], search_aliases: ["سيريبكس"] },
+            bumetanide: { brand_names: ["Bumex"], search_aliases: ["بيوميكس"] },
+            phenytoin: { brand_names: ["Dilantin", "Epanutin"], search_aliases: ["ديلانتين", "إبانوتين"] },
+            procainamide: { brand_names: ["Pronestyl", "Procanbid"], search_aliases: ["برونستيل"] },
+            methylene_blue: { brand_names: ["ProvayBlue"], search_aliases: ["بروفاي بلو"] },
+            phenobarbital: { brand_names: ["Luminal", "Gardenal", "Solfoton"], search_aliases: ["لومينال", "فينوباربيتول", "phenobarbitone"] },
+            methohexital: { brand_names: ["Brevital"], search_aliases: ["بريفيتال"] },
+            droperidol: { brand_names: ["Inapsine", "Droleptan"], search_aliases: ["إنابسين"] },
+            metoclopramide: { brand_names: ["Reglan", "Maxolon"], search_aliases: ["ريجلان", "ماكسولون"] },
+            dantrolene: { brand_names: ["Dantrium", "Ryanodex", "Revonto"], search_aliases: ["دانتريوم", "راينودكس"] },
+            enalaprilat: { brand_names: ["Vasotec I.V.", "Vasotec IV"], search_aliases: ["فاسوتيك", "vasotec"] },
+            angiotensin_ii: { brand_names: ["Giapreza"], search_aliases: ["جيابريزا", "angiotensin 2"] }
+        };
+
         drugDatabase.forEach(drug => {
+            if (hiddenSearchEnhancements[drug.generic_name]) {
+                const enhancement = hiddenSearchEnhancements[drug.generic_name];
+                if (enhancement.brand_names) {
+                    drug.brand_names = [...new Set([...(drug.brand_names || []), ...enhancement.brand_names])];
+                }
+                if (enhancement.search_aliases) {
+                    drug.search_aliases = [...new Set([...(drug.search_aliases || []), ...enhancement.search_aliases])];
+                }
+            }
             if (routeEnhancements[drug.generic_name]) {
                 Object.assign(drug, routeEnhancements[drug.generic_name]);
             }
@@ -8875,6 +9106,24 @@
             };
         }
 
+        function getHourlyDoseFromRate(rateConfig, weight) {
+            if (!rateConfig) {
+                return { dosePerHr: 0, unitClean: '' };
+            }
+
+            const rawUnit = String(rateConfig.unit || '');
+            const isWeightBased = rawUnit.includes('/kg');
+            let dosePerHr = isWeightBased ? rateConfig.dose * weight : rateConfig.dose;
+            let unitClean = rawUnit.replace('/kg', '');
+
+            if (rawUnit.includes('/min')) {
+                dosePerHr = dosePerHr * 60;
+                unitClean = unitClean.replace('/min', '/hr');
+            }
+
+            return { dosePerHr, unitClean };
+        }
+
         function updateRouteOptions(drug = state.drug) {
             const select = document.getElementById('routeSelect');
             if (!select) return;
@@ -9468,14 +9717,22 @@
         }
 
         function getDrugSearchMatches(val) {
-            const term = String(val || '').toLowerCase().trim();
+            const term = normalizeDrugSearchText(val);
             if (!term) return [];
 
             return drugDatabase.map(d => {
                 let score = 100;
-                const names = [d.generic_name, d.display_name_en, d.display_name_ar];
-                names.forEach(n => {
-                    const lowerN = n.toLowerCase();
+                const names = [
+                    d.generic_name,
+                    d.display_name_en,
+                    d.display_name_ar,
+                    ...(Array.isArray(d.brand_names) ? d.brand_names : []),
+                    ...(Array.isArray(d.search_aliases) ? d.search_aliases : [])
+                ]
+                    .map(name => normalizeDrugSearchText(name))
+                    .filter(Boolean);
+
+                names.forEach(lowerN => {
                     if (lowerN === term) score = Math.min(score, 0);
                     else if (lowerN.startsWith(term)) score = Math.min(score, 1);
                     else if (lowerN.includes(term)) score = Math.min(score, 2);
@@ -10408,9 +10665,7 @@
                 const d = state.dose;
                 const amt = parseFloat(document.getElementById('drugAmount').value);
                 const vol = parseFloat(document.getElementById('fluidVolume').value);
-                let dosePerHr = d.dose * w;
-                let unitClean = d.unit.replace('/kg', '');
-                if (d.unit.includes('/min')) { dosePerHr = dosePerHr * 60; unitClean = unitClean.replace('/min', '/hr'); }
+                const { dosePerHr, unitClean } = getHourlyDoseFromRate(d, w);
                 const conc = amt / vol;
                 let doseMgHr = unitClean.includes('mcg') ? dosePerHr / 1000 : dosePerHr;
                 const rateMlHr = doseMgHr / conc;
@@ -10433,9 +10688,7 @@
                 const md = state.maintDose;
                 const amt = parseFloat(document.getElementById('drugAmount').value);
                 const vol = parseFloat(document.getElementById('fluidVolume').value);
-                let dosePerHr = md.dose * w;
-                let unitClean = md.unit.replace('/kg', '');
-                if (md.unit.includes('/min')) { dosePerHr = dosePerHr * 60; unitClean = unitClean.replace('/min', '/hr'); }
+                const { dosePerHr, unitClean } = getHourlyDoseFromRate(md, w);
                 const conc = amt / vol;
                 let doseMgHr = unitClean.includes('mcg') ? dosePerHr / 1000 : dosePerHr;
                 const rateMlHr = doseMgHr / conc;
@@ -10655,12 +10908,7 @@
                 const d = state.dose;
                 const amt = parseFloat(document.getElementById('drugAmount').value);
                 const vol = parseFloat(document.getElementById('fluidVolume').value);
-                let dosePerHr = d.dose * w;
-                let unitClean = d.unit.replace('/kg', '');
-                if (d.unit.includes('/min')) {
-                    dosePerHr = dosePerHr * 60;
-                    unitClean = unitClean.replace('/min', '/hr');
-                }
+                const { dosePerHr, unitClean } = getHourlyDoseFromRate(d, w);
                 const conc = amt / vol;
                 const doseMgHr = unitClean.includes('mcg') ? dosePerHr / 1000 : dosePerHr;
                 const rateMlHr = doseMgHr / conc;
@@ -10696,12 +10944,7 @@
                 const md = state.maintDose;
                 const amt = parseFloat(document.getElementById('drugAmount').value);
                 const vol = parseFloat(document.getElementById('fluidVolume').value);
-                let dosePerHr = md.dose * w;
-                let unitClean = md.unit.replace('/kg', '');
-                if (md.unit.includes('/min')) {
-                    dosePerHr = dosePerHr * 60;
-                    unitClean = unitClean.replace('/min', '/hr');
-                }
+                const { dosePerHr, unitClean } = getHourlyDoseFromRate(md, w);
                 const conc = amt / vol;
                 const doseMgHr = unitClean.includes('mcg') ? dosePerHr / 1000 : dosePerHr;
                 const rateMlHr = doseMgHr / conc;
@@ -11016,7 +11259,7 @@
                 reminders.push(pick('opioids'));
             }
 
-            if (drug.generic_name === "norepinephrine" || drug.generic_name === "epinephrine" || drug.generic_name === "dopamine" || drug.generic_name === "dobutamine" || drug.generic_name === "vasopressin") {
+            if (drug.generic_name === "norepinephrine" || drug.generic_name === "epinephrine" || drug.generic_name === "dopamine" || drug.generic_name === "dobutamine" || drug.generic_name === "vasopressin" || drug.generic_name === "angiotensin_ii") {
                 reminders.push(pick('centralLine'));
             }
 
