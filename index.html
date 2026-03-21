@@ -765,6 +765,107 @@
         .mode-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(56, 189, 248, 0.1); }
         .mode-btn.disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
 
+        .calculator-toggle {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.65rem;
+        }
+
+        .calc-section-btn {
+            min-height: 3rem;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.95rem;
+            background: var(--bg-input);
+            color: var(--muted);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .calc-section-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent-strong);
+        }
+
+        .calc-section-btn.active {
+            border-color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.08);
+        }
+
+        .auto-prep-panel {
+            padding: 1rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(247, 251, 249, 0.92));
+        }
+
+        .auto-prep-panel.is-empty {
+            color: var(--muted);
+        }
+
+        .auto-prep-title {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--accent-strong);
+            margin-bottom: 0.55rem;
+        }
+
+        .auto-prep-main {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--fg);
+            line-height: 1.7;
+        }
+
+        .auto-prep-caption {
+            margin-top: 0.55rem;
+            font-size: 0.86rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .auto-prep-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.9rem;
+        }
+
+        .auto-prep-item {
+            border-radius: 0.9rem;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(124, 154, 146, 0.16);
+            padding: 0.85rem 0.95rem;
+        }
+
+        .auto-prep-item-label {
+            display: block;
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--muted);
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .auto-prep-item-value {
+            display: block;
+            font-size: 0.96rem;
+            font-weight: 700;
+            color: var(--fg);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 640px) {
+            .calculator-toggle,
+            .auto-prep-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .dose-option {
             background: var(--bg-input);
             border: 1px solid var(--border);
@@ -2005,6 +2106,166 @@
         .contact-modal-note strong,
         .contact-modal-meta strong {
             color: var(--fg);
+        }
+
+        .reference-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 0.6rem;
+        }
+
+        .reference-summary-card {
+            display: grid;
+            gap: 0.25rem;
+            padding: 0.78rem 0.82rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(124, 154, 146, 0.12);
+        }
+
+        .reference-summary-label {
+            color: var(--muted);
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .reference-summary-value {
+            color: var(--accent-strong);
+            font-size: 1.15rem;
+            font-weight: 800;
+        }
+
+        .reference-section {
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .reference-section-title {
+            margin: 0;
+            color: var(--fg);
+            font-size: 0.98rem;
+            font-weight: 800;
+        }
+
+        .reference-link-list,
+        .reference-source-list {
+            margin: 0;
+            padding-inline-start: 1.1rem;
+            display: grid;
+            gap: 0.5rem;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .reference-link-list a {
+            color: var(--accent-strong);
+            font-weight: 700;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .reference-link-list a:hover {
+            text-decoration: underline;
+        }
+
+        .reference-drug-list {
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .reference-drug-card {
+            border-radius: 18px;
+            border: 1px solid rgba(124, 154, 146, 0.12);
+            background: rgba(255, 255, 255, 0.72);
+            overflow: hidden;
+        }
+
+        .reference-drug-card summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.8rem;
+            cursor: pointer;
+            padding: 0.85rem 0.92rem;
+            list-style: none;
+        }
+
+        .reference-drug-card summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .reference-drug-card summary::after {
+            content: '+';
+            color: var(--accent-strong);
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .reference-drug-card[open] summary::after {
+            content: '−';
+        }
+
+        .reference-drug-header {
+            display: grid;
+            gap: 0.22rem;
+            min-width: 0;
+        }
+
+        .reference-drug-name {
+            color: var(--fg);
+            font-size: 0.98rem;
+            font-weight: 800;
+            word-break: break-word;
+        }
+
+        .reference-drug-meta {
+            color: var(--muted);
+            font-size: 0.85rem;
+            line-height: 1.45;
+        }
+
+        .reference-status {
+            flex-shrink: 0;
+            padding: 0.3rem 0.58rem;
+            border-radius: 999px;
+            font-size: 0.76rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .reference-status.reviewed {
+            background: rgba(124, 154, 146, 0.16);
+            color: var(--accent-strong);
+        }
+
+        .reference-status.partial {
+            background: rgba(207, 184, 129, 0.18);
+            color: #7f5a00;
+        }
+
+        .reference-status.pending {
+            background: rgba(193, 197, 204, 0.18);
+            color: var(--muted);
+        }
+
+        .reference-drug-body {
+            display: grid;
+            gap: 0.8rem;
+            padding: 0 0.92rem 0.92rem;
+        }
+
+        .reference-drug-note {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        .reference-drug-empty {
+            color: var(--muted);
+            font-size: 0.9rem;
         }
 
         .drug-picker-trigger {
@@ -4693,7 +4954,6 @@
 
         <div class="workspace-grid">
             <main class="workspace-main">
-                <div id="selectionSummary" class="selection-summary" hidden></div>
                 <div class="card form-card unified-form-card">
                     <section class="form-section">
                         <div class="form-section-head">
@@ -4780,6 +5040,14 @@
                             </div>
                         </div>
 
+                        <div class="tool-block">
+                            <label class="label" data-i18n="calculatorSection">Calculator Section</label>
+                            <div class="calculator-toggle" id="calculatorToggle">
+                                <button type="button" class="calc-section-btn active" data-calculator-mode="manual" data-i18n="manualCalculator">Manual Dose & Dilution</button>
+                                <button type="button" class="calc-section-btn" data-calculator-mode="auto" data-i18n="autoPreparation">Auto Preparation</button>
+                            </div>
+                        </div>
+
                         <div class="mode-shell">
                             <div class="route-inline">
                                 <span class="route-label" data-i18n="route">Route</span>
@@ -4793,6 +5061,36 @@
                                 <button type="button" class="mode-btn" data-mode="loading">Loading</button>
                                 <button type="button" class="mode-btn" data-mode="intermittent">Intermittent</button>
                             </div>
+                        </div>
+
+                        <div id="autoPreparationPanel" class="hidden-section tool-block auto-prep-panel is-empty" style="display: none;"></div>
+
+                        <div id="autoConcentrationSection" class="hidden-section tool-block" style="display: none;">
+                            <label class="label" data-i18n="stockConcentration">Vial / Ampoule Concentration</label>
+                            <div class="field-grid field-grid-2">
+                                <div>
+                                    <input type="number" id="autoConcentrationInput" class="input-field" min="0" step="0.1" inputmode="decimal" data-stepper-step="0.1">
+                                </div>
+                                <div>
+                                    <input type="text" id="autoConcentrationUnit" class="input-field" readonly>
+                                </div>
+                            </div>
+                            <div id="autoConcentrationHint" class="auto-prep-caption"></div>
+                        </div>
+
+                        <div id="autoDurationSection" class="hidden-section tool-block" style="display: none;">
+                            <label class="label" data-i18n="autoDurationLabel">Desired Preparation Duration</label>
+                            <div class="field-grid field-grid-2">
+                                <div>
+                                    <label class="label" for="autoDurationHoursInput" data-i18n="durationHoursField">Hours</label>
+                                    <input type="number" id="autoDurationHoursInput" class="input-field" min="0" step="1" inputmode="numeric" data-stepper-step="1">
+                                </div>
+                                <div>
+                                    <label class="label" for="autoDurationMinutesInput" data-i18n="durationMinutesField">Minutes</label>
+                                    <input type="number" id="autoDurationMinutesInput" class="input-field" min="0" max="59" step="1" inputmode="numeric" data-stepper-step="5">
+                                </div>
+                            </div>
+                            <div class="auto-prep-caption" data-i18n="autoDurationHint">Optional: enter how long you want the preparation to last using hours and minutes, and the result will update the required drug amount and final volume.</div>
                         </div>
 
                         <div id="doseSection" class="hidden-section tool-block">
@@ -4827,8 +5125,16 @@
                         </div>
 
                         <div id="bolusConcSection" class="hidden-section tool-block">
-                            <label class="label" data-i18n="concentration">Concentration</label>
-                            <select id="bolusConcSelect" class="input-field select-field"></select>
+                            <label class="label" data-i18n="stockConcentration">Vial / Ampoule Concentration</label>
+                            <div class="field-grid field-grid-2">
+                                <div>
+                                    <input type="number" id="bolusConcentrationInput" class="input-field" min="0" step="0.1" inputmode="decimal" data-stepper-step="0.1">
+                                </div>
+                                <div>
+                                    <input type="text" id="bolusConcentrationUnit" class="input-field" readonly>
+                                </div>
+                            </div>
+                            <div id="bolusConcentrationHint" class="auto-prep-caption"></div>
                         </div>
 
                         <div id="pumpSection" class="hidden-section tool-block">
@@ -4843,13 +5149,18 @@
                             <label class="label" data-i18n="dropFactor">Drop Factor (gtt/mL)</label>
                             <input type="number" id="dropFactorInput" class="input-field" value="20" min="1" step="1" inputmode="numeric" data-stepper-step="5">
                         </div>
+
+                        <div class="action-bar">
+                            <button id="calcBtn" class="btn btn-primary" disabled data-i18n="calculate">Calculate</button>
+                            <button id="resetBtn" class="btn btn-secondary" data-i18n="reset">Reset</button>
+                        </div>
                     </section>
 
                     <section class="form-section">
                         <div class="form-section-head">
                             <span class="section-pill">4</span>
                             <div>
-                                <h2 class="form-section-title" data-i18n="sectionPresets">Presets & Actions</h2>
+                                <h2 class="form-section-title" data-i18n="presets">Presets</h2>
                             </div>
                         </div>
 
@@ -4863,11 +5174,6 @@
                                 <div id="presetsList" class="preset-list"></div>
                             </div>
                         </details>
-
-                        <div class="action-bar">
-                            <button id="calcBtn" class="btn btn-primary" disabled data-i18n="calculate">Calculate</button>
-                            <button id="resetBtn" class="btn btn-secondary" data-i18n="reset">Reset</button>
-                        </div>
                     </section>
                 </div>
                 <div id="resultsContainer" class="card results-card" style="display: none;">
@@ -4932,17 +5238,7 @@
                     <div id="referencesModalTitle" class="contact-modal-title" data-i18n="referencesModalTitle">Medical References</div>
                     <button class="modal-close" type="button" data-modal-close="referencesModal" aria-label="Close">&times;</button>
             </div>
-            <div class="contact-modal-body" lang="en" dir="ltr">
-                <ul class="contact-modal-list">
-                    <li>Lexicomp</li>
-                    <li>British National Formulary (BNF)</li>
-                    <li>Institutional IV infusion protocols</li>
-                    <li>Critical care and anesthesia drug references</li>
-                </ul>
-                <div class="contact-modal-meta">
-                    <div><strong>Last reviewed:</strong> March 2026</div>
-                    <div><strong>Version:</strong> 1.0</div>
-                </div>
+            <div id="referencesCatalog" class="contact-modal-body"></div>
                 </div>
             </div>
         </div>
@@ -5088,13 +5384,40 @@
                 selectClinicalUse: "اختر الاستعمال السريري",
                 defaultClinicalUse: "البيانات الافتراضية للدواء",
                 adminMode: "طريقة الإعطاء",
+                calculatorSection: "نوع الحاسبة",
+                manualCalculator: "الحساب اليدوي",
+                autoPreparation: "التحضير التلقائي",
+                autoPreparationPreview: "معاينة التحضير التلقائي",
+                autoPreparationHint: "اختر المسار وطريقة الإعطاء ثم اضغط احسب للحصول على كمية الدواء والتخفيف المقترح.",
+                autoDurationLabel: "المدة المطلوبة للتحضير",
+                durationHoursField: "الساعات",
+                durationMinutesField: "الدقائق",
+                autoDurationHint: "اختياري: أدخل مدة التحضير بالساعات والدقائق، وسيتم تحديث كمية الدواء والحجم النهائي المطلوبين لهذه المدة.",
+                preparationInstruction: "طريقة التحضير",
+                finalVolume: "الحجم النهائي",
+                amountToAdd: "كمية الدواء",
+                noDilutionNeeded: "بدون تخفيف",
+                preparationUnavailable: "لا توجد صيغة تحضير منظمة لهذا الدواء/الوضع حاليًا.",
+                desiredDuration: "المدة المطلوبة",
+                preparationCoverage: "مدة كفاية التحضير",
+                durationVolumeNeeded: "الحجم لهذه المدة",
+                durationDrugNeeded: "كمية الدواء لهذه المدة",
+                hoursUnit: "ساعة",
+                minutesUnit: "دقيقة",
+                preparationAdvice: "ملاحظة التحضير",
+                stockConcentrations: "تراكيز الفيالات",
                 selectDose: "اختر الجرعة",
                 loadingDose: "جرعة التحميل",
                 maintenanceDose: "جرعة المحافظة",
                 interval: "فترة التكرار",
                 drugAmount: "كمية الدواء (mg)",
                 fluidVolume: "حجم السائل (mL)",
+                stockConcentration: "تركيز الفيال/الأمبولة",
                 concentration: "تركيز المحلول",
+                targetFinalConcentration: "التركيز النهائي المطلوب",
+                finalPreparationConcentration: "التركيز النهائي",
+                withdrawVolume: "الحجم المسحوب من الفيال",
+                diluentVolume: "حجم المُخفف",
                 deliveryMethod: "طريقة التسريب",
                 pump: "مضخة تسريب (Pump)",
                 manual: "تقطير يدوي (Manual)",
@@ -5274,13 +5597,40 @@
                 selectClinicalUse: "Select Clinical Use",
                 defaultClinicalUse: "Default Drug Data",
                 adminMode: "Administration Mode",
+                calculatorSection: "Calculator Mode",
+                manualCalculator: "Manual Dose & Dilution",
+                autoPreparation: "Auto Preparation",
+                autoPreparationPreview: "Auto Preparation Preview",
+                autoPreparationHint: "Choose the route and mode, then calculate to get the recommended drug amount, dilution, and details.",
+                autoDurationLabel: "Desired Preparation Duration",
+                durationHoursField: "Hours",
+                durationMinutesField: "Minutes",
+                autoDurationHint: "Optional: enter the duration in hours and minutes, and the result will update the required drug amount and final volume for that duration.",
+                preparationInstruction: "Preparation",
+                finalVolume: "Final Volume",
+                amountToAdd: "Drug Amount",
+                noDilutionNeeded: "No dilution",
+                preparationUnavailable: "No structured preparation formula is available for this drug/mode yet.",
+                desiredDuration: "Desired Duration",
+                preparationCoverage: "Preparation Coverage",
+                durationVolumeNeeded: "Volume for Duration",
+                durationDrugNeeded: "Drug for Duration",
+                hoursUnit: "hr",
+                minutesUnit: "min",
+                preparationAdvice: "Preparation Advice",
+                stockConcentrations: "Vial Concentrations",
                 selectDose: "Select Dose",
                 loadingDose: "Loading Dose",
                 maintenanceDose: "Maintenance Dose",
                 interval: "Interval",
                 drugAmount: "Drug Amount (mg)",
                 fluidVolume: "Fluid Volume (mL)",
+                stockConcentration: "Vial / Ampoule Concentration",
                 concentration: "Solution Concentration",
+                targetFinalConcentration: "Target Final Concentration",
+                finalPreparationConcentration: "Final Concentration",
+                withdrawVolume: "Withdraw Volume",
+                diluentVolume: "Diluent Volume",
                 deliveryMethod: "Delivery Method",
                 pump: "Infusion Pump",
                 manual: "Manual Drip",
@@ -5457,7 +5807,12 @@
                 interval: "Intervalo",
                 drugAmount: "Cantidad del fármaco (mg)",
                 fluidVolume: "Volumen de líquido (mL)",
+                stockConcentration: "Concentración del vial/ampolla",
                 concentration: "Concentración de la solución",
+                targetFinalConcentration: "Concentración final objetivo",
+                finalPreparationConcentration: "Concentración final",
+                withdrawVolume: "Volumen extraído",
+                diluentVolume: "Volumen de diluyente",
                 deliveryMethod: "Método de administración",
                 pump: "Bomba de infusión",
                 manual: "Goteo manual",
@@ -5586,7 +5941,12 @@
                 interval: "Интервал",
                 drugAmount: "Количество препарата (mg)",
                 fluidVolume: "Объем жидкости (mL)",
+                stockConcentration: "Концентрация во флаконе/ампуле",
                 concentration: "Концентрация раствора",
+                targetFinalConcentration: "Целевая конечная концентрация",
+                finalPreparationConcentration: "Конечная концентрация",
+                withdrawVolume: "Набираемый объем",
+                diluentVolume: "Объем разбавителя",
                 deliveryMethod: "Способ введения",
                 pump: "Инфузионный насос",
                 manual: "Ручное капельное введение",
@@ -5715,7 +6075,12 @@
                 interval: "فاصله",
                 drugAmount: "مقدار دارو (mg)",
                 fluidVolume: "حجم مایع (mL)",
+                stockConcentration: "غلظت ویال/آمپول",
                 concentration: "غلظت محلول",
+                targetFinalConcentration: "غلظت نهایی موردنظر",
+                finalPreparationConcentration: "غلظت نهایی",
+                withdrawVolume: "حجم کشیده‌شده از ویال",
+                diluentVolume: "حجم رقیق‌کننده",
                 deliveryMethod: "روش تجویز",
                 pump: "پمپ انفوزیون",
                 manual: "چکه دستی",
@@ -5844,7 +6209,12 @@
                 interval: "Aralık",
                 drugAmount: "İlaç miktarı (mg)",
                 fluidVolume: "Sıvı hacmi (mL)",
+                stockConcentration: "Flakon / ampul konsantrasyonu",
                 concentration: "Solüsyon konsantrasyonu",
+                targetFinalConcentration: "Hedef nihai konsantrasyon",
+                finalPreparationConcentration: "Nihai konsantrasyon",
+                withdrawVolume: "Flakondan çekilecek hacim",
+                diluentVolume: "Dilüent hacmi",
                 deliveryMethod: "Uygulama yöntemi",
                 pump: "İnfüzyon pompası",
                 manual: "Manuel damla",
@@ -6899,6 +7269,237 @@
             }
         };
 
+        const officialSourceCoverage = {
+            midazolam: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d7362b4d-68a3-99a0-e053-2995a90a4f60"
+            ],
+            propofol: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=28d7ba00-f824-4e55-139a-03f509c099db"
+            ],
+            fentanyl: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ce5db1c2-feb1-4ad2-847a-d02e865bd47e"
+            ],
+            ketamine: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ketamine%20injection"
+            ],
+            morphine: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=morphine%20sulfate%20injection"
+            ],
+            dexmedetomidine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=92b7ddaa-e45a-4b64-a802-bb5df8771dd6"
+            ],
+            rocuronium: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=309aeb1b-8022-4df7-8194-ae6529e3395c"
+            ],
+            cisatracurium: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2cb05c7e-6228-4e2d-a270-7659e3db3fa7"
+            ],
+            succinylcholine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1e5891e2-e1e4-4587-b32c-b2e8082df9b6"
+            ],
+            neostigmine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7a9d996f-aecb-455f-95fc-1010e461d75d"
+            ],
+            sugammadex: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=37276948-ff0f-e0ab-e063-6394a90a0973"
+            ],
+            naloxone: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4d66b96a-acbb-2292-e063-6294a90af788"
+            ],
+            atropine: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=atropine%20sulfate%20injection"
+            ],
+            lignocaine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=94155012-b1fc-430a-a1f5-30c21f4a3f80"
+            ],
+            diazepam: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bfa85a63-967f-4176-a752-0bafabbaaae3"
+            ],
+            norepinephrine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ddbef60d-c20a-4ada-928f-e87074c08a54"
+            ],
+            epinephrine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=60efd409-3555-4182-a68d-1cd7bc0d1bfc"
+            ],
+            dopamine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cb97d4a0-89ed-407c-a763-209386b6f75c"
+            ],
+            dobutamine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9943a961-3b50-4847-8a84-d8414ce38daa"
+            ],
+            phenylephrine: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=phenylephrine%20injection"
+            ],
+            esmolol: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3853a26d-782d-f4e7-e063-6294a90a6e47"
+            ],
+            amiodarone: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e9151c1b-b70c-477b-868a-fffdc5c51830"
+            ],
+            magnesium_sulfate: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=magnesium%20sulfate%20injection"
+            ],
+            dexamethasone: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6ea9e6ab-0d33-4635-9e98-aa2fbd8921cc"
+            ],
+            ondansetron: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e3f22b7e-b6ad-4799-93c7-d30540cada85"
+            ],
+            ketorolac: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=22de8e1c-5e68-fd78-e063-6394a90ad40b"
+            ],
+            paracetamol: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ofirmev"
+            ],
+            tranexamic: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1553f7eb-d5a8-4274-9762-5bcc5ffcf809"
+            ],
+            remifentanil: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8b4c8696-e23e-4c51-a4d2-babab5bd945a"
+            ],
+            hydromorphone: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b325028e-0722-4c8c-9fdb-ab6fb0dc460c"
+            ],
+            sufentanil: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=20293943-46ff-4345-1aa4-929b4e017a25"
+            ],
+            alfentanil: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bb56df52-5abf-47dc-ab8d-902cfe19ccb2"
+            ],
+            vecuronium: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b012b1b1-9e59-4525-8f4d-dae98344d15f"
+            ],
+            atracurium: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=efe90ee2-fe9e-421f-9e54-2961085d3b12"
+            ],
+            pancuronium: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=pancuronium%20bromide%20injection"
+            ],
+            flumazenil: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3eefb01b-3d6a-a3eb-e063-6394a90a4829"
+            ],
+            glycopyrrolate: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2972f22e-378c-450b-8869-1354a9bd0ffc"
+            ],
+            nitroglycerin: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3f2c9570-a544-1982-e063-6294a90a3067"
+            ],
+            nitroprusside: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a3b83d0e-b8f7-5e90-c363-1edfcd27a33d"
+            ],
+            labetalol: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=99a715a0-4579-410c-b102-7ef6fab8db55"
+            ],
+            diltiazem: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=734beeef-3968-4137-af2c-276e8a9317df"
+            ],
+            vasopressin: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b1147beb-743e-4c62-8927-91192447f8b8"
+            ],
+            insulin_regular: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b519bd83-038c-4ec5-a231-a51ec5cc291f"
+            ],
+            calcium_gluconate: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=16307c00-d0d5-4e05-821f-17b0c1a29fc9"
+            ],
+            potassium_chloride: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=aad6e18f-04f8-4799-b366-873ec5a50317"
+            ],
+            mannitol: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=430669d7-9ad1-9a04-e063-6394a90ababb"
+            ],
+            furosemide: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1b9117d5-0dd9-4577-a1fd-bb0aaf7e68ec"
+            ],
+            clonidine: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clonidine%20injection"
+            ],
+            octreotide: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=387d7f8d-9762-4f6b-99e1-bdc50b8a1633"
+            ],
+            thiopental: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=thiopental%20sodium%20for%20injection"
+            ],
+            lorazepam: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5fc0e987-61c9-40c4-b0d5-fcea07c8733e"
+            ],
+            etomidate: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9c2d0014-9e74-40b2-b452-255016c81cc1"
+            ],
+            ephedrine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=38723cb3-dfca-4c81-8c6f-63dd99929191"
+            ],
+            nicardipine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b0e2bed3-f928-43ab-a05c-275bedc9856f"
+            ],
+            clevidipine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a6826aa3-fabb-4ff1-a7a3-cd4c34e3a330"
+            ],
+            hydralazine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f3c806a4-b971-421c-bcb9-9979c6d7aaec"
+            ],
+            metoprolol: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1e787808-b3e0-417a-b333-80619d15432b"
+            ],
+            adenosine: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=48d72391-b3d4-bd97-e063-6294a90a9d6f"
+            ],
+            milrinone: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0fdaee3c-2144-4ca7-9868-54d251f468c0"
+            ],
+            levetiracetam: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=levetiracetam%20injection"
+            ],
+            fosphenytoin: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a0def32c-e693-43e5-9509-0cef9642441c"
+            ],
+            bumetanide: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b7cd724b-817b-4b45-8133-1ebf505867e7"
+            ],
+            phenytoin: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=phenytoin%20sodium%20injection"
+            ],
+            procainamide: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=17e47845-daad-434c-a784-6d3875b0d704"
+            ],
+            methylene_blue: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e2d9d96c-a711-47c5-855a-7eb7f163493e"
+            ],
+            phenobarbital: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=phenobarbital%20sodium%20injection"
+            ],
+            methohexital: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6fb09acf-4937-47a0-a9da-084ec062da6f"
+            ],
+            droperidol: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=147e033d-d997-4ef6-8bb5-a9ba372590b2"
+            ],
+            metoclopramide: [
+                "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=metoclopramide%20injection"
+            ],
+            dantrolene: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4df35098-8702-46be-ac67-30cfdf1aa570"
+            ],
+            enalaprilat: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5d398da1-020c-ccb1-a775-ce8e0b29d621"
+            ],
+            angiotensin_ii: [
+                "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=727d1102-fc46-46f8-b78e-fd13f0738fe4"
+            ]
+        };
+
+        function isOfficialSearchSourceLink(url = "") {
+            return /dailymed\.nlm\.nih\.gov\/dailymed\/search\.cfm\?/i.test(String(url));
+        }
+
+        function getOfficialCoverageSourceNote(sources = []) {
+            if ((sources || []).some(isOfficialSearchSourceLink)) {
+                return "An official DailyMed search link was added for this drug to anchor the reference catalog, but full line-by-line verification of every root field is still in progress.";
+            }
+
+            return "An official DailyMed label link was added for this drug in the current review batch, but full line-by-line verification of every root field is still in progress.";
+        }
+
         const hiddenSearchEnhancements = {
             midazolam: { brand_names: ["Versed", "Dormicum", "Hypnovel"], search_aliases: ["فيرسيد", "دورميكوم"] },
             propofol: { brand_names: ["Diprivan"], search_aliases: ["ديبريفان"] },
@@ -7042,6 +7643,24 @@
                 }
             }
 
+            if (officialSourceCoverage[drug.generic_name]) {
+                const coverageSources = officialSourceCoverage[drug.generic_name]
+                    .map(item => String(item || "").trim())
+                    .filter(Boolean);
+
+                if (coverageSources.length) {
+                    drug.sources = [...new Set([...(Array.isArray(drug.sources) ? drug.sources : []), ...coverageSources])];
+                }
+
+                if (!drug.review_status || drug.review_status === "pending") {
+                    drug.review_status = "partial";
+                }
+
+                if (!drug.source_note || drug.source_note.startsWith("Official labeling review is still pending")) {
+                    drug.source_note = getOfficialCoverageSourceNote(coverageSources);
+                }
+            }
+
             if (!drug.source_note) {
                 drug.source_note = "Official labeling review is still pending for this drug in the current batch; legacy dose, dilution, warning, and note values were retained until DailyMed/openFDA/EMA verification is completed.";
             }
@@ -7104,7 +7723,7 @@
 
         let favorites = [];
         let presets = [];
-        let state = { drug: null, clinicalUse: '', mode: null, dose: null, loadDose: null, maintDose: null, doseIndex: null, loadDoseIndex: null, maintDoseIndex: null, interval: null, weight: 70, sex: 'male', ageGroup: 'adult', route: 'IV' };
+        let state = { drug: null, clinicalUse: '', mode: null, dose: null, loadDose: null, maintDose: null, doseIndex: null, loadDoseIndex: null, maintDoseIndex: null, interval: null, weight: 70, sex: 'male', ageGroup: 'adult', route: 'IV', calculatorMode: 'manual' };
         let selectionSafetyNotice = '';
         let selectionSafetyNoticeKey = '';
         const infoModalIds = ['contactModal', 'disclaimerModal', 'referencesModal', 'numberPickerModal', 'drugPickerModal'];
@@ -7255,6 +7874,7 @@
                 presets = getStoredPresets();
                 setLanguage(getStoredLanguage());
                 syncContactEmailLinks();
+                renderReferencesModalContent();
                 renderFavorites();
                 renderPresets();
                 updateRouteOptions();
@@ -7288,9 +7908,19 @@
             document.getElementById('routeSelect').addEventListener('change', handleRouteChange);
             document.getElementById('drugAmount').addEventListener('input', validate);
             document.getElementById('fluidVolume').addEventListener('input', validate);
+            document.getElementById('autoConcentrationInput').addEventListener('input', validate);
+            document.getElementById('autoConcentrationInput').addEventListener('keydown', preventNegativeWeightKeydown);
+            document.getElementById('bolusConcentrationInput').addEventListener('input', validate);
+            document.getElementById('bolusConcentrationInput').addEventListener('keydown', preventNegativeWeightKeydown);
+            document.getElementById('autoDurationHoursInput').addEventListener('input', handlePreparationDurationInput);
+            document.getElementById('autoDurationHoursInput').addEventListener('keydown', preventNegativeWeightKeydown);
+            document.getElementById('autoDurationMinutesInput').addEventListener('input', handlePreparationDurationInput);
+            document.getElementById('autoDurationMinutesInput').addEventListener('keydown', preventNegativeWeightKeydown);
             document.getElementById('intervalSelect').addEventListener('change', validate);
-            document.getElementById('bolusConcSelect').addEventListener('change', validate);
             document.getElementById('pumpSelect').addEventListener('change', checkPumpWarning);
+            document.querySelectorAll('[data-calculator-mode]').forEach(button => {
+                button.addEventListener('click', () => setCalculatorMode(button.dataset.calculatorMode || 'manual'));
+            });
             document.getElementById('favoriteToggle').addEventListener('click', toggleFavorite);
             document.getElementById('savePresetBtn').addEventListener('click', savePreset);
             document.getElementById('langToggle').addEventListener('click', () => toggleLanguageMenu());
@@ -7785,27 +8415,26 @@
         }
 
         function renderSelectionSummary() {
-            const container = document.getElementById('selectionSummary');
-            if (!container) return;
+            return;
+        }
 
-            const items = buildSelectionSummaryItems();
-            if (!items.length) {
-                container.hidden = true;
-                container.innerHTML = '';
+        function updateCalculatorModeButtons() {
+            document.querySelectorAll('[data-calculator-mode]').forEach(button => {
+                button.classList.toggle('active', (button.dataset.calculatorMode || 'manual') === (state.calculatorMode || 'manual'));
+            });
+        }
+
+        function setCalculatorMode(mode) {
+            const nextMode = mode === 'auto' ? 'auto' : 'manual';
+            if ((state.calculatorMode || 'manual') === nextMode) {
+                updateCalculatorModeButtons();
                 return;
             }
 
-            container.hidden = false;
-            container.innerHTML = `
-                <div class="selection-summary-list">
-                    ${items.map(item => `
-                        <div class="selection-summary-chip">
-                            <span class="selection-summary-label">${escapeHtml(item.label)}:</span>
-                            <span class="selection-summary-value">${escapeHtml(item.value)}</span>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
+            state.calculatorMode = nextMode;
+            document.getElementById('resultsContainer').style.display = 'none';
+            updateCalculatorModeButtons();
+            updateUI();
         }
 
         function updateDrugPickerTrigger() {
@@ -8455,12 +9084,17 @@
             return [
                 presetLike.drugId || presetLike.drug || '',
                 presetLike.clinicalUse || '',
+                presetLike.calculatorMode || 'manual',
                 presetLike.mode || '',
                 presetLike.route || 'IV',
                 presetLike.doseIndex ?? '',
                 presetLike.loadDoseIndex ?? '',
                 presetLike.maintDoseIndex ?? '',
                 presetLike.interval || '',
+                presetLike.autoDurationHours || '',
+                presetLike.autoDurationMinutes || '',
+                presetLike.autoConcentration || '',
+                presetLike.bolusConcentration || '',
                 presetLike.drugAmount || '',
                 presetLike.fluidVolume || '',
                 presetLike.deliveryMethod || 'pump',
@@ -9124,6 +9758,1382 @@
             return { dosePerHr, unitClean };
         }
 
+        function getModeDoseRange(drug, mode, kind = 'dose') {
+            if (!drug || !mode) return [];
+
+            const keyMap = {
+                dose: `${mode}_dose_range`,
+                load: 'loading_dose_range',
+                maint: 'maintenance_dose_range'
+            };
+            const targetKey = keyMap[kind];
+            return Array.isArray(drug[targetKey]) ? drug[targetKey].filter(item => Number.isFinite(Number(item?.dose)) && item?.unit) : [];
+        }
+
+        function resolveDoseAmount(doseConfig, weight) {
+            if (!doseConfig) return { value: NaN, unit: '' };
+            const rawUnit = String(doseConfig.unit || '');
+            return {
+                value: rawUnit.includes('/kg') ? Number(doseConfig.dose) * weight : Number(doseConfig.dose),
+                unit: rawUnit.replace('/kg', '')
+            };
+        }
+
+        function normalizeAmountUnit(unit = '') {
+            const normalized = String(unit || '').trim().replace(/\s+/g, ' ').toLowerCase();
+            if (!normalized) return '';
+            if (normalized.startsWith('mg pe')) return 'mg PE';
+            if (normalized.startsWith('meq')) return 'mEq';
+            if (normalized.startsWith('mmol')) return 'mmol';
+            if (normalized === 'u' || normalized.startsWith('unit') || normalized.startsWith('units')) return 'unit';
+            if (normalized.startsWith('ng')) return 'ng';
+            if (normalized.startsWith('mcg')) return 'mcg';
+            if (normalized === 'g') return 'g';
+            if (normalized.startsWith('mg')) return 'mg';
+            return String(unit || '').trim();
+        }
+
+        function getAmountUnitFromDescriptor(unit = '') {
+            return normalizeAmountUnit(String(unit || '').split('/')[0]);
+        }
+
+        function convertAmountValue(value, fromUnit, toUnit) {
+            if (!Number.isFinite(value)) return NaN;
+
+            const from = normalizeAmountUnit(fromUnit);
+            const to = normalizeAmountUnit(toUnit);
+            if (!from || !to) return NaN;
+            if (from === to) return value;
+
+            const factors = { ng: 0.000001, mcg: 0.001, mg: 1, g: 1000 };
+
+            if (!Object.prototype.hasOwnProperty.call(factors, from) || !Object.prototype.hasOwnProperty.call(factors, to)) {
+                return NaN;
+            }
+
+            return (value * factors[from]) / factors[to];
+        }
+
+        function getFiniteRange(values = []) {
+            const finiteValues = values.filter(Number.isFinite);
+            if (!finiteValues.length) return null;
+            return {
+                min: Math.min(...finiteValues),
+                max: Math.max(...finiteValues)
+            };
+        }
+
+        function getRangeJoiner() {
+            return isArabicLanguage() ? 'إلى' : 'to';
+        }
+
+        function normalizeDisplayNumber(value, maxPrecision = 6) {
+            if (!Number.isFinite(value)) return NaN;
+            return Number(value.toFixed(maxPrecision));
+        }
+
+        function renderMeasuredRange(min, max, unit = '') {
+            min = normalizeDisplayNumber(min);
+            max = normalizeDisplayNumber(max);
+            if (!Number.isFinite(min) || !Number.isFinite(max)) return '-';
+
+            const precision = Math.max(
+                2,
+                getNumberPrecision(min),
+                getNumberPrecision(max)
+            );
+
+            if (Math.abs(min - max) < 0.0000001) {
+                return renderMeasuredValue(formatNumericValue(min, precision), unit);
+            }
+
+            return `
+                <span class="result-range">
+                    ${renderMeasuredValue(formatNumericValue(min, precision), unit)}
+                    <span class="result-range-separator">${escapeHtml(getRangeJoiner())}</span>
+                    ${renderMeasuredValue(formatNumericValue(max, precision), unit)}
+                </span>
+            `;
+        }
+
+        function formatMeasuredRangeText(min, max, unit = '') {
+            min = normalizeDisplayNumber(min);
+            max = normalizeDisplayNumber(max);
+            if (!Number.isFinite(min) || !Number.isFinite(max)) return '-';
+
+            const precision = Math.max(
+                2,
+                getNumberPrecision(min),
+                getNumberPrecision(max)
+            );
+            const suffix = unit ? ` ${unit}` : '';
+
+            if (Math.abs(min - max) < 0.0000001) {
+                return `${formatNumericValue(min, precision)}${suffix}`;
+            }
+
+            return `${formatNumericValue(min, precision)}${suffix} ${getRangeJoiner()} ${formatNumericValue(max, precision)}${suffix}`;
+        }
+
+        function buildRangeData(range, unit = '') {
+            if (!range || !Number.isFinite(range.min) || !Number.isFinite(range.max)) return null;
+            return { min: range.min, max: range.max, unit };
+        }
+
+        function scaleRangeData(rangeData, factor) {
+            if (!rangeData || !Number.isFinite(factor)) return null;
+            return {
+                min: rangeData.min * factor,
+                max: rangeData.max * factor,
+                unit: rangeData.unit
+            };
+        }
+
+        function addRangeData(firstRange, secondRange) {
+            if (!firstRange) return secondRange || null;
+            if (!secondRange) return firstRange;
+            if ((firstRange.unit || '') !== (secondRange.unit || '')) return null;
+
+            return {
+                min: firstRange.min + secondRange.min,
+                max: firstRange.max + secondRange.max,
+                unit: firstRange.unit
+            };
+        }
+
+        function convertRangeData(rangeData, toUnit) {
+            if (!rangeData || !toUnit) return rangeData;
+
+            const convertedMin = convertAmountValue(rangeData.min, rangeData.unit, toUnit);
+            const convertedMax = convertAmountValue(rangeData.max, rangeData.unit, toUnit);
+
+            if (!Number.isFinite(convertedMin) || !Number.isFinite(convertedMax)) {
+                return rangeData;
+            }
+
+            return {
+                min: convertedMin,
+                max: convertedMax,
+                unit: normalizeAmountUnit(toUnit)
+            };
+        }
+
+        function getDoseAmountRangeData(doseRange, weight) {
+            if (!Array.isArray(doseRange) || !doseRange.length) return null;
+
+            const resolvedItems = doseRange.map(item => resolveDoseAmount(item, weight));
+            const firstUnit = resolvedItems[0]?.unit || '';
+            const values = resolvedItems
+                .filter(item => item.unit === firstUnit)
+                .map(item => item.value);
+            const range = getFiniteRange(values);
+
+            return range ? { min: range.min, max: range.max, unit: firstUnit } : null;
+        }
+
+        function getHourlyAmountRangeData(doseRange, weight) {
+            if (!Array.isArray(doseRange) || !doseRange.length) return null;
+
+            const resolvedItems = doseRange.map(item => getHourlyDoseFromRate(item, weight));
+            const firstUnit = getAmountUnitFromDescriptor(resolvedItems[0]?.unitClean || '');
+            const values = resolvedItems
+                .filter(item => getAmountUnitFromDescriptor(item.unitClean) === firstUnit)
+                .map(item => item.dosePerHr);
+            const range = getFiniteRange(values);
+
+            return range ? { min: range.min, max: range.max, unit: firstUnit } : null;
+        }
+
+        function getContinuousPreparationCoverageRange(finalVolumeMl, rateRange) {
+            if (!Number.isFinite(finalVolumeMl) || !rateRange || rateRange.min <= 0 || rateRange.max <= 0) return null;
+            return {
+                min: finalVolumeMl / rateRange.max,
+                max: finalVolumeMl / rateRange.min
+            };
+        }
+
+        function getLoadingPreparationCoverageRange(finalVolumeMl, loadVolumeRange, maintenanceRateRange) {
+            if (!Number.isFinite(finalVolumeMl) || !loadVolumeRange || !maintenanceRateRange || maintenanceRateRange.min <= 0 || maintenanceRateRange.max <= 0) {
+                return null;
+            }
+
+            const remainingMin = Math.max(0, finalVolumeMl - loadVolumeRange.max);
+            const remainingMax = Math.max(0, finalVolumeMl - loadVolumeRange.min);
+
+            return {
+                min: remainingMin / maintenanceRateRange.max,
+                max: remainingMax / maintenanceRateRange.min
+            };
+        }
+
+        function isAutoDurationMode(mode) {
+            return mode === 'infusion' || mode === 'loading';
+        }
+
+        function populatePreparationDurationInputs(hoursValue = '', minutesValue = '') {
+            const hoursInput = document.getElementById('autoDurationHoursInput');
+            const minutesInput = document.getElementById('autoDurationMinutesInput');
+            if (!hoursInput || !minutesInput) return;
+
+            hoursInput.value = hoursValue;
+            minutesInput.value = minutesValue;
+            normalizePreparationDurationInputs();
+        }
+
+        function normalizePreparationDurationInputs() {
+            const hoursInput = document.getElementById('autoDurationHoursInput');
+            const minutesInput = document.getElementById('autoDurationMinutesInput');
+            if (!hoursInput || !minutesInput) {
+                return { hours: 0, minutes: 0, totalMinutes: 0, totalHours: NaN };
+            }
+
+            const rawHours = String(hoursInput.value || '').trim();
+            const rawMinutes = String(minutesInput.value || '').trim();
+            const parsedHours = rawHours === '' ? NaN : parseFloat(rawHours);
+            const parsedMinutes = rawMinutes === '' ? NaN : parseFloat(rawMinutes);
+
+            let totalMinutes = 0;
+
+            if (Number.isFinite(parsedHours) && parsedHours > 0) {
+                totalMinutes += Math.round(parsedHours * 60);
+            } else if (Number.isFinite(parsedHours) && parsedHours < 0) {
+                hoursInput.value = '';
+            }
+
+            if (Number.isFinite(parsedMinutes) && parsedMinutes > 0) {
+                totalMinutes += Math.round(parsedMinutes);
+            } else if (Number.isFinite(parsedMinutes) && parsedMinutes < 0) {
+                minutesInput.value = '';
+            }
+
+            const normalizedHours = Math.floor(totalMinutes / 60);
+            const normalizedMinutes = totalMinutes % 60;
+
+            hoursInput.value = totalMinutes > 0 ? String(normalizedHours) : '';
+            minutesInput.value = totalMinutes > 0 ? String(normalizedMinutes) : '';
+
+            return {
+                hours: normalizedHours,
+                minutes: normalizedMinutes,
+                totalMinutes,
+                totalHours: totalMinutes > 0 ? totalMinutes / 60 : NaN
+            };
+        }
+
+        function getPreparationDurationParts() {
+            return normalizePreparationDurationInputs();
+        }
+
+        function getPreparationDurationHours() {
+            return getPreparationDurationParts().totalHours;
+        }
+
+        function formatDurationText(totalMinutes) {
+            if (!Number.isFinite(totalMinutes) || totalMinutes < 0) return '-';
+
+            const normalizedMinutes = Math.max(0, Math.round(totalMinutes));
+            const hours = Math.floor(normalizedMinutes / 60);
+            const minutes = normalizedMinutes % 60;
+            const isAr = isArabicLanguage();
+
+            if (normalizedMinutes === 0) {
+                return isAr ? '0 دقيقة' : '0 min';
+            }
+
+            if (isAr) {
+                if (hours > 0 && minutes > 0) return `${hours} ساعة و${minutes} دقيقة`;
+                if (hours > 0) return `${hours} ساعة`;
+                return `${minutes} دقيقة`;
+            }
+
+            if (hours > 0 && minutes > 0) return `${hours} hr ${minutes} min`;
+            if (hours > 0) return `${hours} hr`;
+            return `${minutes} min`;
+        }
+
+        function formatDurationRangeText(minHours, maxHours) {
+            if (!Number.isFinite(minHours) || !Number.isFinite(maxHours)) return '-';
+
+            const minMinutes = Math.max(0, Math.round(minHours * 60));
+            const maxMinutes = Math.max(0, Math.round(maxHours * 60));
+
+            if (minMinutes === maxMinutes) return formatDurationText(minMinutes);
+            return `${formatDurationText(minMinutes)} ${getRangeJoiner()} ${formatDurationText(maxMinutes)}`;
+        }
+
+        function buildAutoPreparationDurationMetrics(drug, mode, plan, weight, durationInput = getPreparationDurationParts()) {
+            if (!drug || !mode || !plan || plan.unavailable || !plan.concentration || !isAutoDurationMode(mode)) return null;
+
+            const durationParts = typeof durationInput === 'number'
+                ? {
+                    totalHours: Number.isFinite(durationInput) && durationInput > 0 ? durationInput : NaN,
+                    totalMinutes: Number.isFinite(durationInput) && durationInput > 0 ? Math.round(durationInput * 60) : NaN
+                }
+                : durationInput;
+            const safeDuration = Number.isFinite(durationParts?.totalHours) && durationParts.totalHours > 0 ? durationParts.totalHours : NaN;
+            const safeDurationMinutes = Number.isFinite(durationParts?.totalMinutes) && durationParts.totalMinutes > 0 ? durationParts.totalMinutes : NaN;
+            const concentrationAmountUnit = getAmountUnitFromDescriptor(plan.concentration.unit);
+
+            if (mode === 'infusion') {
+                const doseRange = getModeDoseRange(drug, mode, 'dose');
+                const rateRange = getFiniteRange(doseRange.map(item => calculateRateFromDoseConfig(item, weight, plan.concentration)));
+                const hourlyAmountRange = getHourlyAmountRangeData(doseRange, weight);
+
+                return {
+                    durationHours: safeDuration,
+                    durationTotalMinutes: safeDurationMinutes,
+                    coverageRange: getContinuousPreparationCoverageRange(plan.finalVolumeMl, rateRange),
+                    requiredVolumeRange: Number.isFinite(safeDuration) ? scaleRangeData(buildRangeData(rateRange, 'mL'), safeDuration) : null,
+                    requiredDrugRange: Number.isFinite(safeDuration)
+                        ? convertRangeData(scaleRangeData(hourlyAmountRange, safeDuration), concentrationAmountUnit)
+                        : null
+                };
+            }
+
+            const loadingRange = getModeDoseRange(drug, mode, 'load');
+            const maintenanceRange = getModeDoseRange(drug, mode, 'maint');
+            const loadVolumeRange = getFiniteRange(loadingRange.map(item => calculateVolumeFromDoseConfig(item, weight, plan.concentration)));
+            const loadAmountRange = convertRangeData(getDoseAmountRangeData(loadingRange, weight), concentrationAmountUnit);
+            const maintenanceRateRange = getFiniteRange(maintenanceRange.map(item => calculateRateFromDoseConfig(item, weight, plan.concentration)));
+            const maintenanceHourlyAmountRange = getHourlyAmountRangeData(maintenanceRange, weight);
+            const maintenanceVolumeForDuration = Number.isFinite(safeDuration) ? scaleRangeData(buildRangeData(maintenanceRateRange, 'mL'), safeDuration) : null;
+            const maintenanceDrugForDuration = Number.isFinite(safeDuration)
+                ? convertRangeData(scaleRangeData(maintenanceHourlyAmountRange, safeDuration), concentrationAmountUnit)
+                : null;
+
+            return {
+                durationHours: safeDuration,
+                durationTotalMinutes: safeDurationMinutes,
+                coverageRange: getLoadingPreparationCoverageRange(plan.finalVolumeMl, loadVolumeRange, maintenanceRateRange),
+                requiredVolumeRange: addRangeData(buildRangeData(loadVolumeRange, 'mL'), maintenanceVolumeForDuration) || maintenanceVolumeForDuration,
+                requiredDrugRange: addRangeData(loadAmountRange, maintenanceDrugForDuration) || maintenanceDrugForDuration
+            };
+        }
+
+        function buildAdjustedPreparationInstruction(plan, durationMetrics) {
+            if (!plan || !durationMetrics?.requiredDrugRange || !durationMetrics?.requiredVolumeRange || !Number.isFinite(durationMetrics.durationTotalMinutes)) {
+                return plan?.instruction || '';
+            }
+
+            const stockIssueText = getStockConcentrationIssueText(plan);
+            if (stockIssueText) return stockIssueText;
+
+            const durationText = formatDurationText(durationMetrics.durationTotalMinutes);
+            const amountRange = getPreparationAmountRangeData(plan, durationMetrics);
+            const finalVolumeRange = getPreparationFinalVolumeRangeData(plan, durationMetrics);
+            const stockVolumeRange = getPreparationStockVolumeRangeData(plan, durationMetrics);
+            const diluentVolumeRange = getPreparationDiluentVolumeRangeData(plan, durationMetrics);
+            const amountText = amountRange ? formatMeasuredRangeText(amountRange.min, amountRange.max, amountRange.unit) : '';
+            const stockVolumeText = stockVolumeRange ? formatMeasuredRangeText(stockVolumeRange.min, stockVolumeRange.max, stockVolumeRange.unit || 'mL') : '';
+            const diluentVolumeText = diluentVolumeRange ? formatMeasuredRangeText(diluentVolumeRange.min, diluentVolumeRange.max, diluentVolumeRange.unit || 'mL') : '';
+            const volumeText = finalVolumeRange ? formatMeasuredRangeText(finalVolumeRange.min, finalVolumeRange.max, finalVolumeRange.unit || 'mL') : '';
+            const concentrationText = `${formatNumericValue(plan.concentration.value, Math.max(2, getNumberPrecision(plan.concentration.value)))} ${plan.concentration.unit}`;
+
+            if (plan.kind === 'undiluted') {
+                if (amountText && stockVolumeText) {
+                    return isArabicLanguage()
+                        ? `لـ ${durationText} اسحب ${stockVolumeText} من الفيال (${amountText}) وضعه مباشرة في syringe pump بدون diluent بتركيز ${concentrationText}.`
+                        : `For ${durationText}, withdraw ${stockVolumeText} from the vial (${amountText}) and place it directly in a syringe pump with no diluent at ${concentrationText}.`;
+                }
+                return plan?.instruction || '';
+            }
+
+            if (amountText && stockVolumeText && diluentVolumeText && volumeText) {
+                return isArabicLanguage()
+                    ? `لـ ${durationText} اسحب ${stockVolumeText} من الفيال (${amountText}) ثم أضف ${diluentVolumeText} من ${plan.diluentLabel} ليصبح الحجم النهائي ${volumeText} بتركيز نهائي ${concentrationText}.`
+                    : `For ${durationText}, withdraw ${stockVolumeText} from the vial (${amountText}), then add ${diluentVolumeText} of ${plan.diluentLabel} to a final volume of ${volumeText} at a final concentration of ${concentrationText}.`;
+            }
+
+            return isArabicLanguage()
+                ? `لـ ${durationText} حضّر ${amountText} في ${volumeText} ${plan.diluentLabel} بتركيز نهائي ${concentrationText}.`
+                : `For ${durationText}, prepare ${amountText} in ${volumeText} ${plan.diluentLabel} at a final concentration of ${concentrationText}.`;
+        }
+
+        function getAutoPreparationDisplayState(plan, durationMetrics = null) {
+            const hasAdjustedPreparation = !!(durationMetrics?.requiredDrugRange && durationMetrics?.requiredVolumeRange && Number.isFinite(durationMetrics?.durationTotalMinutes));
+            const amountRangeData = getPreparationAmountRangeData(plan, durationMetrics);
+            const finalVolumeRangeData = getPreparationFinalVolumeRangeData(plan, durationMetrics);
+            const stockVolumeRangeData = getPreparationStockVolumeRangeData(plan, durationMetrics);
+            const diluentVolumeRangeData = getPreparationDiluentVolumeRangeData(plan, durationMetrics);
+            const stockIssueText = getStockConcentrationIssueText(plan);
+
+            const amountText = amountRangeData ? formatMeasuredRangeText(amountRangeData.min, amountRangeData.max, amountRangeData.unit) : '-';
+            const amountHtml = amountRangeData ? renderMeasuredRange(amountRangeData.min, amountRangeData.max, amountRangeData.unit) : '-';
+            const volumeText = finalVolumeRangeData ? formatMeasuredRangeText(finalVolumeRangeData.min, finalVolumeRangeData.max, finalVolumeRangeData.unit || 'mL') : '-';
+            const volumeHtml = finalVolumeRangeData ? renderMeasuredRange(finalVolumeRangeData.min, finalVolumeRangeData.max, finalVolumeRangeData.unit || 'mL') : '-';
+            const stockVolumeText = stockVolumeRangeData ? formatMeasuredRangeText(stockVolumeRangeData.min, stockVolumeRangeData.max, stockVolumeRangeData.unit || 'mL') : '-';
+            const stockVolumeHtml = stockVolumeRangeData ? renderMeasuredRange(stockVolumeRangeData.min, stockVolumeRangeData.max, stockVolumeRangeData.unit || 'mL') : '-';
+            const diluentVolumeText = diluentVolumeRangeData ? formatMeasuredRangeText(diluentVolumeRangeData.min, diluentVolumeRangeData.max, diluentVolumeRangeData.unit || 'mL') : '-';
+            const diluentVolumeHtml = diluentVolumeRangeData ? renderMeasuredRange(diluentVolumeRangeData.min, diluentVolumeRangeData.max, diluentVolumeRangeData.unit || 'mL') : '-';
+            const stockConcentrationText = plan?.stockConcentration
+                ? `${formatNumericValue(plan.stockConcentration.value, Math.max(2, getNumberPrecision(plan.stockConcentration.value)))} ${plan.stockConcentration.unit}`
+                : '-';
+            const stockConcentrationHtml = plan?.stockConcentration
+                ? renderMeasuredValue(formatNumericValue(plan.stockConcentration.value, Math.max(2, getNumberPrecision(plan.stockConcentration.value))), plan.stockConcentration.unit)
+                : '-';
+            const finalConcentrationText = plan?.concentration
+                ? `${formatNumericValue(plan.concentration.value, Math.max(2, getNumberPrecision(plan.concentration.value)))} ${plan.concentration.unit}`
+                : '-';
+            const finalConcentrationHtml = plan?.concentration
+                ? renderMeasuredValue(formatNumericValue(plan.concentration.value, Math.max(2, getNumberPrecision(plan.concentration.value))), plan.concentration.unit)
+                : '-';
+
+            return {
+                usesAdjustedPreparation: hasAdjustedPreparation,
+                instruction: hasAdjustedPreparation ? buildAdjustedPreparationInstruction(plan, durationMetrics) : (plan?.instruction || ''),
+                amountText,
+                amountHtml,
+                volumeText,
+                volumeHtml,
+                stockVolumeText,
+                stockVolumeHtml,
+                diluentVolumeText,
+                diluentVolumeHtml,
+                stockConcentrationText,
+                stockConcentrationHtml,
+                finalConcentrationText,
+                finalConcentrationHtml,
+                stockIssueText,
+                durationText: Number.isFinite(durationMetrics?.durationTotalMinutes) ? formatDurationText(durationMetrics.durationTotalMinutes) : ''
+            };
+        }
+
+        function getAutoPreparationDoseDisplayState(drug, mode, weight, plan, fallbackState = null) {
+            if (!drug || !plan || (mode !== 'bolus' && mode !== 'intermittent') || !plan.stockConcentration) {
+                return fallbackState;
+            }
+
+            const doseRange = getModeDoseRange(drug, mode, 'dose');
+            const amountRangeData = getDoseAmountRangeData(doseRange, weight);
+            const stockVolumeRangeData = calculateVolumeRangeFromAmountRange(amountRangeData, plan.stockConcentration);
+            const recommendedDilution = getRecommendedDilutionFromDoseRange(doseRange, weight, drug, plan.stockConcentration);
+            const noDilutionExpected = plan.kind === 'undiluted' || textSuggestsNoDilution(`${getDilutionText(drug, false)} ${getDilutionText(drug, true)}`);
+
+            let finalVolumeRangeData = stockVolumeRangeData;
+            let diluentVolumeRangeData = getSingleValueRangeData(0, 'mL');
+            let finalConcentration = plan.stockConcentration;
+            let stockIssueText = '';
+
+            if (!noDilutionExpected && recommendedDilution && recommendedDilution.compatible) {
+                finalVolumeRangeData = {
+                    min: recommendedDilution.finalVolumeRange.min,
+                    max: recommendedDilution.finalVolumeRange.max,
+                    unit: 'mL'
+                };
+                diluentVolumeRangeData = {
+                    min: recommendedDilution.diluentVolumeRange.min,
+                    max: recommendedDilution.diluentVolumeRange.max,
+                    unit: 'mL'
+                };
+                finalConcentration = recommendedDilution.finalConcentration;
+            } else if (!noDilutionExpected && recommendedDilution && !recommendedDilution.compatible) {
+                stockIssueText = isArabicLanguage()
+                    ? 'تركيز الفيال المدخل أقل من التركيز النهائي المقترح لهذا التحضير، لذلك لا يمكن تنفيذ التخفيف بهذه القيمة.'
+                    : 'The entered vial concentration is lower than the suggested final concentration for this preparation, so the dilution cannot be achieved with this value.';
+                if (!noDilutionExpected) {
+                    finalConcentration = plan.concentration || plan.stockConcentration;
+                }
+            }
+
+            const amountText = amountRangeData ? formatMeasuredRangeText(amountRangeData.min, amountRangeData.max, amountRangeData.unit) : '-';
+            const amountHtml = amountRangeData ? renderMeasuredRange(amountRangeData.min, amountRangeData.max, amountRangeData.unit) : '-';
+            const stockVolumeText = stockVolumeRangeData ? formatMeasuredRangeText(stockVolumeRangeData.min, stockVolumeRangeData.max, stockVolumeRangeData.unit || 'mL') : '-';
+            const stockVolumeHtml = stockVolumeRangeData ? renderMeasuredRange(stockVolumeRangeData.min, stockVolumeRangeData.max, stockVolumeRangeData.unit || 'mL') : '-';
+            const finalVolumeText = finalVolumeRangeData ? formatMeasuredRangeText(finalVolumeRangeData.min, finalVolumeRangeData.max, finalVolumeRangeData.unit || 'mL') : '-';
+            const finalVolumeHtml = finalVolumeRangeData ? renderMeasuredRange(finalVolumeRangeData.min, finalVolumeRangeData.max, finalVolumeRangeData.unit || 'mL') : '-';
+            const diluentVolumeText = diluentVolumeRangeData ? formatMeasuredRangeText(diluentVolumeRangeData.min, diluentVolumeRangeData.max, diluentVolumeRangeData.unit || 'mL') : '-';
+            const diluentVolumeHtml = diluentVolumeRangeData ? renderMeasuredRange(diluentVolumeRangeData.min, diluentVolumeRangeData.max, diluentVolumeRangeData.unit || 'mL') : '-';
+            const stockConcentrationText = `${formatNumericValue(plan.stockConcentration.value, Math.max(2, getNumberPrecision(plan.stockConcentration.value)))} ${plan.stockConcentration.unit}`;
+            const stockConcentrationHtml = renderMeasuredValue(formatNumericValue(plan.stockConcentration.value, Math.max(2, getNumberPrecision(plan.stockConcentration.value))), plan.stockConcentration.unit);
+            const finalConcentrationText = finalConcentration
+                ? `${formatNumericValue(finalConcentration.value, Math.max(2, getNumberPrecision(finalConcentration.value)))} ${finalConcentration.unit}`
+                : '-';
+            const finalConcentrationHtml = finalConcentration
+                ? renderMeasuredValue(formatNumericValue(finalConcentration.value, Math.max(2, getNumberPrecision(finalConcentration.value))), finalConcentration.unit)
+                : '-';
+
+            const instruction = noDilutionExpected
+                ? (isArabicLanguage()
+                    ? `اسحب ${stockVolumeText} من الفيال (${amountText}) وأعطه بدون تخفيف.`
+                    : `Withdraw ${stockVolumeText} from the vial (${amountText}) and administer it without dilution.`)
+                : (recommendedDilution?.compatible
+                    ? (isArabicLanguage()
+                        ? `اسحب ${stockVolumeText} من الفيال (${amountText}) ثم أضف ${diluentVolumeText} من ${plan.diluentLabel} ليصبح الحجم النهائي ${finalVolumeText}.`
+                        : `Withdraw ${stockVolumeText} from the vial (${amountText}), then add ${diluentVolumeText} of ${plan.diluentLabel} to a final volume of ${finalVolumeText}.`)
+                    : ((fallbackState?.instruction) || plan.instruction || ''));
+
+            return {
+                ...(fallbackState || {}),
+                usesAdjustedPreparation: false,
+                instruction,
+                amountText,
+                amountHtml,
+                volumeText: finalVolumeText,
+                volumeHtml: finalVolumeHtml,
+                stockVolumeText,
+                stockVolumeHtml,
+                diluentVolumeText,
+                diluentVolumeHtml,
+                stockConcentrationText,
+                stockConcentrationHtml,
+                finalConcentrationText,
+                finalConcentrationHtml,
+                administrationVolumeText: noDilutionExpected ? stockVolumeText : finalVolumeText,
+                administrationVolumeHtml: noDilutionExpected ? stockVolumeHtml : finalVolumeHtml,
+                stockIssueText
+            };
+        }
+
+        function getDoseDisplayRange(doseRange, weight, hourly = false) {
+            const resolvedItems = doseRange
+                .map(item => hourly ? getHourlyDoseFromRate(item, weight) : resolveDoseAmount(item, weight))
+                .filter(item => Number.isFinite(hourly ? item.dosePerHr : item.value));
+
+            if (!resolvedItems.length) return '-';
+
+            const firstUnit = hourly ? resolvedItems[0].unitClean : resolvedItems[0].unit;
+            const values = resolvedItems
+                .filter(item => (hourly ? item.unitClean : item.unit) === firstUnit)
+                .map(item => hourly ? item.dosePerHr : item.value);
+            const range = getFiniteRange(values);
+
+            return range ? renderMeasuredRange(range.min, range.max, firstUnit) : '-';
+        }
+
+        function calculateVolumeFromDoseConfig(doseConfig, weight, concentration) {
+            const resolved = resolveDoseAmount(doseConfig, weight);
+            const concentrationUnit = getAmountUnitFromDescriptor(concentration?.unit || '');
+            const convertedAmount = convertAmountValue(resolved.value, resolved.unit, concentrationUnit);
+
+            if (!Number.isFinite(convertedAmount) || !Number.isFinite(concentration?.value) || concentration.value <= 0) {
+                return NaN;
+            }
+
+            return convertedAmount / concentration.value;
+        }
+
+        function calculateRateFromDoseConfig(doseConfig, weight, concentration) {
+            const resolved = getHourlyDoseFromRate(doseConfig, weight);
+            const concentrationUnit = getAmountUnitFromDescriptor(concentration?.unit || '');
+            const convertedAmount = convertAmountValue(resolved.dosePerHr, resolved.unitClean, concentrationUnit);
+
+            if (!Number.isFinite(convertedAmount) || !Number.isFinite(concentration?.value) || concentration.value <= 0) {
+                return NaN;
+            }
+
+            return convertedAmount / concentration.value;
+        }
+
+        function syncBolusConcentrationInputs(drug = state.drug, mode = state.mode, preserveCurrent = true) {
+            const valueInput = document.getElementById('bolusConcentrationInput');
+            const unitInput = document.getElementById('bolusConcentrationUnit');
+            const hint = document.getElementById('bolusConcentrationHint');
+
+            if (!valueInput || !unitInput || !hint) return;
+
+            const preferred = getPreferredStockConcentrationCandidate(drug, mode) || getStockConcentrationCandidates(drug)[0] || null;
+            const currentValue = parseFloat(valueInput.value || '');
+            const shouldPreserve = preserveCurrent && Number.isFinite(currentValue) && currentValue > 0;
+
+            if (!shouldPreserve) {
+                valueInput.value = Number.isFinite(preferred?.value)
+                    ? formatNumericValue(preferred.value, Math.max(0, getNumberPrecision(preferred.value)))
+                    : '';
+            }
+
+            unitInput.value = preferred?.unit || getDefaultStockConcentrationUnit(drug, null, mode);
+            hint.textContent = buildStockConcentrationHintText(drug, mode);
+        }
+
+        function getBolusConcentrationObject(drug = state.drug, mode = state.mode) {
+            const valueInput = document.getElementById('bolusConcentrationInput');
+            const unitInput = document.getElementById('bolusConcentrationUnit');
+            const preferred = getPreferredStockConcentrationCandidate(drug, mode) || getStockConcentrationCandidates(drug)[0] || null;
+            const parsedValue = parseFloat(valueInput?.value || '');
+            const unit = String(unitInput?.value || preferred?.unit || getDefaultStockConcentrationUnit(drug, null, mode) || '').trim();
+
+            if (Number.isFinite(parsedValue) && parsedValue > 0 && unit) {
+                return { value: parsedValue, unit };
+            }
+
+            if (preferred?.unit && Number.isFinite(Number(preferred.value))) {
+                return { value: Number(preferred.value), unit: preferred.unit };
+            }
+
+            return null;
+        }
+
+        function getRecommendedDilutionFromDoseAmount(totalDoseValue, totalDoseUnit, drug, stockConcentration) {
+            if (!drug || !stockConcentration) return null;
+
+            const dilutionText = `${getDilutionText(drug, false)} ${getDilutionText(drug, true)}`;
+            if (textSuggestsNoDilution(dilutionText)) return null;
+
+            const finalConcentration = choosePreparationConcentration(drug);
+            if (!finalConcentration) return null;
+
+            const finalAmountUnit = getAmountUnitFromDescriptor(finalConcentration.unit);
+            const stockAmountUnit = getAmountUnitFromDescriptor(stockConcentration.unit);
+            const doseInFinalUnit = convertAmountValue(totalDoseValue, totalDoseUnit, finalAmountUnit);
+            const doseInStockUnit = convertAmountValue(totalDoseValue, totalDoseUnit, stockAmountUnit);
+
+            if (!Number.isFinite(doseInFinalUnit) || !Number.isFinite(doseInStockUnit) || finalConcentration.value <= 0 || stockConcentration.value <= 0) {
+                return null;
+            }
+
+            const finalVolumeMl = doseInFinalUnit / finalConcentration.value;
+            const stockVolumeMl = doseInStockUnit / stockConcentration.value;
+            const diluentVolumeMl = finalVolumeMl - stockVolumeMl;
+
+            return {
+                finalConcentration,
+                finalVolumeMl,
+                stockVolumeMl,
+                diluentVolumeMl,
+                compatible: diluentVolumeMl >= -0.0000001
+            };
+        }
+
+        function getRecommendedDilutionFromDoseRange(doseRange, weight, drug, stockConcentration) {
+            if (!Array.isArray(doseRange) || !doseRange.length || !drug || !stockConcentration) return null;
+
+            const dilutionText = `${getDilutionText(drug, false)} ${getDilutionText(drug, true)}`;
+            if (textSuggestsNoDilution(dilutionText)) return null;
+
+            const finalConcentration = choosePreparationConcentration(drug);
+            if (!finalConcentration) return null;
+
+            const stockVolumeRange = getFiniteRange(doseRange.map(item => calculateVolumeFromDoseConfig(item, weight, stockConcentration)));
+            const finalVolumeRange = getFiniteRange(doseRange.map(item => calculateVolumeFromDoseConfig(item, weight, finalConcentration)));
+            if (!stockVolumeRange || !finalVolumeRange) return null;
+
+            return {
+                finalConcentration,
+                stockVolumeRange,
+                finalVolumeRange,
+                diluentVolumeRange: {
+                    min: Math.max(0, finalVolumeRange.min - stockVolumeRange.min),
+                    max: Math.max(0, finalVolumeRange.max - stockVolumeRange.max)
+                },
+                compatible: stockVolumeRange.max <= finalVolumeRange.max + 0.0000001
+            };
+        }
+
+        function getManualConcentrationObject() {
+            const amount = parseFloat(document.getElementById('drugAmount').value || '');
+            const volume = parseFloat(document.getElementById('fluidVolume').value || '');
+
+            if (!Number.isFinite(amount) || !Number.isFinite(volume) || volume <= 0) return null;
+
+            return {
+                value: amount / volume,
+                unit: 'mg/mL'
+            };
+        }
+
+        const autoPreparationOverrides = {
+            midazolam: {
+                infusion: { amount: 25, amountUnit: 'mg', volumeMl: 50, concentrationValue: 0.5, concentrationUnit: 'mg/mL' },
+                loading: { amount: 25, amountUnit: 'mg', volumeMl: 50, concentrationValue: 0.5, concentrationUnit: 'mg/mL' }
+            },
+            fentanyl: {
+                infusion: { amount: 1000, amountUnit: 'mcg', volumeMl: 100, concentrationValue: 10, concentrationUnit: 'mcg/mL' },
+                loading: { amount: 1000, amountUnit: 'mcg', volumeMl: 100, concentrationValue: 10, concentrationUnit: 'mcg/mL' }
+            },
+            morphine: {
+                infusion: { amount: 50, amountUnit: 'mg', volumeMl: 50, concentrationValue: 1, concentrationUnit: 'mg/mL' },
+                loading: { amount: 50, amountUnit: 'mg', volumeMl: 50, concentrationValue: 1, concentrationUnit: 'mg/mL' }
+            },
+            dexmedetomidine: {
+                infusion: { amount: 200, amountUnit: 'mcg', volumeMl: 50, concentrationValue: 4, concentrationUnit: 'mcg/mL' },
+                loading: { amount: 200, amountUnit: 'mcg', volumeMl: 50, concentrationValue: 4, concentrationUnit: 'mcg/mL' }
+            },
+            rocuronium: {
+                bolus: { kind: 'undiluted', amount: 50, amountUnit: 'mg', volumeMl: 5, concentrationValue: 10, concentrationUnit: 'mg/mL' },
+                infusion: { kind: 'undiluted', amount: 50, amountUnit: 'mg', volumeMl: 5, concentrationValue: 10, concentrationUnit: 'mg/mL' }
+            },
+            cisatracurium: {
+                bolus: { kind: 'undiluted', amount: 10, amountUnit: 'mg', volumeMl: 5, concentrationValue: 2, concentrationUnit: 'mg/mL' },
+                infusion: { kind: 'undiluted', amount: 10, amountUnit: 'mg', volumeMl: 5, concentrationValue: 2, concentrationUnit: 'mg/mL' }
+            },
+            succinylcholine: {
+                bolus: { kind: 'undiluted', amount: 50, amountUnit: 'mg', volumeMl: 1, concentrationValue: 50, concentrationUnit: 'mg/mL' }
+            },
+            vecuronium: {
+                bolus: { kind: 'undiluted', amount: 10, amountUnit: 'mg', volumeMl: 10, concentrationValue: 1, concentrationUnit: 'mg/mL' },
+                infusion: { kind: 'undiluted', amount: 10, amountUnit: 'mg', volumeMl: 10, concentrationValue: 1, concentrationUnit: 'mg/mL' }
+            },
+            atracurium: {
+                bolus: { kind: 'undiluted', amount: 50, amountUnit: 'mg', volumeMl: 5, concentrationValue: 10, concentrationUnit: 'mg/mL' },
+                infusion: { kind: 'undiluted', amount: 50, amountUnit: 'mg', volumeMl: 5, concentrationValue: 10, concentrationUnit: 'mg/mL' }
+            },
+            pancuronium: {
+                bolus: { kind: 'undiluted', amount: 2, amountUnit: 'mg', volumeMl: 2, concentrationValue: 1, concentrationUnit: 'mg/mL' }
+            },
+            naloxone: {
+                infusion: { amount: 4, amountUnit: 'mg', volumeMl: 100, concentrationValue: 0.04, concentrationUnit: 'mg/mL' }
+            },
+            lignocaine: {
+                infusion: { amount: 100, amountUnit: 'mg', volumeMl: 100, concentrationValue: 1, concentrationUnit: 'mg/mL' }
+            },
+            norepinephrine: {
+                infusion: { amount: 4, amountUnit: 'mg', volumeMl: 250, concentrationValue: 0.016, concentrationUnit: 'mg/mL' }
+            },
+            epinephrine: {
+                infusion: { amount: 4, amountUnit: 'mg', volumeMl: 250, concentrationValue: 0.016, concentrationUnit: 'mg/mL' }
+            },
+            dopamine: {
+                infusion: { amount: 200, amountUnit: 'mg', volumeMl: 250, concentrationValue: 0.8, concentrationUnit: 'mg/mL' }
+            },
+            dobutamine: {
+                infusion: { amount: 125, amountUnit: 'mg', volumeMl: 250, concentrationValue: 0.5, concentrationUnit: 'mg/mL' }
+            },
+            nitroglycerin: {
+                infusion: { amount: 5, amountUnit: 'mg', volumeMl: 50, concentrationValue: 0.1, concentrationUnit: 'mg/mL' }
+            },
+            angiotensin_ii: {
+                infusion: { amount: 2.5, amountUnit: 'mg', volumeMl: 500, concentrationValue: 5000, concentrationUnit: 'ng/mL' }
+            }
+        };
+
+        function getDilutionText(drug, isAr = isArabicLanguage()) {
+            if (!drug?.dilution) return '';
+            return [
+                isAr ? drug.dilution.diluent_ar : drug.dilution.diluent,
+                isAr ? drug.dilution.method_ar : drug.dilution.method,
+                isAr ? drug.dilution.limits_ar : drug.dilution.limits,
+                isAr ? drug.dilution.notes_ar : drug.dilution.notes
+            ].filter(Boolean).join(' ');
+        }
+
+        function getDilutionPreferenceLevel(text = '') {
+            const normalized = String(text || '').toLowerCase();
+
+            const strongTokens = [
+                'do not dilute',
+                'ready to use; do not dilute',
+                'give direct',
+                'no dilution',
+                'لا يخفف',
+                'لا يُخفف',
+                'بدون تخفيف',
+                'يعطى مباشرة',
+                'يُعطى مباشرة'
+            ];
+
+            const preferredTokens = [
+                'undiluted for intubation',
+                'usually undiluted',
+                'can give undiluted',
+                'may be given slow iv undiluted',
+                'ready to use',
+                'لا يخفف عادة',
+                'يمكن إعطاؤه بدون تخفيف',
+                'يمكن إعطاؤه كما هو',
+                'يُعطى بدون تخفيف للتنبيب'
+            ];
+
+            if (strongTokens.some(token => normalized.includes(token))) return 'required';
+            if (preferredTokens.some(token => normalized.includes(token))) return 'preferred';
+            return '';
+        }
+
+        function getPreparationPracticeAdvice(drug, mode, plan = null) {
+            if (!drug || !mode) return null;
+            if (drug.review_status === 'pending' || !(Array.isArray(drug.sources) && drug.sources.length)) return null;
+
+            const preferenceLevel = getDilutionPreferenceLevel([getDilutionText(drug, false), getDilutionText(drug, true)].join(' '));
+            if (!preferenceLevel) return null;
+
+            if (preferenceLevel === 'required') {
+                return {
+                    level: 'required',
+                    text: isArabicLanguage()
+                        ? 'المصدر الرسمي المستخدم لهذا الدواء يذكر أن الإعطاء يكون بدون تخفيف أو أن التخفيف غير مطلوب عادة.'
+                        : 'The reviewed medical source for this drug indicates administration without dilution or that dilution is generally not required.'
+                };
+            }
+
+            return {
+                level: 'preferred',
+                text: isArabicLanguage()
+                    ? 'المصدر الرسمي يذكر أن الإعطاء بدون تخفيف ممكن في بعض الاستعمالات، لكن اختيار التركيز النهائي يبقى حسب الخطة والبروتوكول.'
+                    : 'The reviewed source indicates that undiluted administration may be acceptable in some uses, but the final concentration should follow the intended plan and protocol.'
+            };
+        }
+
+        function textSuggestsNoDilution(text = '') {
+            const normalized = String(text || '').toLowerCase();
+            return [
+                'do not dilute',
+                'as supplied',
+                'no dilution',
+                'لا يخفف',
+                'لا يُخفف',
+                'بدون تخفيف',
+                'يعطى مباشرة',
+                'يُعطى مباشرة',
+                'give direct'
+            ].some(token => normalized.includes(token));
+        }
+
+        function parsePreparationAmountVolume(text = '') {
+            const match = String(text || '').match(/(\d+(?:,\d{3})*(?:\.\d+)?)\s*(mg\s*pe|mg|mcg|ng|g|units?|u|meq|mmol)\s*\/\s*(\d+(?:,\d{3})*(?:\.\d+)?)\s*mL/i);
+            if (!match) return null;
+            return {
+                amount: Number(String(match[1]).replace(/,/g, '')),
+                amountUnit: normalizeAmountUnit(match[2]),
+                volumeMl: Number(String(match[3]).replace(/,/g, ''))
+            };
+        }
+
+        function parsePreparationConcentrationCandidates(text = '') {
+            const candidates = [];
+            const normalizedText = String(text || '');
+
+            [...normalizedText.matchAll(/(\d+(?:,\d{3})*(?:\.\d+)?)\s*(mg\s*pe|mg|mcg|ng|g|units?|u|meq|mmol)\s*\/\s*mL/gi)].forEach(match => {
+                candidates.push({
+                    value: Number(String(match[1]).replace(/,/g, '')),
+                    unit: `${normalizeAmountUnit(match[2])}/mL`,
+                    source: 'exact'
+                });
+            });
+
+            const rangeMatch = normalizedText.match(/(\d+(?:,\d{3})*(?:\.\d+)?)\s*(?:-|to)\s*(\d+(?:,\d{3})*(?:\.\d+)?)\s*(mg\s*pe|mg|mcg|ng|g|units?|u|meq|mmol)\s*\/\s*mL/i);
+            if (rangeMatch) {
+                candidates.push({
+                    value: Number(String(rangeMatch[2]).replace(/,/g, '')),
+                    unit: `${normalizeAmountUnit(rangeMatch[3])}/mL`,
+                    source: 'range-max'
+                });
+            }
+
+            const maxMatch = normalizedText.match(/max\s*(\d+(?:,\d{3})*(?:\.\d+)?)\s*(mg\s*pe|mg|mcg|ng|g|units?|u|meq|mmol)\s*\/\s*mL/i);
+            if (maxMatch) {
+                candidates.push({
+                    value: Number(String(maxMatch[1]).replace(/,/g, '')),
+                    unit: `${normalizeAmountUnit(maxMatch[2])}/mL`,
+                    source: 'max'
+                });
+            }
+
+            const percentMatch = normalizedText.match(/(\d+(?:\.\d+)?)\s*%/i);
+            if (percentMatch) {
+                candidates.push({
+                    value: Number(percentMatch[1]) * 10,
+                    unit: 'mg/mL',
+                    source: 'percent'
+                });
+            }
+
+            return candidates;
+        }
+
+        function getPreparationVolumeHints(drug) {
+            const text = [
+                drug?.dilution?.method || '',
+                drug?.dilution?.diluent || '',
+                ...(drug?.standard_concentrations || []).map(item => item?.desc || '')
+            ].join(' ');
+
+            return [...new Set(
+                [...text.matchAll(/(\d+(?:\.\d+)?)\s*mL/gi)]
+                    .map(match => Number(match[1]))
+                    .filter(value => Number.isFinite(value) && value > 0)
+            )];
+        }
+
+        function getDrugDiluentLabel(drug) {
+            if (!drug?.dilution) return getLocaleBundle().noDilutionNeeded || 'No dilution';
+            return isArabicLanguage()
+                ? (drug.dilution.diluent_ar || drug.dilution.diluent || '')
+                : (drug.dilution.diluent || drug.dilution.diluent_ar || '');
+        }
+
+        function isLikelyStockConcentrationItem(item) {
+            const desc = String(item?.desc || '').toLowerCase();
+            const volumeMatches = [...desc.matchAll(/(\d+(?:\.\d+)?)\s*ml/gi)]
+                .map(match => Number(match[1]))
+                .filter(value => Number.isFinite(value) && value > 0);
+            const smallestVolume = volumeMatches.length ? Math.min(...volumeMatches) : NaN;
+
+            if (/(vial|amp|ampoule|ampule|prefilled|syringe|cartridge|ready[\s-]?to[\s-]?use|%\b|emulsion|injection)/i.test(desc)) {
+                return !Number.isFinite(smallestVolume) || smallestVolume <= 20;
+            }
+
+            if (Number.isFinite(smallestVolume)) {
+                return smallestVolume <= 20;
+            }
+
+            return false;
+        }
+
+        function getStockConcentrationCandidates(drug) {
+            return (drug?.standard_concentrations || [])
+                .map(item => {
+                    const value = Number(item?.conc);
+                    const unit = String(item?.unit || '').trim();
+                    if (!Number.isFinite(value) || !unit) return null;
+
+                    return {
+                        value,
+                        unit,
+                        desc: String(item?.desc || '').trim(),
+                        likelyStock: isLikelyStockConcentrationItem(item)
+                    };
+                })
+                .filter(Boolean);
+        }
+
+        function getPreferredStockConcentrationCandidate(drug, mode = state.mode) {
+            const candidates = getStockConcentrationCandidates(drug);
+            if (!candidates.length) return null;
+
+            if (mode === 'bolus' || mode === 'intermittent') {
+                return candidates[0];
+            }
+
+            return candidates.find(candidate => candidate.likelyStock) || null;
+        }
+
+        function getDefaultStockConcentrationUnit(drug, plan = null, mode = state.mode) {
+            const preferred = getPreferredStockConcentrationCandidate(drug, mode);
+            if (preferred?.unit) return preferred.unit;
+
+            const amountUnit = normalizeAmountUnit(plan?.amountUnit || getAmountUnitFromDescriptor(plan?.concentration?.unit || ''));
+            return amountUnit ? `${amountUnit}/mL` : 'mg/mL';
+        }
+
+        function buildStockConcentrationHintText(drug, mode = state.mode) {
+            const candidates = (mode === 'bolus' || mode === 'intermittent')
+                ? getStockConcentrationCandidates(drug)
+                : getStockConcentrationCandidates(drug).filter(candidate => candidate.likelyStock);
+            const labels = [...new Set(candidates.slice(0, 4).map(candidate =>
+                candidate.desc || `${formatNumericValue(candidate.value, Math.max(0, getNumberPrecision(candidate.value)))} ${candidate.unit}`
+            ))];
+
+            if (currentLang === 'ar') {
+                if (labels.length) {
+                    return `أدخل تركيز الفيال/الأمبولة الموجود عندك. القيم المعروفة في البيانات الحالية: ${labels.join(' • ')}.`;
+                }
+                return 'أدخل تركيز الفيال/الأمبولة الموجود عندك، وسيتم حساب كمية السحب والتخفيف بناءً عليه.';
+            }
+
+            return labels.length
+                ? `Enter the vial/ampoule concentration you have. Known values in the current data: ${labels.join(' • ')}.`
+                : 'Enter the vial/ampoule concentration you have, and the calculator will derive the draw-up volume and dilution from it.';
+        }
+
+        function getSingleValueRangeData(value, unit = '') {
+            if (!Number.isFinite(value)) return null;
+            return { min: value, max: value, unit };
+        }
+
+        function calculateVolumeRangeFromAmountRange(amountRangeData, concentration) {
+            if (!amountRangeData || !concentration) return null;
+
+            const concentrationAmountUnit = getAmountUnitFromDescriptor(concentration.unit || '');
+            const convertedMin = convertAmountValue(amountRangeData.min, amountRangeData.unit, concentrationAmountUnit);
+            const convertedMax = convertAmountValue(amountRangeData.max, amountRangeData.unit, concentrationAmountUnit);
+
+            if (!Number.isFinite(convertedMin) || !Number.isFinite(convertedMax) || !Number.isFinite(concentration.value) || concentration.value <= 0) {
+                return null;
+            }
+
+            return {
+                min: convertedMin / concentration.value,
+                max: convertedMax / concentration.value,
+                unit: 'mL'
+            };
+        }
+
+        function getPreparationAmountRangeData(plan, durationMetrics = null) {
+            return durationMetrics?.requiredDrugRange || getSingleValueRangeData(plan?.amountValue, plan?.amountUnit || '');
+        }
+
+        function getPreparationFinalVolumeRangeData(plan, durationMetrics = null) {
+            return durationMetrics?.requiredVolumeRange || getSingleValueRangeData(plan?.finalVolumeMl, 'mL');
+        }
+
+        function getPreparationStockVolumeRangeData(plan, durationMetrics = null) {
+            if (!plan?.stockConcentration) return null;
+            return calculateVolumeRangeFromAmountRange(getPreparationAmountRangeData(plan, durationMetrics), plan.stockConcentration);
+        }
+
+        function getPreparationDiluentVolumeRangeData(plan, durationMetrics = null) {
+            if (!plan || plan.kind === 'undiluted') {
+                return getSingleValueRangeData(0, 'mL');
+            }
+
+            const finalVolumeRange = getPreparationFinalVolumeRangeData(plan, durationMetrics);
+            const stockVolumeRange = getPreparationStockVolumeRangeData(plan, durationMetrics);
+            if (!finalVolumeRange || !stockVolumeRange) return null;
+
+            return {
+                min: Math.max(0, finalVolumeRange.min - stockVolumeRange.min),
+                max: Math.max(0, finalVolumeRange.max - stockVolumeRange.max),
+                unit: 'mL'
+            };
+        }
+
+        function getStockConcentrationIssueText(plan) {
+            if (plan?.stockConcentrationCompatible !== false) return '';
+            return isArabicLanguage()
+                ? 'تركيز الفيال المدخل أقل من التركيز النهائي المطلوب، لذلك لا يمكن الوصول لهذه التحضيرة بالتخفيف فقط.'
+                : 'The entered vial concentration is lower than the required final concentration, so this preparation cannot be achieved by dilution alone.';
+        }
+
+        function buildPreparationInstruction(plan) {
+            if (!plan) return '';
+
+            const stockIssueText = getStockConcentrationIssueText(plan);
+            if (stockIssueText) return stockIssueText;
+
+            const amountText = Number.isFinite(plan.amountValue)
+                ? `${formatNumericValue(plan.amountValue, Math.max(0, getNumberPrecision(plan.amountValue)))} ${plan.amountUnit}`
+                : '';
+            const stockVolumeText = Number.isFinite(plan.stockVolumeMl)
+                ? `${formatNumericValue(plan.stockVolumeMl, Math.max(0, getNumberPrecision(plan.stockVolumeMl)))} mL`
+                : '';
+            const diluentVolumeText = Number.isFinite(plan.diluentVolumeMl)
+                ? `${formatNumericValue(plan.diluentVolumeMl, Math.max(0, getNumberPrecision(plan.diluentVolumeMl)))} mL`
+                : '';
+            const volumeText = Number.isFinite(plan.finalVolumeMl)
+                ? `${formatNumericValue(plan.finalVolumeMl, Math.max(0, getNumberPrecision(plan.finalVolumeMl)))} mL`
+                : '';
+            const hasStructuredVolume = !!(amountText && volumeText);
+
+            if (plan.kind === 'undiluted') {
+                if (amountText && stockVolumeText) {
+                    return isArabicLanguage()
+                        ? `اسحب ${stockVolumeText} من الفيال (${amountText}) وضعه مباشرة في syringe pump بدون diluent`
+                        : `Withdraw ${stockVolumeText} from the vial (${amountText}) and place it directly in a syringe pump with no diluent`;
+                }
+
+                return isArabicLanguage()
+                    ? `استخدم ${plan.drugName || ''} مباشرة في syringe pump بدون diluent`
+                    : `Use ${plan.drugName || 'the drug'} directly in a syringe pump with no diluent`;
+            }
+
+            if (hasStructuredVolume && amountText && stockVolumeText) {
+                if (diluentVolumeText) {
+                    return isArabicLanguage()
+                        ? `اسحب ${stockVolumeText} من الفيال (${amountText}) ثم أضف ${diluentVolumeText} من ${plan.diluentLabel} ليصبح الحجم النهائي ${volumeText}`
+                        : `Withdraw ${stockVolumeText} from the vial (${amountText}), then add ${diluentVolumeText} of ${plan.diluentLabel} to a final volume of ${volumeText}`;
+                }
+
+                return isArabicLanguage()
+                    ? `اسحب ${stockVolumeText} من الفيال (${amountText}) ثم أكمل بـ ${plan.diluentLabel} حتى يصبح الحجم النهائي ${volumeText}`
+                    : `Withdraw ${stockVolumeText} from the vial (${amountText}), then add ${plan.diluentLabel} up to a final volume of ${volumeText}`;
+            }
+
+            if (hasStructuredVolume) {
+                return isArabicLanguage()
+                    ? `أضف ${amountText} إلى ${volumeText} ${plan.diluentLabel}`
+                    : `Add ${amountText} to ${volumeText} ${plan.diluentLabel}`;
+            }
+
+            return isArabicLanguage()
+                ? `اتبع تعليمات التخفيف المذكورة لهذا الدواء`
+                : `Follow the listed dilution guidance for this drug`;
+        }
+
+        function getAutoConcentrationPlanKey(drug, mode, plan) {
+            return [
+                drug?.generic_name || '',
+                mode || '',
+                plan?.kind || '',
+                getDefaultStockConcentrationUnit(drug, plan, mode) || ''
+            ].join('|');
+        }
+
+        function syncAutoPreparationConcentrationInputs(plan, drug = state.drug, mode = state.mode, preserveCurrent = true) {
+            const section = document.getElementById('autoConcentrationSection');
+            const valueInput = document.getElementById('autoConcentrationInput');
+            const unitInput = document.getElementById('autoConcentrationUnit');
+            const hint = document.getElementById('autoConcentrationHint');
+
+            if (!section || !valueInput || !unitInput || !hint) return;
+
+            if (!plan?.concentration) {
+                section.style.display = 'none';
+                section.dataset.planKey = '';
+                valueInput.value = '';
+                unitInput.value = '';
+                hint.textContent = '';
+                return;
+            }
+
+            const nextPlanKey = getAutoConcentrationPlanKey(drug, mode, plan);
+            const previousPlanKey = section.dataset.planKey || '';
+            const currentValue = parseFloat(valueInput.value || '');
+            const shouldPreserve = preserveCurrent && previousPlanKey === nextPlanKey && Number.isFinite(currentValue) && currentValue > 0;
+            const preferredStock = getPreferredStockConcentrationCandidate(drug, mode);
+
+            if (!shouldPreserve) {
+                valueInput.value = Number.isFinite(preferredStock?.value)
+                    ? formatNumericValue(preferredStock.value, Math.max(0, getNumberPrecision(preferredStock.value)))
+                    : '';
+            }
+
+            unitInput.value = preferredStock?.unit || getDefaultStockConcentrationUnit(drug, plan, mode);
+            hint.textContent = buildStockConcentrationHintText(drug, mode);
+            section.dataset.planKey = nextPlanKey;
+            section.style.display = state.calculatorMode === 'auto' ? 'block' : 'none';
+        }
+
+        function getAutoPreparationConcentrationObject(defaultPlan = null, drug = state.drug, mode = state.mode) {
+            const valueInput = document.getElementById('autoConcentrationInput');
+            const unitInput = document.getElementById('autoConcentrationUnit');
+            const parsedValue = parseFloat(valueInput?.value || '');
+            const defaultCandidate = getPreferredStockConcentrationCandidate(drug, mode);
+            const unit = String(unitInput?.value || defaultCandidate?.unit || getDefaultStockConcentrationUnit(drug, defaultPlan, mode) || '').trim();
+
+            if (Number.isFinite(parsedValue) && parsedValue > 0 && unit) {
+                return { value: parsedValue, unit };
+            }
+
+            if (defaultCandidate?.unit && Number.isFinite(Number(defaultCandidate.value))) {
+                return {
+                    value: Number(defaultCandidate.value),
+                    unit: defaultCandidate.unit
+                };
+            }
+
+            return null;
+        }
+
+        function applyAutoPreparationConcentration(plan, drug = state.drug, mode = state.mode) {
+            if (!plan?.concentration) return plan;
+
+            const stockConcentration = getAutoPreparationConcentrationObject(plan, drug, mode);
+            if (!stockConcentration) return null;
+
+            const adjustedPlan = {
+                ...plan,
+                stockConcentration: {
+                    value: Number(stockConcentration.value),
+                    unit: stockConcentration.unit
+                }
+            };
+            const stockAmountUnit = getAmountUnitFromDescriptor(stockConcentration.unit);
+            const convertedAmount = convertAmountValue(plan.amountValue, plan.amountUnit, stockAmountUnit);
+
+            if (Number.isFinite(convertedAmount) && stockConcentration.value > 0) {
+                adjustedPlan.stockVolumeMl = convertedAmount / stockConcentration.value;
+            }
+
+            if (adjustedPlan.kind === 'undiluted') {
+                adjustedPlan.concentration = {
+                    value: Number(stockConcentration.value),
+                    unit: stockConcentration.unit
+                };
+
+                if (Number.isFinite(adjustedPlan.stockVolumeMl)) {
+                    adjustedPlan.finalVolumeMl = adjustedPlan.stockVolumeMl;
+                    adjustedPlan.diluentVolumeMl = 0;
+                }
+            } else {
+                if (Number.isFinite(adjustedPlan.finalVolumeMl) && Number.isFinite(adjustedPlan.stockVolumeMl)) {
+                    adjustedPlan.diluentVolumeMl = adjustedPlan.finalVolumeMl - adjustedPlan.stockVolumeMl;
+                    adjustedPlan.stockConcentrationCompatible = adjustedPlan.stockVolumeMl <= adjustedPlan.finalVolumeMl + 0.0000001;
+                } else {
+                    adjustedPlan.stockConcentrationCompatible = true;
+                }
+            }
+
+            adjustedPlan.instruction = buildPreparationInstruction(adjustedPlan);
+            return adjustedPlan;
+        }
+
+        function getResolvedAutoPreparationPlan(drug, mode) {
+            const basePlan = buildAutoPreparationPlan(drug, mode);
+            if (!basePlan) return null;
+            return applyAutoPreparationConcentration(basePlan, drug, mode);
+        }
+
+        function choosePreparationConcentration(drug) {
+            const fromStandards = [];
+            (drug?.standard_concentrations || []).forEach(item => {
+                if (Number.isFinite(Number(item?.conc)) && item?.unit) {
+                    fromStandards.push({
+                        value: Number(item.conc),
+                        unit: item.unit,
+                        source: 'standard'
+                    });
+                }
+                parsePreparationConcentrationCandidates(item?.desc || '').forEach(candidate => fromStandards.push(candidate));
+            });
+
+            const fromLimits = parsePreparationConcentrationCandidates(drug?.dilution?.limits || '');
+            return fromLimits[0] || fromStandards[0] || null;
+        }
+
+        function buildAutoPreparationPlan(drug, mode) {
+            if (!drug || !mode) return null;
+
+            const override = autoPreparationOverrides[drug.generic_name]?.[mode] || null;
+            const dilutionText = getDilutionText(drug, false);
+            const directUse = override?.kind === 'undiluted' || textSuggestsNoDilution(dilutionText) || textSuggestsNoDilution(getDilutionText(drug, true));
+            const diluentLabel = directUse ? (getLocaleBundle().noDilutionNeeded || 'No dilution') : (getDrugDiluentLabel(drug) || (getLocaleBundle().noDilutionNeeded || 'No dilution'));
+
+            let amountValue = null;
+            let amountUnit = '';
+            let finalVolumeMl = null;
+            let concentration = null;
+
+            if (override) {
+                amountValue = Number(override.amount);
+                amountUnit = override.amountUnit;
+                finalVolumeMl = Number(override.volumeMl);
+                concentration = {
+                    value: Number(override.concentrationValue),
+                    unit: override.concentrationUnit
+                };
+            } else {
+                const exactStandard = (drug.standard_concentrations || [])
+                    .map(item => parsePreparationAmountVolume(item?.desc || ''))
+                    .find(Boolean);
+
+                if (exactStandard) {
+                    amountValue = exactStandard.amount;
+                    amountUnit = exactStandard.amountUnit;
+                    finalVolumeMl = exactStandard.volumeMl;
+                    concentration = {
+                        value: exactStandard.amount / exactStandard.volumeMl,
+                        unit: `${exactStandard.amountUnit}/mL`
+                    };
+                } else {
+                    const selectedConcentration = choosePreparationConcentration(drug);
+                    const volumeHint = getPreparationVolumeHints(drug)[0] || null;
+
+                    if (selectedConcentration && volumeHint && !directUse) {
+                        amountValue = selectedConcentration.value * volumeHint;
+                        amountUnit = getAmountUnitFromDescriptor(selectedConcentration.unit);
+                        finalVolumeMl = volumeHint;
+                        concentration = {
+                            value: selectedConcentration.value,
+                            unit: selectedConcentration.unit
+                        };
+                    } else if (selectedConcentration) {
+                        concentration = {
+                            value: selectedConcentration.value,
+                            unit: selectedConcentration.unit
+                        };
+                    }
+                }
+            }
+
+            if (!concentration) return null;
+            const practiceAdvice = getPreparationPracticeAdvice(drug, mode, { kind: directUse ? 'undiluted' : 'diluted' });
+            const plan = {
+                drugName: getDrugDisplayName(drug),
+                kind: directUse ? 'undiluted' : 'diluted',
+                diluentLabel,
+                amountValue,
+                amountUnit,
+                finalVolumeMl,
+                concentration,
+                preparationAdviceLevel: practiceAdvice?.level || '',
+                preparationAdviceText: practiceAdvice?.text || ''
+            };
+            plan.instruction = buildPreparationInstruction(plan);
+            return plan;
+        }
+
+        function renderAutoPreparationPanel(plan = null) {
+            const panel = document.getElementById('autoPreparationPanel');
+            if (!panel) return;
+
+            const t = getLocaleBundle();
+            const isAr = isArabicLanguage();
+            const panelTitle = t.autoPreparation || t.autoPreparationPreview || 'Auto Preparation';
+            const preparationTitle = isAr ? 'التحضير' : 'Preparation';
+            const administrationTitle = isAr ? 'الإعطاء للمريض' : 'Administration for Patient';
+            const effectiveContext = getEffectiveDrugContext(state.drug);
+            const activeDrug = effectiveContext ? effectiveContext.drug : state.drug;
+            const durationMetrics = buildAutoPreparationDurationMetrics(activeDrug, state.mode, plan, state.weight);
+            const preparationState = getAutoPreparationDisplayState(plan, null);
+            const administrationItems = buildAutoPreparationAdministrationItems(activeDrug, state.mode, state.weight, plan, durationMetrics);
+
+            if (plan?.unavailable) {
+                panel.classList.add('is-empty');
+                panel.innerHTML = `
+                    <div class="auto-prep-title">${escapeHtml(panelTitle)}</div>
+                    <div class="auto-prep-main">${escapeHtml(t.preparationUnavailable || 'No structured preparation formula is available for this drug/mode yet.')}</div>
+                `;
+                return;
+            }
+
+            if (!plan) {
+                panel.classList.add('is-empty');
+                panel.innerHTML = `
+                    <div class="auto-prep-title">${escapeHtml(panelTitle)}</div>
+                    <div class="auto-prep-main">${escapeHtml(t.autoPreparationHint || 'Choose the route and mode, then calculate to get the recommended drug amount, dilution, and details.')}</div>
+                `;
+                return;
+            }
+
+            panel.classList.remove('is-empty');
+            const captionParts = [];
+            const durationRequirementParts = [];
+
+            if (durationMetrics?.coverageRange) {
+                captionParts.push(`${t.preparationCoverage || 'Preparation Coverage'}: ${formatDurationText(Math.round(durationMetrics.coverageRange.min * 60))} ${getRangeJoiner()} ${formatDurationText(Math.round(durationMetrics.coverageRange.max * 60))}`);
+            }
+
+            if (Number.isFinite(durationMetrics?.durationTotalMinutes)) {
+                captionParts.push(`${t.desiredDuration || 'Desired Duration'}: ${formatDurationText(durationMetrics.durationTotalMinutes)}`);
+            }
+
+            if (preparationState.stockIssueText) {
+                durationRequirementParts.push(`${t.warningsLabel || 'Warnings'}: ${preparationState.stockIssueText}`);
+            }
+
+            if (plan.preparationAdviceText) {
+                durationRequirementParts.push(`${t.preparationAdvice || 'Preparation Advice'}: ${plan.preparationAdviceText}`);
+            }
+
+            const preparationItems = [
+                { label: t.amountToAdd || 'Drug Amount', value: preparationState.amountText },
+                { label: t.stockConcentration || 'Vial / Ampoule Concentration', value: preparationState.stockConcentrationText },
+                { label: t.withdrawVolume || 'Withdraw Volume', value: preparationState.stockVolumeText },
+                { label: t.diluent || 'Diluent', value: plan.diluentLabel || (t.noDilutionNeeded || 'No dilution') },
+                { label: t.diluentVolume || 'Diluent Volume', value: preparationState.diluentVolumeText },
+                { label: t.finalVolume || 'Final Volume', value: preparationState.volumeText },
+                { label: t.finalPreparationConcentration || t.resConc || 'Concentration', value: preparationState.finalConcentrationText }
+            ].filter(item => item.value && item.value !== '-');
+
+            panel.innerHTML = `
+                <div class="auto-prep-title">${escapeHtml(panelTitle)}</div>
+                <div class="auto-prep-main">${escapeHtml(preparationState.instruction)}</div>
+                ${captionParts.length ? `<div class="auto-prep-caption">${escapeHtml(captionParts.join(' • '))}</div>` : ''}
+                ${durationRequirementParts.length ? `<div class="auto-prep-caption">${escapeHtml(durationRequirementParts.join(' • '))}</div>` : ''}
+                ${preparationItems.length ? `
+                <div class="auto-prep-section-title">${escapeHtml(preparationTitle)}</div>
+                <div class="auto-prep-grid">
+                    ${preparationItems.map(item => `
+                    <div class="auto-prep-item">
+                        <span class="auto-prep-item-label">${escapeHtml(item.label)}</span>
+                        <span class="auto-prep-item-value">${escapeHtml(item.value)}</span>
+                    </div>
+                    `).join('')}
+                </div>
+                ` : ''}
+                ${administrationItems.length ? `<div class="auto-prep-section-title">${escapeHtml(administrationTitle)}</div>` : ''}
+                ${administrationItems.length ? `
+                <div class="auto-prep-grid">
+                    ${administrationItems.map(item => `
+                    <div class="auto-prep-item">
+                        <span class="auto-prep-item-label">${escapeHtml(item.label)}</span>
+                        <span class="auto-prep-item-value">${escapeHtml(item.value)}</span>
+                    </div>
+                    `).join('')}
+                </div>
+                ` : ''}
+            `;
+        }
+
         function updateRouteOptions(drug = state.drug) {
             const select = document.getElementById('routeSelect');
             if (!select) return;
@@ -9276,6 +11286,7 @@
                 drugId: state.drug.id,
                 drug: state.drug.generic_name,
                 clinicalUse: state.clinicalUse || '',
+                calculatorMode: state.calculatorMode || 'manual',
                 mode: state.mode,
                 route: state.route || 'IV',
                 doseIndex: state.doseIndex,
@@ -9285,6 +11296,10 @@
                 loadDoseLabel: state.loadDose ? formatDoseLabel(state.loadDose) : '',
                 maintDoseLabel: state.maintDose ? formatDoseLabel(state.maintDose) : '',
                 interval: document.getElementById('intervalSelect').value || '',
+                autoDurationHours: document.getElementById('autoDurationHoursInput').value || '',
+                autoDurationMinutes: document.getElementById('autoDurationMinutesInput').value || '',
+                autoConcentration: document.getElementById('autoConcentrationInput').value || '',
+                bolusConcentration: document.getElementById('bolusConcentrationInput').value || '',
                 drugAmount: document.getElementById('drugAmount').value || '',
                 fluidVolume: document.getElementById('fluidVolume').value || '',
                 deliveryMethod: document.getElementById('pumpSelect').value || 'pump',
@@ -9353,8 +11368,28 @@
                 setMode(preset.mode);
             }
 
+            setCalculatorMode(preset.calculatorMode || 'manual');
+
             document.getElementById('drugAmount').value = preset.drugAmount || '';
             document.getElementById('fluidVolume').value = preset.fluidVolume || '';
+            populatePreparationDurationInputs(preset.autoDurationHours || '', preset.autoDurationMinutes || '');
+            if (state.calculatorMode === 'auto' && state.drug && state.mode) {
+                const effectiveContextForPreset = getEffectiveDrugContext(state.drug);
+                const activeDrugForPreset = effectiveContextForPreset ? effectiveContextForPreset.drug : state.drug;
+                const presetBasePlan = buildAutoPreparationPlan(activeDrugForPreset, state.mode);
+                syncAutoPreparationConcentrationInputs(presetBasePlan, activeDrugForPreset, state.mode, false);
+                if (preset.autoConcentration) {
+                    document.getElementById('autoConcentrationInput').value = preset.autoConcentration;
+                }
+            }
+            if ((state.mode === 'bolus' || state.mode === 'intermittent') && state.drug) {
+                const effectiveContextForPreset = getEffectiveDrugContext(state.drug);
+                const activeDrugForPreset = effectiveContextForPreset ? effectiveContextForPreset.drug : state.drug;
+                syncBolusConcentrationInputs(activeDrugForPreset, state.mode, false);
+                if (preset.bolusConcentration) {
+                    document.getElementById('bolusConcentrationInput').value = preset.bolusConcentration;
+                }
+            }
             document.getElementById('pumpSelect').value = preset.deliveryMethod || 'pump';
             document.getElementById('dropFactorInput').value = preset.dropFactor || '20';
             checkPumpWarning();
@@ -9363,14 +11398,14 @@
                 document.getElementById('intervalSelect').value = preset.interval;
             }
 
-            if (state.mode === 'loading') {
+            if (state.calculatorMode !== 'auto' && state.mode === 'loading') {
                 if (preset.loadDoseIndex !== null && preset.loadDoseIndex !== undefined && document.getElementById(`load-${preset.loadDoseIndex}`)) {
                     selectDose('load', preset.loadDoseIndex);
                 }
                 if (preset.maintDoseIndex !== null && preset.maintDoseIndex !== undefined && document.getElementById(`maint-${preset.maintDoseIndex}`)) {
                     selectDose('maint', preset.maintDoseIndex);
                 }
-            } else if (preset.doseIndex !== null && preset.doseIndex !== undefined && document.getElementById(`dose-${preset.doseIndex}`)) {
+            } else if (state.calculatorMode !== 'auto' && preset.doseIndex !== null && preset.doseIndex !== undefined && document.getElementById(`dose-${preset.doseIndex}`)) {
                 selectDose('dose', preset.doseIndex);
             }
 
@@ -9546,6 +11581,210 @@
             const parts = [];
             if (effectiveContext?.source) parts.push(effectiveContext.source);
             return [...new Set(parts)].join(' | ');
+        }
+
+        function getReferenceCatalogText() {
+            if (currentLang === 'ar') {
+                return {
+                    overview: 'ملخص المراجع',
+                    allLinks: 'كل روابط المصادر المستخدمة',
+                    drugCatalog: 'فهرس الأدوية ومصادرها',
+                    totalDrugs: 'إجمالي الأدوية',
+                    reviewed: 'موثّق رسميًا',
+                    partial: 'مراجعة جزئية',
+                    pending: 'قيد المراجعة',
+                    sourceNote: 'ملخص المصدر',
+                    sourceLinks: 'روابط المصدر',
+                    populationSources: 'مراجع الفئات',
+                    clinicalSources: 'مراجع الاستعمالات السريرية',
+                    noOfficialLink: 'لا يوجد رابط مصدر رسمي مضاف لهذا الدواء حاليًا.',
+                    lastReviewed: 'آخر تحديث للمراجع',
+                    version: 'إصدار الفهرس'
+                };
+            }
+
+            return {
+                overview: 'Reference Overview',
+                allLinks: 'All Source Links Used',
+                drugCatalog: 'Drug Source Catalog',
+                totalDrugs: 'Total Drugs',
+                reviewed: 'Officially Reviewed',
+                partial: 'Partially Reviewed',
+                pending: 'Pending Review',
+                sourceNote: 'Source Summary',
+                sourceLinks: 'Source Links',
+                populationSources: 'Population Sources',
+                clinicalSources: 'Clinical Use Sources',
+                noOfficialLink: 'No official source link has been added for this drug yet.',
+                lastReviewed: 'Last reviewed',
+                version: 'Catalog version'
+            };
+        }
+
+        function getSourceEntryKey(label, value) {
+            return `${String(label || '').trim()}|${String(value || '').trim()}`;
+        }
+
+        function pushUniqueSourceEntry(entries, seen, label, value) {
+            const trimmedValue = String(value || '').trim();
+            if (!trimmedValue) return;
+
+            const entryKey = getSourceEntryKey(label, trimmedValue);
+            if (seen.has(entryKey)) return;
+            seen.add(entryKey);
+            entries.push({ label, value: trimmedValue });
+        }
+
+        function getDrugReferenceEntry(drug) {
+            const sourceLinkSet = new Set();
+            const sourceLinks = (Array.isArray(drug?.sources) ? drug.sources : [])
+                .map(item => String(item || '').trim())
+                .filter(item => {
+                    if (!item || sourceLinkSet.has(item)) return false;
+                    sourceLinkSet.add(item);
+                    return true;
+                });
+
+            const populationSources = [];
+            const populationSeen = new Set();
+            Object.entries(drug?.population_rules || {}).forEach(([ageGroup, ageRule]) => {
+                const localeBundle = getLocaleBundle();
+                const ageKeyMap = { term_neonate: 'termNeonate', preterm_neonate: 'pretermNeonate' };
+                const ageLabel = localeBundle[ageKeyMap[ageGroup] || ageGroup] || ageGroup;
+                const ageDefaultSource = ageRule?.default?.source || '';
+                pushUniqueSourceEntry(populationSources, populationSeen, ageLabel, ageDefaultSource);
+
+                ['male', 'female'].forEach(sexKey => {
+                    const sexSource = ageRule?.[sexKey]?.source || '';
+                    const sexLabel = `${getPopulationProfileLabel(currentLang, ageGroup, sexKey)}`;
+                    pushUniqueSourceEntry(populationSources, populationSeen, sexLabel, sexSource);
+                });
+            });
+
+            const clinicalSources = [];
+            const clinicalSeen = new Set();
+            Object.entries(drug?.clinical_uses || {}).forEach(([useKey, useConfig]) => {
+                pushUniqueSourceEntry(
+                    clinicalSources,
+                    clinicalSeen,
+                    getClinicalUseLabel(useKey, drug),
+                    useConfig?.source || ''
+                );
+            });
+
+            return {
+                drug,
+                name: getDrugDisplayName(drug),
+                reviewStatus: drug?.review_status || 'pending',
+                reviewLabel: getOfficialReviewStatusLabel(drug),
+                sourceNote: drug?.source_note || '',
+                sourceLinks,
+                populationSources,
+                clinicalSources
+            };
+        }
+
+        function renderReferenceLinkList(items = []) {
+            if (!items.length) return '';
+
+            return `
+                <ul class="reference-link-list">
+                    ${items.map(item => `<li><a href="${escapeHtml(item)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item)}</a></li>`).join('')}
+                </ul>
+            `;
+        }
+
+        function renderReferenceSourceList(items = []) {
+            if (!items.length) return '';
+
+            return `
+                <ul class="reference-source-list">
+                    ${items.map(item => `<li><strong>${escapeHtml(item.label)}:</strong> ${escapeHtml(item.value)}</li>`).join('')}
+                </ul>
+            `;
+        }
+
+        function renderReferencesModalContent() {
+            const container = document.getElementById('referencesCatalog');
+            if (!container) return;
+
+            const t = getReferenceCatalogText();
+            const entries = [...drugDatabase]
+                .map(drug => getDrugReferenceEntry(drug))
+                .sort((first, second) => first.name.localeCompare(second.name, currentLang === 'ar' ? 'ar' : 'en'));
+            const reviewedCount = entries.filter(entry => entry.reviewStatus === 'reviewed').length;
+            const partialCount = entries.filter(entry => entry.reviewStatus === 'partial').length;
+            const pendingCount = entries.length - reviewedCount - partialCount;
+            const uniqueLinks = [...new Set(entries.flatMap(entry => entry.sourceLinks))];
+
+            container.lang = currentLang;
+            container.dir = rtlLanguages.has(currentLang) ? 'rtl' : 'ltr';
+            container.innerHTML = `
+                <div class="reference-section">
+                    <h3 class="reference-section-title">${escapeHtml(t.overview)}</h3>
+                    <div class="reference-summary-grid">
+                        <div class="reference-summary-card">
+                            <span class="reference-summary-label">${escapeHtml(t.totalDrugs)}</span>
+                            <strong class="reference-summary-value">${entries.length}</strong>
+                        </div>
+                        <div class="reference-summary-card">
+                            <span class="reference-summary-label">${escapeHtml(t.reviewed)}</span>
+                            <strong class="reference-summary-value">${reviewedCount}</strong>
+                        </div>
+                        <div class="reference-summary-card">
+                            <span class="reference-summary-label">${escapeHtml(t.partial)}</span>
+                            <strong class="reference-summary-value">${partialCount}</strong>
+                        </div>
+                        <div class="reference-summary-card">
+                            <span class="reference-summary-label">${escapeHtml(t.pending)}</span>
+                            <strong class="reference-summary-value">${pendingCount}</strong>
+                        </div>
+                    </div>
+                    <div class="contact-modal-meta">
+                        <div><strong>${escapeHtml(t.lastReviewed)}:</strong> March 2026</div>
+                        <div><strong>${escapeHtml(t.version)}:</strong> 2.0</div>
+                    </div>
+                </div>
+                <div class="reference-section">
+                    <h3 class="reference-section-title">${escapeHtml(t.allLinks)}</h3>
+                    ${renderReferenceLinkList(uniqueLinks)}
+                </div>
+                <div class="reference-section">
+                    <h3 class="reference-section-title">${escapeHtml(t.drugCatalog)}</h3>
+                    <div class="reference-drug-list">
+                        ${entries.map(entry => `
+                            <details class="reference-drug-card">
+                                <summary>
+                                    <div class="reference-drug-header">
+                                        <div class="reference-drug-name">${escapeHtml(entry.name)}</div>
+                                        <div class="reference-drug-meta">${escapeHtml(entry.drug.class || '-')}</div>
+                                    </div>
+                                    <span class="reference-status ${escapeHtml(entry.reviewStatus)}">${escapeHtml(entry.reviewLabel)}</span>
+                                </summary>
+                                <div class="reference-drug-body">
+                                    <div class="reference-drug-note"><strong>${escapeHtml(t.sourceNote)}:</strong> ${escapeHtml(entry.sourceNote || '-')}</div>
+                                    <div>
+                                        <strong>${escapeHtml(t.sourceLinks)}:</strong>
+                                        ${entry.sourceLinks.length ? renderReferenceLinkList(entry.sourceLinks) : `<div class="reference-drug-empty">${escapeHtml(t.noOfficialLink)}</div>`}
+                                    </div>
+                                    ${entry.populationSources.length ? `
+                                    <div>
+                                        <strong>${escapeHtml(t.populationSources)}:</strong>
+                                        ${renderReferenceSourceList(entry.populationSources)}
+                                    </div>
+                                    ` : ''}
+                                    ${entry.clinicalSources.length ? `
+                                    <div>
+                                        <strong>${escapeHtml(t.clinicalSources)}:</strong>
+                                        ${renderReferenceSourceList(entry.clinicalSources)}
+                                    </div>
+                                    ` : ''}
+                                </div>
+                            </details>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
         }
 
         function getPopulationContext(drug) {
@@ -10290,40 +12529,38 @@
             const routeSelect = document.getElementById('routeSelect');
             const clinicalUseSelect = document.getElementById('clinicalUseSelect');
             const intervalSelect = document.getElementById('intervalSelect');
-            const bolusConcSelect = document.getElementById('bolusConcSelect');
+            const bolusConcentrationInput = document.getElementById('bolusConcentrationInput');
             const resultsContainer = document.getElementById('resultsContainer');
             const hadVisibleResults = resultsContainer && getComputedStyle(resultsContainer).display !== 'none';
             const previousScrollY = window.scrollY;
             const previousInterval = intervalSelect ? intervalSelect.value : '';
-            const previousBolusConc = bolusConcSelect ? bolusConcSelect.value : '';
+            const previousBolusConc = bolusConcentrationInput ? bolusConcentrationInput.value : '';
 
             if (routeSelect) routeSelect.value = state.route || 'IV';
             if (clinicalUseSelect) clinicalUseSelect.value = state.clinicalUse || '';
 
+            updateCalculatorModeButtons();
             updateModeButtons();
             updateFavoriteButton();
 
             if (state.drug && state.mode) {
                 updateUI();
 
-                if (state.mode === 'loading') {
+                if (state.calculatorMode !== 'auto' && state.mode === 'loading') {
                     if (state.loadDoseIndex !== null && state.loadDoseIndex !== undefined && document.getElementById(`load-${state.loadDoseIndex}`)) {
                         selectDose('load', state.loadDoseIndex);
                     }
                     if (state.maintDoseIndex !== null && state.maintDoseIndex !== undefined && document.getElementById(`maint-${state.maintDoseIndex}`)) {
                         selectDose('maint', state.maintDoseIndex);
                     }
-                } else if (state.doseIndex !== null && state.doseIndex !== undefined && document.getElementById(`dose-${state.doseIndex}`)) {
+                } else if (state.calculatorMode !== 'auto' && state.doseIndex !== null && state.doseIndex !== undefined && document.getElementById(`dose-${state.doseIndex}`)) {
                     selectDose('dose', state.doseIndex);
                 } else {
                     validate();
                 }
 
-                if ((state.mode === 'bolus' || state.mode === 'intermittent') && bolusConcSelect && previousBolusConc) {
-                    const hasMatchingConcentration = [...bolusConcSelect.options].some(option => option.value === previousBolusConc);
-                    if (hasMatchingConcentration) {
-                        bolusConcSelect.value = previousBolusConc;
-                    }
+                if ((state.mode === 'bolus' || state.mode === 'intermittent') && bolusConcentrationInput && previousBolusConc) {
+                    bolusConcentrationInput.value = previousBolusConc;
                 }
 
                 if (state.mode === 'intermittent' && intervalSelect && previousInterval) {
@@ -10373,6 +12610,7 @@
             refreshSelectionSafetyNotice();
             renderSafetyAlerts();
             syncDrugListWithSearch(true);
+            renderReferencesModalContent();
             syncEnhancedSelectTriggers();
             updateWorkflowToggleButtons();
             if (numberPickerState.active) {
@@ -10472,49 +12710,21 @@
 
         // ==================== UI LOGIC ====================
         function updateUI() {
-            ['doseSection', 'loadingSection', 'maintenanceSection', 'intervalSection', 'infusionFields', 'bolusConcSection', 'pumpSection', 'dropFactorSection'].forEach(id => document.getElementById(id).style.display = 'none');
+            ['doseSection', 'loadingSection', 'maintenanceSection', 'intervalSection', 'infusionFields', 'bolusConcSection', 'pumpSection', 'dropFactorSection', 'autoPreparationPanel', 'autoConcentrationSection', 'autoDurationSection'].forEach(id => document.getElementById(id).style.display = 'none');
+            updateCalculatorModeButtons();
             if (!state.drug || !state.mode) {
+                syncAutoPreparationConcentrationInputs(null);
+                renderAutoPreparationPanel(null);
                 syncEnhancedSelectTriggers();
                 validate();
                 return;
             }
 
-            const isAr = isArabicLanguage();
-            const t = getLocaleBundle();
             const effectiveContext = getEffectiveDrugContext(state.drug);
             const activeDrug = effectiveContext ? effectiveContext.drug : state.drug;
-            
-            if (state.mode === 'bolus' || state.mode === 'infusion' || state.mode === 'intermittent') {
-                const doseKey = state.mode + '_dose_range';
-                if (activeDrug[doseKey] && activeDrug[doseKey].length > 0) {
-                    const container = document.getElementById('doseOptions');
-                    container.innerHTML = '';
-                    activeDrug[doseKey].forEach((d, i) => {
-                        const label = `${t[d.level]}`;
-                        container.innerHTML += `<div class="dose-option" onclick="selectDose('dose', ${i})" id="dose-${i}"><span class="dose-option-label">${label}</span><span class="dose-option-dose">${renderMeasuredValue(d.dose, d.unit)}</span></div>`;
-                    });
-                    document.getElementById('doseSection').style.display = 'block';
-                }
-            }
-
-            if (state.mode === 'loading') {
-                if (activeDrug.loading_dose_range && activeDrug.loading_dose_range.length > 0) {
-                    const container = document.getElementById('loadingOptions');
-                    container.innerHTML = '';
-                    activeDrug.loading_dose_range.forEach((d, i) => {
-                        container.innerHTML += `<div class="dose-option" onclick="selectDose('load', ${i})" id="load-${i}"><span class="dose-option-label">${t[d.level]}</span><span class="dose-option-dose">${renderMeasuredValue(d.dose, d.unit)}</span></div>`;
-                    });
-                    document.getElementById('loadingSection').style.display = 'block';
-                }
-                if (activeDrug.maintenance_dose_range && activeDrug.maintenance_dose_range.length > 0) {
-                    const container = document.getElementById('maintenanceOptions');
-                    container.innerHTML = '';
-                    activeDrug.maintenance_dose_range.forEach((d, i) => {
-                        container.innerHTML += `<div class="dose-option" onclick="selectDose('maint', ${i})" id="maint-${i}"><span class="dose-option-label">${t[d.level]}</span><span class="dose-option-dose">${renderMeasuredValue(d.dose, d.unit)}</span></div>`;
-                    });
-                    document.getElementById('maintenanceSection').style.display = 'block';
-                }
-            }
+            document.getElementById('doseOptions').innerHTML = '';
+            document.getElementById('loadingOptions').innerHTML = '';
+            document.getElementById('maintenanceOptions').innerHTML = '';
 
             if (state.mode === 'intermittent' && activeDrug.intermittent_intervals_supported) {
                 const container = document.getElementById('intervalSelect');
@@ -10524,6 +12734,19 @@
                 syncEnhancedSelectTrigger(container);
             }
 
+            if (state.calculatorMode === 'auto') {
+                const baseAutoPlan = buildAutoPreparationPlan(activeDrug, state.mode);
+                syncAutoPreparationConcentrationInputs(baseAutoPlan, activeDrug, state.mode, true);
+                document.getElementById('resultsContainer').style.display = 'none';
+                document.getElementById('autoPreparationPanel').style.display = 'none';
+                document.getElementById('autoConcentrationSection').style.display = baseAutoPlan ? 'block' : 'none';
+                document.getElementById('autoDurationSection').style.display = isAutoDurationMode(state.mode) ? 'block' : 'none';
+                renderAutoPreparationPanel(null);
+                syncEnhancedSelectTriggers();
+                validate();
+                return;
+            }
+
             if (state.mode === 'infusion' || state.mode === 'loading') {
                 document.getElementById('infusionFields').style.display = 'grid';
                 document.getElementById('pumpSection').style.display = 'block';
@@ -10531,14 +12754,11 @@
             }
 
             if (state.mode === 'bolus' || state.mode === 'intermittent') {
-                if (activeDrug.standard_concentrations) {
-                    const container = document.getElementById('bolusConcSelect');
-                    container.innerHTML = '';
-                    activeDrug.standard_concentrations.forEach(c => container.innerHTML += `<option value='${JSON.stringify(c)}'>${c.desc}</option>`);
-                    document.getElementById('bolusConcSection').style.display = 'block';
-                    syncEnhancedSelectTrigger(container);
-                }
+                syncBolusConcentrationInputs(activeDrug, state.mode, true);
+                document.getElementById('bolusConcSection').style.display = 'block';
             }
+            syncAutoPreparationConcentrationInputs(null);
+            renderAutoPreparationPanel(null);
             syncEnhancedSelectTriggers();
             validate();
         }
@@ -10617,6 +12837,19 @@
             }
         }
 
+        function handlePreparationDurationInput(event) {
+            const input = event?.target;
+            if (input && String(input.value || '').includes('-')) {
+                input.value = '';
+            }
+            normalizePreparationDurationInputs();
+            if (state.calculatorMode === 'auto') {
+                document.getElementById('resultsContainer').style.display = 'none';
+            }
+
+            validate();
+        }
+
         function validate() {
             const w = getValidatedWeightValue();
             state.weight = w;
@@ -10624,10 +12857,38 @@
             state.ageGroup = document.getElementById('ageGroupSelect').value || 'adult';
             state.route = document.getElementById('routeSelect').value || 'IV';
             state.clinicalUse = document.getElementById('clinicalUseSelect').value || '';
+            const effectiveContext = getEffectiveDrugContext(state.drug);
+            const activeDrug = effectiveContext ? effectiveContext.drug : state.drug;
+            const doseRange = getModeDoseRange(activeDrug, state.mode, 'dose');
+            const loadingRange = getModeDoseRange(activeDrug, state.mode, 'load');
+            const maintenanceRange = getModeDoseRange(activeDrug, state.mode, 'maint');
+
             let valid = w > 0 && state.drug && state.mode;
-            if (state.mode === 'loading') valid = valid && state.loadDose && state.maintDose;
-            else valid = valid && state.dose;
-            if (state.mode === 'infusion' || state.mode === 'loading') valid = valid && document.getElementById('drugAmount').value && document.getElementById('fluidVolume').value;
+            if (state.calculatorMode === 'auto') {
+                const baseAutoPlan = buildAutoPreparationPlan(activeDrug, state.mode);
+                const autoPlan = getResolvedAutoPreparationPlan(activeDrug, state.mode);
+                valid = valid && !!autoPlan;
+                if (state.mode === 'intermittent') {
+                    valid = valid && !!document.getElementById('intervalSelect').value;
+                }
+                document.getElementById('resultsContainer').style.display = 'none';
+            } else {
+                if (state.mode === 'loading') {
+                    valid = valid && loadingRange.length > 0 && maintenanceRange.length > 0;
+                } else {
+                    valid = valid && doseRange.length > 0;
+                }
+
+                if (state.mode === 'infusion' || state.mode === 'loading') {
+                    const concentration = getManualConcentrationObject();
+                    valid = valid && !!concentration;
+                }
+
+                if ((state.mode === 'bolus' || state.mode === 'intermittent')) {
+                    valid = valid && !!getBolusConcentrationObject(activeDrug, state.mode);
+                }
+            }
+
             document.getElementById('calcBtn').disabled = !valid;
             renderSelectionSummary();
             renderSafetyAlerts();
@@ -10654,10 +12915,8 @@
                 const d = state.dose;
                 let totalDose = d.unit.includes('/kg') ? d.dose * w : d.dose;
                 const unitClean = d.unit.replace('/kg', '');
-                const concObj = JSON.parse(document.getElementById('bolusConcSelect').value);
-                const totalMg = unitClean.includes('mcg') ? totalDose / 1000 : totalDose;
-                const concMgMl = concObj.unit.includes('mcg') ? concObj.conc / 1000 : concObj.conc;
-                const vol = totalMg / concMgMl;
+                const concentration = getBolusConcentrationObject(drug, mode);
+                const vol = calculateVolumeFromDoseConfig({ dose: totalDose, unit: unitClean }, 1, concentration);
                 resultsHtml += renderResultRow(t.resTotalDose, `${totalDose.toFixed(2)} ${unitClean}`);
                 resultsHtml += renderResultRow(t.resVolume, `${vol.toFixed(2)} mL`);
             }
@@ -10701,10 +12960,8 @@
                 const interval = document.getElementById('intervalSelect').value;
                 let totalDose = d.unit.includes('/kg') ? d.dose * w : d.dose;
                 let unitClean = d.unit.replace('/kg', '');
-                const concObj = JSON.parse(document.getElementById('bolusConcSelect').value);
-                const totalMg = unitClean.includes('mcg') ? totalDose / 1000 : totalDose;
-                const concMgMl = concObj.unit.includes('mcg') ? concObj.conc / 1000 : concObj.conc;
-                const vol = totalMg / concMgMl;
+                const concentration = getBolusConcentrationObject(drug, mode);
+                const vol = calculateVolumeFromDoseConfig({ dose: totalDose, unit: unitClean }, 1, concentration);
                 const times = { 'q1h': 24, 'q2h': 12, 'q3h': 8, 'q4h': 6, 'q6h': 4, 'q8h': 3, 'q12h': 2, 'q24h': 1 };
                 const daily = times[interval] || 1;
                 resultsHtml += renderResultRow(t.resTotalDose, `${totalDose.toFixed(2)} ${unitClean}`);
@@ -10780,6 +13037,7 @@
             }
 
             const container = document.getElementById('resultsContainer');
+            document.getElementById('resultTitle').style.display = '';
             document.getElementById('resultTitle').innerText = `${isAr ? drug.display_name_ar : drug.display_name_en} (${mode})`;
             document.getElementById('resultsContent').innerHTML = `<div class="result-box">${resultsHtml}</div>`;
             document.getElementById('dilutionContent').innerHTML = dilutionHtml;
@@ -10833,7 +13091,50 @@
             `;
         }
 
+        function getConciseResultNote(drug, effectiveContext) {
+            const noteCandidates = [
+                isArabicLanguage() ? drug?.dilution?.notes_ar : drug?.dilution?.notes,
+                effectiveContext?.clinicalUseNote,
+                effectiveContext?.populationNote
+            ].filter(Boolean);
+
+            return noteCandidates[0] || '';
+        }
+
+        function calculateAutoPreparation(options = {}) {
+            const shouldScrollIntoView = options.scrollIntoView !== false;
+            const effectiveContext = getEffectiveDrugContext(state.drug);
+            const drug = effectiveContext ? effectiveContext.drug : state.drug;
+            const plan = getResolvedAutoPreparationPlan(drug, state.mode);
+            if (!plan) return;
+            const container = document.getElementById('resultsContainer');
+            const resultTitle = document.getElementById('resultTitle');
+            const feedbackCard = document.getElementById('feedbackCard');
+            const previewPanel = document.getElementById('autoPreparationPanel');
+
+            renderAutoPreparationPanel(plan);
+            previewPanel.style.display = 'none';
+            resultTitle.style.display = 'none';
+            resultTitle.innerText = '';
+            document.getElementById('resultsContent').innerHTML = `
+                <div class="auto-prep-panel${previewPanel.classList.contains('is-empty') ? ' is-empty' : ''}">
+                    ${previewPanel.innerHTML}
+                </div>
+            `;
+            document.getElementById('dilutionContent').innerHTML = '';
+            feedbackCard.hidden = true;
+            container.style.display = 'block';
+            if (shouldScrollIntoView) {
+                container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
         function calculate(options = {}) {
+            if (state.calculatorMode === 'auto') {
+                calculateAutoPreparation(options);
+                return;
+            }
+
             const w = state.weight;
             const effectiveContext = getEffectiveDrugContext(state.drug);
             const drug = effectiveContext ? effectiveContext.drug : state.drug;
@@ -10881,106 +13182,115 @@
                 renderResultMetaItem(t.doseSource, effectiveContext.doseSourceLabel),
                 renderResultMetaItem(t.reviewStatus, getOfficialReviewStatusLabel(drug), `review-${getReviewTone(drug)}`)
             ].join('');
+            const conciseNote = getConciseResultNote(drug, effectiveContext);
 
             let summarySectionsHtml = '';
             let detailItemsHtml = '';
             let dilutionHtml = '';
+            const doseRange = getModeDoseRange(drug, mode, 'dose');
+            const loadingRange = getModeDoseRange(drug, mode, 'load');
+            const maintenanceRange = getModeDoseRange(drug, mode, 'maint');
 
             if (mode === 'bolus') {
-                const d = state.dose;
-                let totalDose = d.unit.includes('/kg') ? d.dose * w : d.dose;
-                const unitClean = d.unit.replace('/kg', '');
-                const concObj = JSON.parse(document.getElementById('bolusConcSelect').value);
-                const totalMg = unitClean.includes('mcg') ? totalDose / 1000 : totalDose;
-                const concMgMl = concObj.unit.includes('mcg') ? concObj.conc / 1000 : concObj.conc;
-                const vol = totalMg / concMgMl;
+                const concentration = getBolusConcentrationObject(drug, mode);
+                const volumeRange = getFiniteRange(doseRange.map(item => calculateVolumeFromDoseConfig(item, w, concentration)));
+                const recommendedDilution = concentration ? getRecommendedDilutionFromDoseRange(doseRange, w, drug, concentration) : null;
 
                 summarySectionsHtml += renderResultSection(
                     quickText.keyResults,
-                    renderResultPrimaryCard(t.resVolume, renderMeasuredValue(vol.toFixed(2), 'mL')),
+                    renderResultPrimaryCard(t.withdrawVolume || t.resVolume, volumeRange ? renderMeasuredRange(volumeRange.min, volumeRange.max, 'mL') : '-'),
                     [
-                        renderResultSummaryCard(t.resTotalDose, renderMeasuredValue(totalDose.toFixed(2), unitClean)),
-                        renderResultSummaryCard(t.concentration, renderMeasuredValue(concObj.conc, concObj.unit))
+                        renderResultSummaryCard(t.resTotalDose, getDoseDisplayRange(doseRange, w)),
+                        renderResultSummaryCard(t.stockConcentration || t.concentration, concentration ? renderMeasuredValue(formatNumericValue(concentration.value, 4), concentration.unit) : '-'),
+                        recommendedDilution?.compatible
+                            ? renderResultSummaryCard(t.diluentVolume || 'Diluent Volume', renderMeasuredRange(recommendedDilution.diluentVolumeRange.min, recommendedDilution.diluentVolumeRange.max, 'mL'))
+                            : ''
                     ].join('')
                 );
+                if (recommendedDilution?.compatible) {
+                    detailItemsHtml += renderResultDetailItem(t.finalPreparationConcentration || t.resConc, renderMeasuredValue(formatNumericValue(recommendedDilution.finalConcentration.value, 4), recommendedDilution.finalConcentration.unit));
+                } else if (recommendedDilution) {
+                    detailItemsHtml += renderResultDetailItem(
+                        t.warningsLabel || 'Warnings',
+                        escapeHtml(isAr
+                            ? 'تركيز الفيال المدخل أقل من التركيز النهائي المقترح، لذلك لا يمكن الوصول لهذا التخفيف كما هو.'
+                            : 'The entered vial concentration is lower than the suggested final concentration, so this dilution cannot be achieved as entered.')
+                    );
+                }
             }
             else if (mode === 'infusion') {
-                const d = state.dose;
-                const amt = parseFloat(document.getElementById('drugAmount').value);
-                const vol = parseFloat(document.getElementById('fluidVolume').value);
-                const { dosePerHr, unitClean } = getHourlyDoseFromRate(d, w);
-                const conc = amt / vol;
-                const doseMgHr = unitClean.includes('mcg') ? dosePerHr / 1000 : dosePerHr;
-                const rateMlHr = doseMgHr / conc;
-                const rateMlMin = rateMlHr / 60;
+                const concentration = getManualConcentrationObject();
+                const rateRange = getFiniteRange(doseRange.map(item => calculateRateFromDoseConfig(item, w, concentration)));
+                const ratePerMinuteRange = rateRange ? { min: rateRange.min / 60, max: rateRange.max / 60 } : null;
                 const isManual = document.getElementById('pumpSelect').value === 'manual';
+                const dropFactor = parseFloat(document.getElementById('dropFactorInput').value || '20');
+                const dropRange = rateRange ? {
+                    min: (rateRange.min * dropFactor) / 60,
+                    max: (rateRange.max * dropFactor) / 60
+                } : null;
                 const primaryValue = isManual
-                    ? renderMeasuredValue(((rateMlHr * parseFloat(document.getElementById('dropFactorInput').value)) / 60).toFixed(0), 'gtt/min')
-                    : renderMeasuredValue(rateMlHr.toFixed(1), 'mL/hr');
+                    ? (dropRange ? renderMeasuredRange(dropRange.min, dropRange.max, 'gtt/min') : '-')
+                    : (rateRange ? renderMeasuredRange(rateRange.min, rateRange.max, 'mL/hr') : '-');
 
                 summarySectionsHtml += renderResultSection(
                     quickText.keyResults,
                     renderResultPrimaryCard(isManual ? t.resDrops : t.resRateHr, primaryValue),
                     [
-                        renderResultSummaryCard(t.resTotalDose, renderMeasuredValue(dosePerHr.toFixed(2), unitClean)),
-                        renderResultSummaryCard(t.resConc, renderMeasuredValue(conc.toFixed(4), 'mg/mL')),
+                        renderResultSummaryCard(t.resTotalDose, getDoseDisplayRange(doseRange, w, true)),
+                        renderResultSummaryCard(t.resConc, concentration ? renderMeasuredValue(formatNumericValue(concentration.value, 4), concentration.unit) : '-'),
                         renderResultSummaryCard(
                             isManual ? t.resRateHr : t.resRateMin,
-                            isManual ? renderMeasuredValue(rateMlHr.toFixed(1), 'mL/hr') : renderMeasuredValue(rateMlMin.toFixed(2), 'mL/min')
+                            isManual
+                                ? (rateRange ? renderMeasuredRange(rateRange.min, rateRange.max, 'mL/hr') : '-')
+                                : (ratePerMinuteRange ? renderMeasuredRange(ratePerMinuteRange.min, ratePerMinuteRange.max, 'mL/min') : '-')
                         )
                     ].join('')
                 );
 
-                if (isManual) {
-                    const df = parseFloat(document.getElementById('dropFactorInput').value);
-                    detailItemsHtml += renderResultDetailItem(t.dropFactor, renderMeasuredValue(df.toFixed(0), 'gtt/mL'));
-                    detailItemsHtml += renderResultDetailItem(t.resRateMin, renderMeasuredValue(rateMlMin.toFixed(2), 'mL/min'));
+                if (isManual && ratePerMinuteRange) {
+                    detailItemsHtml += renderResultDetailItem(t.dropFactor, renderMeasuredValue(formatNumericValue(dropFactor, 0), 'gtt/mL'));
+                    detailItemsHtml += renderResultDetailItem(t.resRateMin, renderMeasuredRange(ratePerMinuteRange.min, ratePerMinuteRange.max, 'mL/min'));
                 }
             }
             else if (mode === 'loading') {
-                const ld = state.loadDose;
-                let loadTotal = ld.unit.includes('/kg') ? ld.dose * w : ld.dose;
-                let loadUnit = ld.unit.replace('/kg', '');
-                const md = state.maintDose;
-                const amt = parseFloat(document.getElementById('drugAmount').value);
-                const vol = parseFloat(document.getElementById('fluidVolume').value);
-                const { dosePerHr, unitClean } = getHourlyDoseFromRate(md, w);
-                const conc = amt / vol;
-                const doseMgHr = unitClean.includes('mcg') ? dosePerHr / 1000 : dosePerHr;
-                const rateMlHr = doseMgHr / conc;
+                const concentration = getManualConcentrationObject();
+                const loadVolumeRange = getFiniteRange(loadingRange.map(item => calculateVolumeFromDoseConfig(item, w, concentration)));
+                const maintenanceRateRange = getFiniteRange(maintenanceRange.map(item => calculateRateFromDoseConfig(item, w, concentration)));
 
                 summarySectionsHtml += renderResultSection(
                     quickText.keyResults,
-                    renderResultPrimaryCard(t.resRateHr, renderMeasuredValue(rateMlHr.toFixed(1), 'mL/hr')),
+                    renderResultPrimaryCard(t.resRateHr, maintenanceRateRange ? renderMeasuredRange(maintenanceRateRange.min, maintenanceRateRange.max, 'mL/hr') : '-'),
                     [
-                        renderResultSummaryCard(t.resLoadDose, renderMeasuredValue(loadTotal.toFixed(2), loadUnit), true),
-                        renderResultSummaryCard(t.resTotalDose, renderMeasuredValue(dosePerHr.toFixed(2), unitClean)),
-                        renderResultSummaryCard(t.resConc, renderMeasuredValue(conc.toFixed(4), 'mg/mL'))
+                        renderResultSummaryCard(t.resLoadDose, getDoseDisplayRange(loadingRange, w), true),
+                        renderResultSummaryCard(t.resVolume, loadVolumeRange ? renderMeasuredRange(loadVolumeRange.min, loadVolumeRange.max, 'mL') : '-'),
+                        renderResultSummaryCard(t.resMaintDose, getDoseDisplayRange(maintenanceRange, w, true)),
+                        renderResultSummaryCard(t.resConc, concentration ? renderMeasuredValue(formatNumericValue(concentration.value, 4), concentration.unit) : '-')
                     ].join('')
                 );
             }
             else if (mode === 'intermittent') {
-                const d = state.dose;
                 const interval = document.getElementById('intervalSelect').value;
-                let totalDose = d.unit.includes('/kg') ? d.dose * w : d.dose;
-                let unitClean = d.unit.replace('/kg', '');
-                const concObj = JSON.parse(document.getElementById('bolusConcSelect').value);
-                const totalMg = unitClean.includes('mcg') ? totalDose / 1000 : totalDose;
-                const concMgMl = concObj.unit.includes('mcg') ? concObj.conc / 1000 : concObj.conc;
-                const vol = totalMg / concMgMl;
+                const concentration = getBolusConcentrationObject(drug, mode);
+                const volumeRange = getFiniteRange(doseRange.map(item => calculateVolumeFromDoseConfig(item, w, concentration)));
                 const times = { q1h: 24, q2h: 12, q3h: 8, q4h: 6, q6h: 4, q8h: 3, q12h: 2, q24h: 1 };
                 const daily = times[interval] || 1;
+                const dailyDoseRange = getFiniteRange(doseRange.map(item => {
+                    const resolved = resolveDoseAmount(item, w);
+                    return resolved.value * daily;
+                }));
+                const resolvedDoseLabel = getDoseDisplayRange(doseRange, w);
+                const dailyDoseUnit = doseRange[0] ? resolveDoseAmount(doseRange[0], w).unit : '';
 
                 summarySectionsHtml += renderResultSection(
                     quickText.keyResults,
-                    renderResultPrimaryCard(t.resVolume, renderMeasuredValue(vol.toFixed(2), 'mL')),
+                    renderResultPrimaryCard(t.withdrawVolume || t.resVolume, volumeRange ? renderMeasuredRange(volumeRange.min, volumeRange.max, 'mL') : '-'),
                     [
-                        renderResultSummaryCard(t.resTotalDose, renderMeasuredValue(totalDose.toFixed(2), unitClean)),
+                        renderResultSummaryCard(t.resTotalDose, resolvedDoseLabel),
                         renderResultSummaryCard(t.resIntInterval, interval),
-                        renderResultSummaryCard(t.resIntDaily, renderMeasuredValue((totalDose * daily).toFixed(2), unitClean))
+                        renderResultSummaryCard(t.resIntDaily, dailyDoseRange ? renderMeasuredRange(dailyDoseRange.min, dailyDoseRange.max, dailyDoseUnit) : '-')
                     ].join('')
                 );
-                detailItemsHtml += renderResultDetailItem(t.concentration, renderMeasuredValue(concObj.conc, concObj.unit));
+                detailItemsHtml += renderResultDetailItem(t.stockConcentration || t.concentration, concentration ? renderMeasuredValue(formatNumericValue(concentration.value, 4), concentration.unit) : '-');
             }
 
             if (drug.dilution) {
@@ -10994,12 +13304,7 @@
                         tr: 'Kayıtlı uyarı yok',
                         en: 'No listed warnings'
                     }[currentLang] || 'No listed warnings');
-                const quickReminders = getQuickReminders(drug, isAr);
-                const combinedNotes = [...new Set([
-                    isAr ? drug.dilution.notes_ar : drug.dilution.notes,
-                    effectiveContext.clinicalUseNote
-                ].filter(Boolean))].join(' • ');
-                const populationSourceReference = getPopulationSourceReference(effectiveContext, drug);
+                const preparationAdvice = getPreparationPracticeAdvice(drug, mode);
 
                 dilutionHtml = renderExpandableBlock(quickText.dilutionNotes, `
                     <div class="dilution-box">
@@ -11020,37 +13325,24 @@
                             <span>${isAr ? drug.dilution.limits_ar : drug.dilution.limits}</span>
                         </div>
 
+                        ${conciseNote ? `
                         <div class="dilution-item">
                             <strong>${t.notes}:</strong>
-                            <span>${combinedNotes}</span>
+                            <span>${escapeHtml(conciseNote)}</span>
                         </div>
+                        ` : ''}
+
+                        ${preparationAdvice?.text ? `
+                        <div class="dilution-item">
+                            <strong>${t.preparationAdvice || 'Preparation Advice'}:</strong>
+                            <span>${escapeHtml(preparationAdvice.text)}</span>
+                        </div>
+                        ` : ''}
 
                         <div class="dilution-item">
                             <strong>${t.warningsLabel}:</strong>
-                            <span>${warningText}</span>
+                            <span>${escapeHtml(warningText)}</span>
                         </div>
-
-                        <div class="dilution-item">
-                            <strong>${t.quickReminders}:</strong>
-                            <span>${quickReminders}</span>
-                        </div>
-
-                        <div class="dilution-item">
-                            <strong>${t.populationNotes}:</strong>
-                            <span>${effectiveContext.populationNote}</span>
-                        </div>
-
-                        <div class="dilution-item">
-                            <strong>${t.reviewNotes}:</strong>
-                            <span>${drug.source_note}</span>
-                        </div>
-
-                        ${populationSourceReference ? `
-                        <div class="dilution-item">
-                            <strong>${t.reviewSource}:</strong>
-                            <span>${populationSourceReference}</span>
-                        </div>
-                        ` : ''}
                     </div>
                 `, 'dilution-details');
             }
@@ -11073,6 +13365,7 @@
             }[mode] || mode;
             const container = document.getElementById('resultsContainer');
 
+            document.getElementById('resultTitle').style.display = '';
             document.getElementById('resultTitle').innerText = `${getDrugDisplayName(drug)} • ${modeLabel}`;
             document.getElementById('resultsContent').innerHTML = `
                 <div class="result-box">
@@ -11292,7 +13585,7 @@
 
         function resetForm() {
             setSelectionSafetyNotice('');
-            state = { drug: null, clinicalUse: '', mode: null, dose: null, loadDose: null, maintDose: null, doseIndex: null, loadDoseIndex: null, maintDoseIndex: null, interval: null, weight: 70, sex: 'male', ageGroup: 'adult', route: 'IV' };
+            state = { drug: null, clinicalUse: '', mode: null, dose: null, loadDose: null, maintDose: null, doseIndex: null, loadDoseIndex: null, maintDoseIndex: null, interval: null, weight: 70, sex: 'male', ageGroup: 'adult', route: 'IV', calculatorMode: 'manual' };
             window.clearTimeout(workflowAdvanceTimer);
             document.getElementById('weight').value = '70';
             document.getElementById('sexSelect').value = 'male';
@@ -11302,18 +13595,28 @@
             document.getElementById('clinicalUseSelect').value = '';
             document.getElementById('drugAmount').value = '';
             document.getElementById('fluidVolume').value = '';
+            populatePreparationDurationInputs('', '');
+            document.getElementById('autoConcentrationInput').value = '';
+            document.getElementById('autoConcentrationUnit').value = '';
+            document.getElementById('autoConcentrationHint').textContent = '';
+            document.getElementById('bolusConcentrationInput').value = '';
+            document.getElementById('bolusConcentrationUnit').value = '';
+            document.getElementById('bolusConcentrationHint').textContent = '';
+            document.getElementById('autoConcentrationSection').dataset.planKey = '';
             document.getElementById('pumpSelect').value = 'pump';
             document.getElementById('dropFactorInput').value = '20';
             document.getElementById('resultsContainer').style.display = 'none';
             document.getElementById('alertBox').innerHTML = '';
             document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active', 'disabled'));
-            ['doseSection', 'loadingSection', 'maintenanceSection', 'intervalSection', 'infusionFields', 'bolusConcSection', 'pumpSection', 'dropFactorSection'].forEach(id => document.getElementById(id).style.display = 'none');
+            ['doseSection', 'loadingSection', 'maintenanceSection', 'intervalSection', 'infusionFields', 'bolusConcSection', 'pumpSection', 'dropFactorSection', 'autoPreparationPanel', 'autoConcentrationSection', 'autoDurationSection'].forEach(id => document.getElementById(id).style.display = 'none');
             populateDrugList(drugDatabase);
             document.getElementById('drugSelect').value = '';
             renderSearchResults([], false);
             updateRouteOptions();
             updateClinicalUseOptions();
             updateModeButtons();
+            updateCalculatorModeButtons();
+            renderAutoPreparationPanel(null);
             updateFavoriteButton();
             updateDrugPickerTrigger();
             syncEnhancedSelectTriggers();
