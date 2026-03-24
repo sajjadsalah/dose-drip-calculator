@@ -1,0 +1,710 @@
+[
+  {
+    "name": "midazolam",
+    "best": {
+      "setid": "d7362b4d-68a3-99a0-e053-2995a90a4f60",
+      "title": "N/A (MIDAZOLAM INJECTION, 10 MG) INJECTION, SOLUTION [RAFA LABORATORIES, LTD.]",
+      "date": "Feb 19, 2026",
+      "term": "Midazolam",
+      "score": 12
+    }
+  },
+  {
+    "name": "propofol",
+    "best": {
+      "setid": "28d7ba00-f824-4e55-139a-03f509c099db",
+      "title": "PROPOFOL INJECTION, EMULSION [HOSPIRA, INC.]",
+      "date": "Dec 18, 2025",
+      "term": "Propofol",
+      "score": 12
+    }
+  },
+  {
+    "name": "fentanyl",
+    "best": {
+      "setid": "ce5db1c2-feb1-4ad2-847a-d02e865bd47e",
+      "title": "FENTANYL CITRATE INJECTION [HIKMA PHARMACEUTICALS USA INC.]",
+      "date": "Mar 20, 2026",
+      "term": "Fentanyl",
+      "score": 12
+    }
+  },
+  {
+    "name": "ketamine",
+    "best": {
+      "setid": "6ab8c08d-9934-4545-95dd-8b256b254a10",
+      "title": "ZETAMINE (KETAMINE HYDROCHLORIDE) INJECTION [MWI ANIMAL HEALTH]",
+      "date": "Mar 20, 2026",
+      "term": "Ketamine",
+      "score": 12
+    }
+  },
+  {
+    "name": "morphine",
+    "best": {
+      "setid": "367d508b-3226-42a9-8dc6-f67cdc9979f3",
+      "title": "MORPHINE SULFATE SOLUTION [BRYANT RANCH PREPACK]",
+      "date": "Mar 10, 2026",
+      "term": "Morphine",
+      "score": 12
+    }
+  },
+  {
+    "name": "dexmedetomidine",
+    "best": {
+      "setid": "92b7ddaa-e45a-4b64-a802-bb5df8771dd6",
+      "title": "PRECEDEX (DEXMEDETOMIDINE HYDROCHLORIDE) INJECTION, SOLUTION [HOSPIRA, INC.]",
+      "date": "Mar 18, 2026",
+      "term": "Dexmedetomidine",
+      "score": 12
+    }
+  },
+  {
+    "name": "rocuronium",
+    "best": {
+      "setid": "309aeb1b-8022-4df7-8194-ae6529e3395c",
+      "title": "ROCURONIUM BROMIDE INJECTION, SOLUTION [HOSPIRA, INC.]",
+      "date": "Mar 11, 2026",
+      "term": "Rocuronium",
+      "score": 12
+    }
+  },
+  {
+    "name": "cisatracurium",
+    "best": {
+      "setid": "2cb05c7e-6228-4e2d-a270-7659e3db3fa7",
+      "title": "CISATRACURIUM BESYLATE INJECTION [EUGIA US LLC]",
+      "date": "Nov 27, 2025",
+      "term": "Cisatracurium",
+      "score": 12
+    }
+  },
+  {
+    "name": "succinylcholine",
+    "best": {
+      "setid": "1e5891e2-e1e4-4587-b32c-b2e8082df9b6",
+      "title": "SUCCINYLCHOLINE CHLORIDE INJECTION, SOLUTION [NORDIC PHARMA, INC.]",
+      "date": "Feb 10, 2026",
+      "term": "Succinylcholine",
+      "score": 12
+    }
+  },
+  {
+    "name": "neostigmine",
+    "best": {
+      "setid": "7a9d996f-aecb-455f-95fc-1010e461d75d",
+      "title": "NEOSTIGMINE METHYLSULFATE INJECTION [HIKMA PHARMACEUTICALS USA INC.]",
+      "date": "Mar 20, 2026",
+      "term": "Neostigmine",
+      "score": 12
+    }
+  },
+  {
+    "name": "sugammadex",
+    "best": {
+      "setid": "37276948-ff0f-e0ab-e063-6394a90a0973",
+      "title": "BRIDION (SUGAMMADEX) INJECTION, SOLUTION [PROPHARMA DISTRIBUTION]",
+      "date": "Dec 19, 2025",
+      "term": "Sugammadex",
+      "score": 12
+    }
+  },
+  {
+    "name": "naloxone",
+    "best": {
+      "setid": "4d66b96a-acbb-2292-e063-6294a90af788",
+      "title": "NALOXONE HYDROCHLORIDE INJECTION, SOLUTION [HF ACQUISITION CO. LLC. DBA HEALTHFIRST]",
+      "date": "Mar 20, 2026",
+      "term": "Naloxone",
+      "score": 12
+    }
+  },
+  {
+    "name": "atropine",
+    "best": {
+      "setid": "c8093125-ed1a-4eb6-9c81-52c5c7376481",
+      "title": "ATROPINE SULFATE SOLUTION [ALCON LABORATORIES, INC.]",
+      "date": "Mar 16, 2026",
+      "term": "Atropine",
+      "score": 12
+    }
+  },
+  {
+    "name": "lignocaine",
+    "best": {
+      "setid": "94155012-b1fc-430a-a1f5-30c21f4a3f80",
+      "title": "XYLOCAINE (LIDOCAINE HYDROCHLORIDE) INJECTION, SOLUTION [SPORTPHARM LLC]",
+      "date": "Feb 05, 2026",
+      "term": "xylocaine",
+      "score": 8
+    }
+  },
+  {
+    "name": "diazepam",
+    "best": {
+      "setid": "bfa85a63-967f-4176-a752-0bafabbaaae3",
+      "title": "DIAZEPAM (DIAZEPAM) INJECTION, SOLUTION [HENRY SCHEIN, INC.]",
+      "date": "Mar 03, 2026",
+      "term": "Diazepam",
+      "score": 12
+    }
+  },
+  {
+    "name": "norepinephrine",
+    "best": {
+      "setid": "ddbef60d-c20a-4ada-928f-e87074c08a54",
+      "title": "NOREPINEPHRINE BITARTRATE IN SODIUM CHLORIDE (NOREPINEPHRINE BITARTRATE) INJECTION, SOLUTION [WG CRITICAL CARE, LLC]",
+      "date": "Feb 18, 2026",
+      "term": "Norepinephrine",
+      "score": 12
+    }
+  },
+  {
+    "name": "epinephrine",
+    "best": {
+      "setid": "60efd409-3555-4182-a68d-1cd7bc0d1bfc",
+      "title": "EPINEPHRINE INJECTION, SOLUTION [BAXTER HEALTHCARE CORPORATION]",
+      "date": "Mar 20, 2026",
+      "term": "Epinephrine",
+      "score": 12
+    }
+  },
+  {
+    "name": "dopamine",
+    "best": {
+      "setid": "cb97d4a0-89ed-407c-a763-209386b6f75c",
+      "title": "DOPAMINE HYDROCHLORIDE AND DEXTROSE (DOPAMINE HYDROCHLORIDE) INJECTION, SOLUTION [BAXTER HEALTHCARE CORPORATION]",
+      "date": "Feb 26, 2026",
+      "term": "Dopamine",
+      "score": 12
+    }
+  },
+  {
+    "name": "dobutamine",
+    "best": {
+      "setid": "9943a961-3b50-4847-8a84-d8414ce38daa",
+      "title": "DOBUTAMINE IN DEXTROSE INJECTION, SOLUTION [HOSPIRA, INC.]",
+      "date": "Mar 18, 2026",
+      "term": "Dobutamine",
+      "score": 12
+    }
+  },
+  {
+    "name": "phenylephrine",
+    "best": {
+      "setid": "c17a10a3-6b8f-4734-8f00-1f4c5c729725",
+      "title": "SEVERE COLD AND FLU (ACETAMINOPHEN, DEXTROMETHORPHAN HYDROBROMIDE, GUAIFENESIN, PHENYLEPHRINE HYDROCHLORIDE) SOLUTION [CVS WOONSOCKET PRESCRIPTION CENTER, INCORPORATED]",
+      "date": "Mar 19, 2026",
+      "term": "Phenylephrine",
+      "score": 12
+    }
+  },
+  {
+    "name": "esmolol",
+    "best": {
+      "setid": "3853a26d-782d-f4e7-e063-6294a90a6e47",
+      "title": "ESMOLOL HYDROCHLORIDE INJECTION, SOLUTION [PROPHARMA DISTRIBUTION]",
+      "date": "Dec 19, 2025",
+      "term": "Esmolol",
+      "score": 12
+    }
+  },
+  {
+    "name": "amiodarone",
+    "best": {
+      "setid": "e9151c1b-b70c-477b-868a-fffdc5c51830",
+      "title": "AMIODARONE HYDROCHLORIDE INJECTION, SOLUTION [REMEDYREPACK INC.]",
+      "date": "Jan 21, 2026",
+      "term": "Amiodarone",
+      "score": 12
+    }
+  },
+  {
+    "name": "magnesium_sulfate",
+    "best": {
+      "setid": "ba490c22-19f0-4887-9509-bd3d32e0f5b1",
+      "title": "EPSOM SALT (MAGNESIUM SULFATE) GRANULE, FOR SOLUTION [VI-JON, LLC]",
+      "date": "Mar 16, 2026",
+      "term": "Magnesium Sulfate",
+      "score": 12
+    }
+  },
+  {
+    "name": "dexamethasone",
+    "best": {
+      "setid": "6ea9e6ab-0d33-4635-9e98-aa2fbd8921cc",
+      "title": "DEXAMETHASONE SODIUM PHOSPHATE INJECTION [REMEDYREPACK INC.]",
+      "date": "Mar 18, 2026",
+      "term": "Dexamethasone",
+      "score": 12
+    }
+  },
+  {
+    "name": "ondansetron",
+    "best": {
+      "setid": "e3f22b7e-b6ad-4799-93c7-d30540cada85",
+      "title": "ONDANSETRON INJECTION [FOSUN PHARMA USA INC.]",
+      "date": "Mar 16, 2026",
+      "term": "Ondansetron",
+      "score": 12
+    }
+  },
+  {
+    "name": "ketorolac",
+    "best": {
+      "setid": "22de8e1c-5e68-fd78-e063-6394a90ad40b",
+      "title": "KETOROLAC TROMETHAMINE INJECTION, SOLUTION [DIRECT_RX]",
+      "date": "Mar 18, 2026",
+      "term": "Ketorolac",
+      "score": 12
+    }
+  },
+  {
+    "name": "paracetamol",
+    "best": {
+      "setid": "a16a85c2-e1fd-4d1a-a650-271ae430eb4f",
+      "title": "COLD AND FLU (ACETAMINOPHEN, DEXTROMETHORPHAN HBR, DOXYLAMINE SUCCINATE) SOLUTION [HYVEE INC]",
+      "date": "Mar 20, 2026",
+      "term": "acetaminophen",
+      "score": 8
+    }
+  },
+  {
+    "name": "tranexamic",
+    "best": {
+      "setid": "1553f7eb-d5a8-4274-9762-5bcc5ffcf809",
+      "title": "TRANEXAMIC ACID INJECTION, SOLUTION [XGEN PHARMACEUTICALS DJB, INC.]",
+      "date": "Feb 23, 2026",
+      "term": "Tranexamic Acid",
+      "score": 12
+    }
+  },
+  {
+    "name": "remifentanil",
+    "best": {
+      "setid": "8b4c8696-e23e-4c51-a4d2-babab5bd945a",
+      "title": "ULTIVA (REMIFENTANIL HYDROCHLORIDE) INJECTION, POWDER, LYOPHILIZED, FOR SOLUTION [MYLAN INSTITUTIONAL LLC]",
+      "date": "Jan 01, 2026",
+      "term": "Remifentanil",
+      "score": 12
+    }
+  },
+  {
+    "name": "hydromorphone",
+    "best": {
+      "setid": "b325028e-0722-4c8c-9fdb-ab6fb0dc460c",
+      "title": "HYDROMORPHONE HYDROCHLORIDE INJECTION [HIKMA PHARMACEUTICALS USA INC.]",
+      "date": "Mar 03, 2026",
+      "term": "Hydromorphone",
+      "score": 12
+    }
+  },
+  {
+    "name": "sufentanil",
+    "best": {
+      "setid": "20293943-46ff-4345-1aa4-929b4e017a25",
+      "title": "SUFENTANIL CITRATE INJECTION, SOLUTION [HOSPIRA, INC.]",
+      "date": "Jan 09, 2025",
+      "term": "Sufentanil",
+      "score": 12
+    }
+  },
+  {
+    "name": "alfentanil",
+    "best": {
+      "setid": "bb56df52-5abf-47dc-ab8d-902cfe19ccb2",
+      "title": "ALFENTA (ALFENTANIL HYDROCHLORIDE) INJECTION [TAYLOR PHARMACEUTICALS]",
+      "date": "Mar 19, 2008",
+      "term": "Alfentanil",
+      "score": 12
+    }
+  },
+  {
+    "name": "vecuronium",
+    "best": {
+      "setid": "b012b1b1-9e59-4525-8f4d-dae98344d15f",
+      "title": "VECURONIUM BROMIDE INJECTION, POWDER, FOR SOLUTION [PHLOW CORP.]",
+      "date": "Mar 20, 2026",
+      "term": "Vecuronium",
+      "score": 12
+    }
+  },
+  {
+    "name": "atracurium",
+    "best": {
+      "setid": "efe90ee2-fe9e-421f-9e54-2961085d3b12",
+      "title": "ATRACURIUM BESYLATE INJECTION, SOLUTION [MEITHEAL PHARMACEUTICALS INC.]",
+      "date": "Dec 06, 2024",
+      "term": "Atracurium",
+      "score": 12
+    }
+  },
+  {
+    "name": "pancuronium",
+    "best": null
+  },
+  {
+    "name": "flumazenil",
+    "best": {
+      "setid": "3eefb01b-3d6a-a3eb-e063-6394a90a4829",
+      "title": "FLUMAZENIL INJECTION, SOLUTION [PROPHARMA DISTRIBUTION]",
+      "date": "Dec 19, 2025",
+      "term": "Flumazenil",
+      "score": 12
+    }
+  },
+  {
+    "name": "glycopyrrolate",
+    "best": {
+      "setid": "2972f22e-378c-450b-8869-1354a9bd0ffc",
+      "title": "GLYCOPYRROLATE INJECTION [SOLCO HEALTHCARE US, LLC]",
+      "date": "Jan 29, 2026",
+      "term": "Glycopyrrolate",
+      "score": 12
+    }
+  },
+  {
+    "name": "nitroglycerin",
+    "best": {
+      "setid": "3f2c9570-a544-1982-e063-6294a90a3067",
+      "title": "NITROGLYCERIN IN DEXTROSE (NITROGLYCERIN) INJECTION [PROPHARMA DISTRIBUTION]",
+      "date": "Dec 19, 2025",
+      "term": "Nitroglycerin",
+      "score": 12
+    }
+  },
+  {
+    "name": "nitroprusside",
+    "best": {
+      "setid": "a3b83d0e-b8f7-5e90-c363-1edfcd27a33d",
+      "title": "SODIUM NITROPRUSSIDE INJECTION, SOLUTION [DR.REDDY'S LABORATORIES INC.,]",
+      "date": "Dec 02, 2025",
+      "term": "Nitroprusside",
+      "score": 12
+    }
+  },
+  {
+    "name": "labetalol",
+    "best": {
+      "setid": "99a715a0-4579-410c-b102-7ef6fab8db55",
+      "title": "LABETALOL HCL IN SODIUM CHLORIDE (LABETALOL HYDROCHLORIDE) INJECTION LABETALOL HCL IN DEXTROSE (LABETALOL HYDROCHLORIDE) INJECTION LABETALOL HYDROCHLORIDE INJECTION, SOLUTION [HIKMA PHARMACEUTICALS USA INC.]",
+      "date": "Dec 22, 2025",
+      "term": "Labetalol",
+      "score": 12
+    }
+  },
+  {
+    "name": "diltiazem",
+    "best": {
+      "setid": "734beeef-3968-4137-af2c-276e8a9317df",
+      "title": "DILTIAZEM HYDROCHLORIDE INJECTION [HIKMA PHARMACEUTICALS USA INC.]",
+      "date": "Feb 10, 2026",
+      "term": "Diltiazem",
+      "score": 12
+    }
+  },
+  {
+    "name": "vasopressin",
+    "best": {
+      "setid": "b1147beb-743e-4c62-8927-91192447f8b8",
+      "title": "VASOSTRICT (VASOPRESSIN) INJECTION [PAR HEALTH USA, LLC]",
+      "date": "Feb 09, 2026",
+      "term": "Vasopressin",
+      "score": 12
+    }
+  },
+  {
+    "name": "insulin_regular",
+    "best": {
+      "setid": "b519bd83-038c-4ec5-a231-a51ec5cc291f",
+      "title": "HUMULIN R (INSULIN HUMAN) INJECTION, SOLUTION HUMULIN R (INSULIN HUMAN) INJECTION, SOLUTION [ELI LILLY AND COMPANY]",
+      "date": "Jul 28, 2025",
+      "term": "humulin r",
+      "score": 8
+    }
+  },
+  {
+    "name": "calcium_gluconate",
+    "best": {
+      "setid": "16307c00-d0d5-4e05-821f-17b0c1a29fc9",
+      "title": "CALCIUM GLUCONATE INJECTION, SOLUTION [WG CRITICAL CARE, LLC]",
+      "date": "Feb 18, 2026",
+      "term": "Calcium Gluconate",
+      "score": 12
+    }
+  },
+  {
+    "name": "potassium_chloride",
+    "best": {
+      "setid": "aad6e18f-04f8-4799-b366-873ec5a50317",
+      "title": "LACTATED RINGERS (SODIUM CHLORIDE, SODIUM LACTATE, POTASSIUM CHLORIDE, AND CALCIUM CHLORIDE) INJECTION, SOLUTION [B. BRAUN MEDICAL INC.]",
+      "date": "Mar 16, 2026",
+      "term": "Potassium Chloride",
+      "score": 12
+    }
+  },
+  {
+    "name": "mannitol",
+    "best": {
+      "setid": "430669d7-9ad1-9a04-e063-6394a90ababb",
+      "title": "MANNITOL INJECTION, SOLUTION [PROPHARMA DISTRIBUTION]",
+      "date": "Nov 17, 2025",
+      "term": "Mannitol",
+      "score": 12
+    }
+  },
+  {
+    "name": "furosemide",
+    "best": {
+      "setid": "1b9117d5-0dd9-4577-a1fd-bb0aaf7e68ec",
+      "title": "FUROSEMIDE INJECTION, SOLUTION [HERITAGE PHARMACEUTICALS INC. D/B/A AVET PHARMACEUTICALS INC.]",
+      "date": "Mar 19, 2026",
+      "term": "Furosemide",
+      "score": 12
+    }
+  },
+  {
+    "name": "clonidine",
+    "best": {
+      "setid": "7484e8fa-13a7-70e9-e053-2a91aa0a24b7",
+      "title": "CLONIDINE HYDROCHLORIDE TABLET [NUCARE PHARMACEUTICALS,INC.]",
+      "date": "Mar 04, 2026",
+      "term": "Clonidine",
+      "score": 3
+    }
+  },
+  {
+    "name": "octreotide",
+    "best": {
+      "setid": "387d7f8d-9762-4f6b-99e1-bdc50b8a1633",
+      "title": "OCTREOTIDE ACETATE INJECTION, SOLUTION [GLENMARK PHARMACEUTICALS INC., USA]",
+      "date": "Feb 02, 2026",
+      "term": "Octreotide",
+      "score": 12
+    }
+  },
+  {
+    "name": "thiopental",
+    "best": null
+  },
+  {
+    "name": "lorazepam",
+    "best": {
+      "setid": "5fc0e987-61c9-40c4-b0d5-fcea07c8733e",
+      "title": "ATIVAN (LORAZEPAM) INJECTION [HIKMA PHARMACEUTICALS USA INC.]",
+      "date": "Apr 10, 2023",
+      "term": "ativan",
+      "score": 12
+    }
+  },
+  {
+    "name": "etomidate",
+    "best": {
+      "setid": "9c2d0014-9e74-40b2-b452-255016c81cc1",
+      "title": "ETOMIDATE INJECTION, SOLUTION [CAPLIN STERILES LIMITED]",
+      "date": "Feb 06, 2026",
+      "term": "Etomidate",
+      "score": 12
+    }
+  },
+  {
+    "name": "ephedrine",
+    "best": {
+      "setid": "38723cb3-dfca-4c81-8c6f-63dd99929191",
+      "title": "EPHEDRINE SULFATE INJECTION, SOLUTION [PAR HEALTH USA, LLC]",
+      "date": "Mar 18, 2026",
+      "term": "Ephedrine",
+      "score": 12
+    }
+  },
+  {
+    "name": "nicardipine",
+    "best": {
+      "setid": "b0e2bed3-f928-43ab-a05c-275bedc9856f",
+      "title": "NICARDIPINE HYDROCHLORIDE INJECTION [LIFESTAR PHARMA LLC]",
+      "date": "Feb 26, 2026",
+      "term": "Nicardipine",
+      "score": 12
+    }
+  },
+  {
+    "name": "clevidipine",
+    "best": {
+      "setid": "a6826aa3-fabb-4ff1-a7a3-cd4c34e3a330",
+      "title": "CLEVIPREX (CLEVIDIPINE) EMULSION [FRESENIUS KABI AUSTRIA GMBH]",
+      "date": "Nov 18, 2022",
+      "term": "Clevidipine",
+      "score": 12
+    }
+  },
+  {
+    "name": "hydralazine",
+    "best": {
+      "setid": "f3c806a4-b971-421c-bcb9-9979c6d7aaec",
+      "title": "HYDRALAZINE HYDROCHLORIDE INJECTION [MEITHEAL PHARMACEUTICALS INC.]",
+      "date": "Mar 18, 2026",
+      "term": "Hydralazine",
+      "score": 12
+    }
+  },
+  {
+    "name": "metoprolol",
+    "best": {
+      "setid": "1e787808-b3e0-417a-b333-80619d15432b",
+      "title": "METOPROLOL TARTRATE INJECTION, SOLUTION [FOSUN PHARMA USA INC]",
+      "date": "Mar 16, 2026",
+      "term": "Metoprolol",
+      "score": 12
+    }
+  },
+  {
+    "name": "adenosine",
+    "best": {
+      "setid": "48d72391-b3d4-bd97-e063-6294a90a9d6f",
+      "title": "ADENOSINE INJECTION [PROPHARMA DISTRIBUTION]",
+      "date": "Jan 21, 2026",
+      "term": "Adenosine",
+      "score": 12
+    }
+  },
+  {
+    "name": "milrinone",
+    "best": {
+      "setid": "0fdaee3c-2144-4ca7-9868-54d251f468c0",
+      "title": "MILRINONE LACTATE INJECTION, SOLUTION [SHANDONG NEW TIME PHARMACEUTICAL CO., LTD.]",
+      "date": "Jan 07, 2026",
+      "term": "Milrinone",
+      "score": 12
+    }
+  },
+  {
+    "name": "levetiracetam",
+    "best": {
+      "setid": "61eb57a9-5df2-4426-9f0c-a75e2f356b11",
+      "title": "LEVETIRACETAM SOLUTION (LEVETIRACETAM) SOLUTION [CHARTWELL RX, LLC]",
+      "date": "Mar 16, 2026",
+      "term": "Levetiracetam",
+      "score": 12
+    }
+  },
+  {
+    "name": "fosphenytoin",
+    "best": {
+      "setid": "a0def32c-e693-43e5-9509-0cef9642441c",
+      "title": "FOSPHENYTOIN SODIUM INJECTION, SOLUTION [GLENMARK PHARMACEUTICALS INC., USA]",
+      "date": "Mar 09, 2026",
+      "term": "Fosphenytoin",
+      "score": 12
+    }
+  },
+  {
+    "name": "bumetanide",
+    "best": {
+      "setid": "b7cd724b-817b-4b45-8133-1ebf505867e7",
+      "title": "BUMETANIDE INJECTION [MULLAN PHARMACEUTICAL INC.]",
+      "date": "Mar 05, 2026",
+      "term": "Bumetanide",
+      "score": 12
+    }
+  },
+  {
+    "name": "phenytoin",
+    "best": {
+      "setid": "2f144e29-0de8-4a1e-b8b5-4ae2b3cb290b",
+      "title": "EUTHANASIA SOLUTION (PENTOBARBITAL SODIUM AND PHENYTOIN SODIUM) SOLUTION [NOBLE PHARMA, LLC]",
+      "date": "Feb 10, 2026",
+      "term": "Phenytoin",
+      "score": 12
+    }
+  },
+  {
+    "name": "procainamide",
+    "best": {
+      "setid": "17e47845-daad-434c-a784-6d3875b0d704",
+      "title": "PROCAINAMIDE HYDROCHLORIDE INJECTION, SOLUTION [HOSPIRA, INC.]",
+      "date": "Feb 11, 2026",
+      "term": "Procainamide",
+      "score": 12
+    }
+  },
+  {
+    "name": "methylene_blue",
+    "best": {
+      "setid": "e2d9d96c-a711-47c5-855a-7eb7f163493e",
+      "title": "METHYLENE BLUE INJECTION [BPI LABS LLC]",
+      "date": "Mar 20, 2026",
+      "term": "Methylene Blue",
+      "score": 12
+    }
+  },
+  {
+    "name": "phenobarbital",
+    "best": {
+      "setid": "4616303e-1d91-4888-8156-4ae6bd3891b7",
+      "title": "PHENOBARBITAL SOLUTION [CHARTWELL GOVERNMENTAL & SPECIALTY RX, LLC.]",
+      "date": "Feb 26, 2026",
+      "term": "Phenobarbital",
+      "score": 12
+    }
+  },
+  {
+    "name": "methohexital",
+    "best": {
+      "setid": "6fb09acf-4937-47a0-a9da-084ec062da6f",
+      "title": "METHOHEXITAL SODIUM INJECTION [ONESOURCE SPECIALTY PHARMA LIMITED]",
+      "date": "Feb 23, 2026",
+      "term": "Methohexital",
+      "score": 12
+    }
+  },
+  {
+    "name": "droperidol",
+    "best": {
+      "setid": "147e033d-d997-4ef6-8bb5-a9ba372590b2",
+      "title": "DROPERIDOL INJECTION, SOLUTION [AMERICAN REGENT, INC.]",
+      "date": "Mar 21, 2023",
+      "term": "Droperidol",
+      "score": 12
+    }
+  },
+  {
+    "name": "metoclopramide",
+    "best": {
+      "setid": "dc364325-dd39-4259-a348-3760eccdca4b",
+      "title": "METOCLOPRAMIDE HYDROCHLORIDE SOLUTION [CHARTWELL RX, LLC]",
+      "date": "Feb 04, 2026",
+      "term": "Metoclopramide",
+      "score": 12
+    }
+  },
+  {
+    "name": "dantrolene",
+    "best": {
+      "setid": "4df35098-8702-46be-ac67-30cfdf1aa570",
+      "title": "DANTRIUM (DANTROLENE SODIUM) INJECTION [PAR HEALTH USA, LLC]",
+      "date": "Dec 25, 2025",
+      "term": "Dantrolene",
+      "score": 12
+    }
+  },
+  {
+    "name": "enalaprilat",
+    "best": {
+      "setid": "5d398da1-020c-ccb1-a775-ce8e0b29d621",
+      "title": "ENALAPRILAT INJECTION [DR. REDDYS LABORATORIES INC]",
+      "date": "Jun 10, 2024",
+      "term": "Enalaprilat",
+      "score": 12
+    }
+  },
+  {
+    "name": "angiotensin_ii",
+    "best": {
+      "setid": "727d1102-fc46-46f8-b78e-fd13f0738fe4",
+      "title": "ANGIOTENSIN II INJECTION [GLAND PHARMA LIMITED]",
+      "date": "Jun 05, 2025",
+      "term": "Angiotensin II",
+      "score": 12
+    }
+  }
+]
